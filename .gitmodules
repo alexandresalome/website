@@ -1,0 +1,24 @@
+[submodule "src/vendor/symfony"]
+	path = src/vendor/symfony
+	url = git://github.com/wodkaist/symfony.git
+
+[submodule "src/vendor/doctrine"]
+	path = src/vendor/doctrine
+	url = git://github.com/doctrine/doctrine2.git
+
+[submodule "src/vendor/doctrine-migrations"]
+	path = src/vendor/doctrine-migrations
+	url = git://github.com/doctrine/migrations.git
+
+[submodule "src/vendor/swiftmailer"]
+	path = src/vendor/swiftmailer
+	url = git://github.com/swiftmailer/swiftmailer.git
+
+[submodule "src/vendor/twig"]
+	path = src/vendor/twig
+	url = git://github.com/fabpot/Twig.git
+
+[submodule "src/vendor/zend"]
+	path = src/vendor/zend
+	url = git://github.com/wodkaist/zf2.git
+
