@@ -26,10 +26,17 @@
   -->
   <filter>
     <blacklist>
-       <directory suffix=".php">src/vendor</directory>
+
+       <directory>./src/Application/Alom/IdentityBundle/Resources</directory>
+       <directory>./src/Application/Alom/PageBundle/Resources</directory>
+
+       <directory>./src/Bundle/Alom/BlogBundle/Resources</directory>
+       <directory>./src/Bundle/Alom/ContactBundle/Resources</directory>
+
     </blacklist>
     <whitelist>
-      <directory suffix=".php">src</directory>
+      <directory>./src/Application</directory>
+      <directory>./src/Bundle</directory>
     </whitelist>
   </filter>
 </phpunit>
