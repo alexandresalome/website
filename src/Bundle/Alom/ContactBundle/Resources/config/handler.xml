@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://www.symfony-project.org/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
+
+  <parameters>
+    <parameter key="contact.handler_class">Bundle\Alom\ContactBundle\Model\ContactHandler</parameter>
+  </parameters>
+
+  <services>
+    <service id="contact.handler" class="%contact.handler_class%">
+      <argument type="service" id="templating.engine" />
+      <argument type="service" id="doctrine.orm.entity_manager" />
+      <argument type="service" id="swiftmailer.mailer" />
+      <call method="setSender">
+        <argument>%contact.handler.sender.email%</argument>
+        <argument>%contact.handler.sender.name%</argument>
+      </call>
+      <call method="setNotified">
+        <argument>%contact.handler.notified.email%</argument>
+        <argument>%contact.handler.notified.name%</argument>
+      </call>
+      <call method="setConfirmation">
+        <argument>%contact.handler.confirmation.subject%</argument>
+        <argument>%contact.handler.confirmation.template%</argument>
+      </call>
+      <call method="setNotification">
+        <argument>%contact.handler.notification.subject%</argument>
+        <argument>%contact.handler.notification.template%</argument>
+      </call>
+    </service>
+  </services>
+</container>

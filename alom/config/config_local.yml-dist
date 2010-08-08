@@ -1,0 +1,18 @@
+doctrine.dbal:
+    driver:   PDOMySql
+    dbname:   alom
+    user:     root
+    password:
+
+contact.handler:
+    sender.name:           "Alexandre-Salome.fr - Contact message"
+    sender.email:          "contact@alexandre-salome.fr"
+
+    notified.name:         "Alexandre Salomé"
+    notified.email:        "alexandre.salome@gmail.com"
+
+    confirmation.subject:  "Your message was successfully sent"
+    confirmation.template: "ContactBundle:Contact:Confirmation"
+
+    notification.subject:  "[Website] %fullname% : %subject%"
+    notification.template: "ContactBundle:Contact:Notification"

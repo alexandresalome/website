@@ -1,0 +1,52 @@
+_esi:
+    resource:  "FrameworkBundle/Resources/config/internal_routing.xml"
+    prefix:    "/_esi"
+
+# Page
+page_main_homepage:
+    pattern:  /
+    defaults: { _controller: PageBundle:Main:homepage }
+
+# Contact bundle
+contact_contact_edit:
+    pattern:  /contact/form
+    defaults: { _controller: ContactBundle:Contact:edit }
+
+# Contact bundle
+contact_contact_confirmation:
+    pattern:  /contact/confirmation
+    defaults: { _controller: ContactBundle:Contact:confirmation }
+
+identity_main_cv:
+    pattern:  /cv
+    defaults: { _controller: IdentityBundle:Main:cv }
+
+# Identity
+identity_main_contact:
+    pattern:  /contact
+    defaults: { _controller: IdentityBundle:Main:contact }
+
+identity_main_cv:
+    pattern:  /cv
+    defaults: { _controller: IdentityBundle:Main:cv }
+
+# Blog
+
+blog_post_view:
+    pattern:  /blog/:slug
+    defaults: { _controller: BlogBundle:Post:view }
+
+blog_post_list:
+    pattern:  /blog
+    defaults: { _controller: BlogBundle:Post:list }
+
+blog_post_list_year:
+    pattern:  /blog/year/:year
+    defaults: { _controller: BlogBundle:Post:list }
+
+# 404
+identity_main_error404:
+    pattern:  /:path
+    defaults: { _controller: PageBundle:Main:error404 }
+    requirements:
+        path: ".*"
