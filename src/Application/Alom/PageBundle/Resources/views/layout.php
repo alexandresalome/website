@@ -1,4 +1,3 @@
-<?php $active = $view->get('slots')->get('menu.active', null); ?>
 <?php $title  = $view->get('slots')->get('head.title',  null); ?>
 <html>
     <head>
@@ -13,24 +12,7 @@
         <div id="wrapper">
 
             <div id="header" class="no-print">
-                <h1><a href="/dev.php/">Alexandre Salomé</a></h1>
-                <ul>
-                    <?php $nodes = array(
-                        'blog_post_list'        => 'Blog',
-                        'identity_main_cv'      => 'CV',
-                        'identity_main_contact' => 'Contact'
-                    ); ?>
-                    <?php foreach ($nodes as $route => $title) {
-
-                        echo '<li';
-
-                        if ($active == strtolower($title)) {
-                            echo ' class="active"';
-                        }
-
-                        echo '><a href="'.$view->get('router')->generate($route).'">'.$title.'</a></li>';
-                    } ?>
-                </ul>
+              <?php $view->output('PageBundle::header'); ?>
             </div>
 
             <div id="content">
