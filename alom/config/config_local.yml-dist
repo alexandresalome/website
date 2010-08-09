@@ -1,9 +1,3 @@
-doctrine.dbal:
-    driver:   PDOMySql
-    dbname:   alom
-    user:     root
-    password:
-
 contact.helper:
     sender.name:           "Alexandre-Salome.fr - Contact message"
     sender.email:          "contact@alexandre-salome.fr"

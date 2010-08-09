@@ -2,12 +2,18 @@
 imports:
     - { resource: config_local.yml }
 
-
 # Parameters
 parameters:
     kernel.include_core_classes: false
 
 # Services
+
+doctrine.dbal:
+    driver:   PDOSQLite
+    path:     "%kernel.root_dir%/db.sql"
+    user:     root
+    password:
+
 
 kernel.config: ~
 

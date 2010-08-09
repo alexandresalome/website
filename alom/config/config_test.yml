@@ -1,6 +1,9 @@
 imports:
     - { resource: config_dev.yml }
 
+doctrine.dbal:
+    path:     "%kernel.root_dir%/db_test.sql"
+
 web.config:
     toolbar: false
 
