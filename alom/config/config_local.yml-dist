@@ -4,7 +4,7 @@ doctrine.dbal:
     user:     root
     password:
 
-contact.handler:
+contact.helper:
     sender.name:           "Alexandre-Salome.fr - Contact message"
     sender.email:          "contact@alexandre-salome.fr"
 

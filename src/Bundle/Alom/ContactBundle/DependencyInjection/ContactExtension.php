@@ -14,26 +14,26 @@ use Symfony\Components\DependencyInjection\ContainerBuilder;
 class ContactExtension extends Extension
 {
     protected $resources = array(
-        'handler' => 'handler.xml'
+        'helper' => 'helper.xml'
     );
 
     /**
-     * Loads the handler configuration
+     * Loads the helper configuration
      *
      * @param array            $config    An array of configuration settings
      * @param ContainerBuilder $container A ContainerBuilder instance
      */
-    public function handlerLoad($config, ContainerBuilder $container)
+    public function helperLoad($config, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
-        $loader->load($this->resources['handler']);
+        $loader->load($this->resources['helper']);
         foreach (array(
             'sender.name', 'sender.email',
             'notified.name', 'notified.email',
             'confirmation.subject', 'confirmation.template',
             'notification.subject', 'notification.template'
         ) as $mandatory) {
-            $container->setParameter('contact.handler.'.$mandatory, $config[$mandatory]);
+            $container->setParameter('contact.helper'.$mandatory, $config[$mandatory]);
         }
     }
 

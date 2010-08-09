@@ -4,29 +4,29 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
   <parameters>
-    <parameter key="contact.handler_class">Bundle\Alom\ContactBundle\Model\ContactHandler</parameter>
+    <parameter key="contact.helper_class">Bundle\Alom\ContactBundle\Helper\ContactHelper</parameter>
   </parameters>
 
   <services>
-    <service id="contact.handler" class="%contact.handler_class%">
+    <service id="contact.helper" class="%contact.helper_class%">
       <argument type="service" id="templating.engine" />
       <argument type="service" id="doctrine.orm.entity_manager" />
       <argument type="service" id="swiftmailer.mailer" />
       <call method="setSender">
-        <argument>%contact.handler.sender.email%</argument>
-        <argument>%contact.handler.sender.name%</argument>
+        <argument>%contact.helper.sender.email%</argument>
+        <argument>%contact.helper.sender.name%</argument>
       </call>
       <call method="setNotified">
-        <argument>%contact.handler.notified.email%</argument>
-        <argument>%contact.handler.notified.name%</argument>
+        <argument>%contact.helper.notified.email%</argument>
+        <argument>%contact.helper.notified.name%</argument>
       </call>
       <call method="setConfirmation">
-        <argument>%contact.handler.confirmation.subject%</argument>
-        <argument>%contact.handler.confirmation.template%</argument>
+        <argument>%contact.helper.confirmation.subject%</argument>
+        <argument>%contact.helper.confirmation.template%</argument>
       </call>
       <call method="setNotification">
-        <argument>%contact.handler.notification.subject%</argument>
-        <argument>%contact.handler.notification.template%</argument>
+        <argument>%contact.helper.notification.subject%</argument>
+        <argument>%contact.helper.notification.template%</argument>
       </call>
     </service>
   </services>

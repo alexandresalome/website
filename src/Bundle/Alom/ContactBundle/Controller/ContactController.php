@@ -25,8 +25,8 @@ class ContactController extends Controller
      */
     public function saveAction($contact)
     {
-        $handler = $this->container->get('contact.handler');
-        $handler->persistAndSend($contact);
+        $helper = $this->container->get('contact.helper');
+        $helper->persistAndSend($contact);
 
         return $this->redirect('ContactBundle:Contact:confirmation');
     }

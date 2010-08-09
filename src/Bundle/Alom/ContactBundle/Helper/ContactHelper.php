@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Swift_Mailer;
 use Swift_Message;
 
-class ContactHandler
+class ContactHelper
 {
     /** @var Symfony\Components\Templating\Engine */
     protected $engine;
@@ -88,7 +88,7 @@ class ContactHandler
     protected function getOption($name, $required = true, $default = null)
     {
         if (!isset($this->options[$name])) {
-            throw new Exception("Contact handler requires the option $name");
+            throw new Exception("Contact helper requires the option $name");
         }
 
         return $this->options[$name];
