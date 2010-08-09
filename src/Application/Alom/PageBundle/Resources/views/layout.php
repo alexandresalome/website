@@ -5,8 +5,7 @@
         <?php if (null !== $title): ?>
             <title><?php echo $title; ?></title>
         <?php endif ?>
-        <?php echo $view->get('stylesheets')->add('css/main.css'); ?>
-        <?php echo $view->get('stylesheets')->render(); ?>
+        <link rel="stylesheet" href="<?php echo $view->get('assets')->getUrl('css/main.css'); ?>" />
     </head>
     <body>
         <div id="wrapper">
