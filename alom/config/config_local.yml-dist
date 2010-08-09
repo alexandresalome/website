@@ -14,5 +14,5 @@ contact.handler:
     confirmation.subject:  "Your message was successfully sent"
     confirmation.template: "ContactBundle:Contact:Confirmation"
 
-    notification.subject:  "[Website] %fullname% : %subject%"
+    notification.subject:  "[Website] {{ fullname }} : {{ subject }}"
     notification.template: "ContactBundle:Contact:Notification"
