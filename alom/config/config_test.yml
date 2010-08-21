@@ -1,13 +1,11 @@
 imports:
-    - { resource: config_dev.yml }
+    - { resource: config.yml }
 
 doctrine.dbal:
-    path:     "%kernel.root_dir%/db_test.sql"
-
-web.config:
-    toolbar: false
+    path:     "%kernel.root_dir%/db_test.sqlite"
 
 zend.logger:
     priority: debug
+    path:     %kernel.root_dir%/logs/%kernel.environment%.log
 
 kernel.test: ~
