@@ -83,8 +83,8 @@ body
 
 .button-set .button
 {
-  line-height: 1em;
-  margin-right: 10px;
+  line-height:   1em;
+  margin-right:  10px;
   margin-bottom: 15px;
 }
 
@@ -96,13 +96,13 @@ body
   background: #eeeeee;
   background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#dddddd));
   background: -moz-linear-gradient(top,  #f4f4f4,  #dddddd);
-  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#dddddd');
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#dddddd');
 }
 .button:hover
 {
   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f0f0f0));
   background: -moz-linear-gradient(top,  #ffffff,  #f0f0f0);
-  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f0f0');
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f0f0');
 }
 
 /** Layout: Wrapper **/
@@ -110,16 +110,86 @@ body
 body
 {
   background-color: #eeeeee;
-  text-align: center;
+  text-align:       center;
 }
 
 #wrapper
 {
-  text-align:  left;
-  margin:      0 auto;
-  width:       1000px;
-  padding-top: 50px;
+  text-align:     left;
+  margin:         0 auto;
+  width:          1000px;
+  padding-top:    50px;
   padding-bottom: 50px;
+}
+
+/** Layout: Banner **/
+
+#banner
+{
+  background-color: #dddddd;
+  height:  30px;
+}
+
+#banner-social
+{
+  margin: 0 auto;
+  width: 1000px;
+}
+
+#banner-social li
+{
+  display: block;
+  float:   left;
+  height:  30px;
+
+  line-height: 30px;
+  font-size:   14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#banner-social a
+{
+  color: black;
+  display: block;
+}
+
+#banner-social li.delicious a,
+#banner-social li.reader a,
+#banner-social li.twitter a,
+#banner-social li.github a
+{
+  padding:             0px 10px 0 35px;
+  background-repeat:   no-repeat;
+  background-position: 10px 5px;
+}
+
+#banner-social li.delicious a
+{
+  background-image: url(../images/social/delicious.png);
+}
+
+#banner-social li.reader a
+{
+  background-image: url(../images/social/reader.png);
+}
+
+#banner-social li.twitter a
+{
+  background-image:url(../images/social/twitter.png);
+}
+
+#banner-social li.github a
+{
+  background-image: url(../images/social/github.png);
+}
+
+#banner-social a:hover
+{
+  background-color: white;
+  -moz-border-radius-bottomleft:      10px;
+  -webkit-border-bottom-left-radius:  10px;
+  -moz-border-radius-bottomright:     10px;
+  -webkit-border-bottom-right-radius: 10px;
 }
 
 /** Layout: Header **/
@@ -189,7 +259,7 @@ body
 /** Footer **/
 #footer p
 {
-  font-family: Tahoma;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 2em;
   font-size:  0.7em;
   text-align: center;

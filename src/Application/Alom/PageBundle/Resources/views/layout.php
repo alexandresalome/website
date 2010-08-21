@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="<?php echo $view->get('assets')->getUrl('css/main.css'); ?>" />
     </head>
     <body>
+        <?php $view->output('PageBundle::banner'); ?>
         <div id="wrapper">
 
             <div id="header" class="no-print">
