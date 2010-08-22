@@ -3,7 +3,7 @@
 namespace Bundle\Alom\ContactBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller;
-use Symfony\Components\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Contact controller

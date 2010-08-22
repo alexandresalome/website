@@ -11,7 +11,7 @@
 namespace Application\Alom\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller;
-use Symfony\Components\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Page controller

@@ -3,7 +3,7 @@
 namespace Bundle\Alom\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller;
-use Symfony\Components\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Blog post controller

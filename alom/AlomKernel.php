@@ -3,9 +3,9 @@
 require_once __DIR__ . '/../src/autoload.php';
 
 use Symfony\Framework\Kernel;
-use Symfony\Components\DependencyInjection\Loader\YamlFileLoader as ContainerLoader;
-use Symfony\Components\Routing\Loader\YamlFileLoader as RoutingLoader;
-use Symfony\Components\DependencyInjection\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader as ContainerLoader;
+use Symfony\Component\Routing\Loader\YamlFileLoader as RoutingLoader;
+use Symfony\Component\DependencyInjection\Loader\LoaderInterface;
 use Symfony\Framework\KernelBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\ZendBundle\ZendBundle;

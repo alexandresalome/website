@@ -1,6 +1,6 @@
 [submodule "src/vendor/symfony"]
 	path = src/vendor/symfony
-	url = git://github.com/wodkaist/symfony.git
+	url = git://github.com/fabpot/symfony.git
 
 [submodule "src/vendor/doctrine"]
 	path = src/vendor/doctrine

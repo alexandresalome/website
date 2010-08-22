@@ -16,7 +16,7 @@
             </div>
 
             <div id="content">
-                <?php $view->slots->output('_content') ?>
+                <?php $view->get('slots')->output('_content') ?>
             </div>
 
             <div id="footer" class="no-print">

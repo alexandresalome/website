@@ -2,14 +2,14 @@
 
 namespace Bundle\Alom\ContactBundle\Model;
 
-use Symfony\Components\Templating\Engine;
+use Symfony\Component\Templating\Engine;
 use Doctrine\ORM\EntityManager;
 use Swift_Mailer;
 use Swift_Message;
 
 class ContactHelper
 {
-    /** @var Symfony\Components\Templating\Engine */
+    /** @var Symfony\Component\Templating\Engine */
     protected $engine;
     /** @var Doctrine\ORM\EntityManager */
     protected $entityManager;

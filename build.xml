@@ -6,7 +6,7 @@
 
     Available targets :
 
-    * all (default) : Update the project and run tests. Project is not cleaned at the end of execution.
+    * all (default) : Rebuild project and run tests. Project is not cleaned at the end of execution.
 
     * build         : Rebuild database and load fixtures
     * copy-dist     : Copy distributed file
