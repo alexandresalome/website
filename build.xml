@@ -6,9 +6,10 @@
 
     Available targets :
 
-    * all (default) : Rebuild project and run tests. Project is not cleaned at the end of execution.
+    * all (default) : Build and test project
 
     * build         : Rebuild database and load fixtures
+    * build-test    : Rebuild database for tests
     * copy-dist     : Copy distributed file
     * test          : Run test suite and generate coverage informations
     * clean         : Cleanup build directory
@@ -22,11 +23,10 @@
   <property name="coverage.dir"   value="${build.dir}/coverage" />
 
   <property name="symfony.config" value="${basedir}/alom/config/config_local.yml" />
-  <property name="symfony.config" value="${basedir}/alom/config/config_local.yml" />
 
   <!-- Targets -->
 
-  <target name="all" depends="copy-dist,build,test" />
+  <target name="all" depends="copy-dist,build-test,test" />
 
   <target name="copy-dist">
     <copy file="${symfony.config}-dist" tofile="${symfony.config}" />
@@ -44,6 +44,17 @@
     </exec>
   </target>
 
+  <target name="build-test" description="Rebuild test database">
+    <exec executable="alom/console_test">
+      <arg line="doctrine:schema:drop" />
+    </exec>
+    <exec executable="Alom/console_test" failonerror="true">
+      <arg line="doctrine:schema:create" />
+    </exec>
+    <exec executable="alom/console_test" failonerror="true">
+      <arg line="doctrine:data:load" />
+    </exec>
+  </target>
 
   <target name="test" description="Test the project and generate coverage">
     <mkdir dir="${coverage.dir}" />

@@ -2,6 +2,7 @@ imports:
     - { resource: config.yml }
 
 doctrine.dbal:
+    driver:   PDOSQLite
     path:     "%kernel.root_dir%/db_test.sqlite"
 
 zend.logger:
