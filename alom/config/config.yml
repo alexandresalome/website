@@ -1,13 +1,8 @@
-# Import local variables
-imports:
-    - { resource: config_local.yml }
-
 # Parameters
 parameters:
     kernel.include_core_classes: false
 
 # Services
-
 doctrine.dbal:
     driver:   PDOSQLite
     path:     "%kernel.root_dir%/db.sqlite"
@@ -16,6 +11,8 @@ kernel.config: ~
 
 web.config:
     router: { resource: "%kernel.root_dir%/config/routing.yml" }
+    validation:
+      enabled: true
 
 web.templating: ~
 

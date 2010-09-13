@@ -3,13 +3,16 @@
 namespace Bundle\Alom\ContactBundle\Entity;
 
 /**
- * Message from contact form
+ * Message from contact form.
+ *
+ * A message has an expeditor (name, email) and is composed of a subject and a
+ * body.
  *
  * @author Alexandre Salomé <alexandre.salome@gmail.com>
  *
  * @Entity
  */
-class Contact
+class Message
 {
     /**
      * @Id
@@ -39,7 +42,7 @@ class Contact
     protected $createdAt;
 
     /**
-     * Get id
+     * ID Getter
      *
      * @return integer $id
      */

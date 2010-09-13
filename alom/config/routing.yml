@@ -2,20 +2,14 @@ _esi:
     resource:  "FrameworkBundle/Resources/config/routing/internal.xml"
     prefix:    "/_esi"
 
+_contact:
+    resource:  "ContactBundle/Resources/config/routing/main.xml"
+    prefix:    "/contact"
+
 # Page
 page_main_homepage:
     pattern:  /
     defaults: { _controller: PageBundle:Main:homepage }
-
-# Contact bundle
-contact_contact_edit:
-    pattern:  /contact/form
-    defaults: { _controller: ContactBundle:Contact:edit }
-
-# Contact bundle
-contact_contact_confirmation:
-    pattern:  /contact/confirmation
-    defaults: { _controller: ContactBundle:Contact:confirmation }
 
 identity_main_cv:
     pattern:  /cv

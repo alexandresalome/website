@@ -3,5 +3,4 @@
 
 <div class="page-content">
     <h1>Message sent !</h1>
-    @todo
 </div>
