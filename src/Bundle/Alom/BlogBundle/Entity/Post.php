@@ -5,9 +5,9 @@ namespace Bundle\Alom\BlogBundle\Entity;
 /**
  * Blog post
  *
- * @Entity
- *
  * @author Alexandre Salomé <alexandre.salome@gmail.com>
+ *
+ * @Entity
  */
 class Post
 {
