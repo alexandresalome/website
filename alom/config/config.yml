@@ -13,8 +13,9 @@ app.config:
 
 # Services
 doctrine.dbal:
-    driver:   PDOSQLite
-    path:     "%kernel.root_dir%/db.sqlite"
+    dbname:   alom
+    user:     root
+    password:
 doctrine.orm: ~
 
 blog.helper: ~

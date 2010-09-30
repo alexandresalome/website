@@ -6,11 +6,10 @@ app.config:
     profiler: { only_exceptions: false }
 
 webprofiler.config:
-    toolbar: true
+    toolbar:             true
     intercept_redirects: true
 
 zend.config:
     logger:
         priority: debug
         path: %kernel.root_dir%/logs/%kernel.environment%.log
-

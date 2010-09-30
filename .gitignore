@@ -2,5 +2,4 @@
 /alom/cache
 /alom/logs
 /alom/config/config_local.yml
-alom/db*.sqlite
 

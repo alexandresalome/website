@@ -2,8 +2,7 @@ imports:
     - { resource: config_dev.yml }
 
 doctrine.dbal:
-    driverClass: PDOSQLite
-    path:        "%kernel.root_dir%/db_test.sqlite"
+  dbname: alom_test
 
 app.config:
     error_handler: false
