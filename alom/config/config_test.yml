@@ -1,12 +1,18 @@
 imports:
-    - { resource: config.yml }
+    - { resource: config_dev.yml }
 
 doctrine.dbal:
-    driver:   PDOSQLite
-    path:     "%kernel.root_dir%/db_test.sqlite"
+    driverClass: PDOSQLite
+    path:        "%kernel.root_dir%/db_test.sqlite"
 
-zend.logger:
-    priority: debug
-    path:     %kernel.root_dir%/logs/%kernel.environment%.log
+app.config:
+    error_handler: false
+    test: ~
 
-kernel.test: ~
+webprofiler.config:
+    toolbar: false
+    intercept_redirects: true
+
+zend.config:
+    logger:
+        priority: debug

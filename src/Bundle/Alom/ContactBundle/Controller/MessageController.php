@@ -4,7 +4,7 @@ namespace Bundle\Alom\ContactBundle\Controller;
 
 use Bundle\Alom\ContactBundle\Form\MessageForm;
 
-use Symfony\Bundle\FrameworkBundle\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

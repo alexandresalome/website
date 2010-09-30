@@ -2,7 +2,7 @@
 
 namespace Application\Alom\IdentityBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Identity controller.
@@ -19,7 +19,7 @@ class MainController extends Controller
      */
     public function cvAction()
     {
-        return $this->render('IdentityBundle:Main:cv');
+        return $this->render('IdentityBundle:Main:cv.php');
     }
 
     /**
@@ -27,6 +27,6 @@ class MainController extends Controller
      */
     public function contactAction()
     {
-        return $this->render('IdentityBundle:Main:contact');
+        return $this->render('IdentityBundle:Main:contact.php');
     }
 }

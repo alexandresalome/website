@@ -10,7 +10,7 @@
 
 namespace Application\Alom\PageBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -24,14 +24,14 @@ class MainController extends Controller
      * CV
      */
     public function homepageAction() {
-        return $this->render('PageBundle:Main:homepage');
+        return $this->render('PageBundle:Main:homepage.php');
     }
 
     /**
      * 404 Error Page
      */
     public function error404Action() {
-        $response = $this->render('PageBundle:Main:error404');
+        $response = $this->render('PageBundle:Main:error404.php');
         $response->setStatusCode(404); // Not found
 
         return $response;

@@ -1,21 +1,20 @@
-# Parameters
-parameters:
-    kernel.include_core_classes: false
+# Import local variables
+imports:
+    - { resource: config_local.yml }
+
+# Application
+app.config:
+    charset:       UTF-8
+    error_handler: null
+    router: { resource: "%kernel.root_dir%/config/routing.yml" }
+    validation: { enabled: true, annotations: true }
+    templating:
+        escaping: htmlspecialchars
 
 # Services
 doctrine.dbal:
     driver:   PDOSQLite
     path:     "%kernel.root_dir%/db.sqlite"
-
-kernel.config: ~
-
-web.config:
-    router: { resource: "%kernel.root_dir%/config/routing.yml" }
-    validation:
-      enabled: true
-
-web.templating: ~
-
 doctrine.orm: ~
 
 blog.helper: ~

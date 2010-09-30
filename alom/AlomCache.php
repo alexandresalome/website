@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/AlomKernel.php';
 
-use Symfony\Framework\Cache\Cache;
+use Symfony\Component\HttpKernel\Cache\Cache;
 
 /**
  * Cache for Alom kernel.

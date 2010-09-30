@@ -2,7 +2,7 @@
 
 namespace Application\Alom\IdentityBundle;
 
-use Symfony\Framework\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Provides Identity widgets : The CV Page, Contact page.

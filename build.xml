@@ -34,7 +34,10 @@
 
   <target name="build" description="Rebuild database and load fixtures">
     <exec executable="alom/console">
-      <arg line="doctrine:schema:drop" />
+      <arg line="doctrine:database:drop" />
+    </exec>
+    <exec executable="alom/console">
+      <arg line="doctrine:database:create" />
     </exec>
     <exec executable="Alom/console" failonerror="true">
       <arg line="doctrine:schema:create" />

@@ -2,11 +2,11 @@
 
 require_once __DIR__ . '/../src/autoload.php';
 
-use Symfony\Framework\Kernel;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader as ContainerLoader;
 use Symfony\Component\Routing\Loader\YamlFileLoader as RoutingLoader;
 use Symfony\Component\DependencyInjection\Loader\LoaderInterface;
-use Symfony\Framework\KernelBundle;
+use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\ZendBundle\ZendBundle;
 use Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle;
@@ -36,7 +36,7 @@ class AlomKernel extends Kernel
      */
     public function registerBundles() {
         $bundles = array(
-            new KernelBundle(),
+            new WebProfilerBundle(),
             new FrameworkBundle(),
             new ZendBundle(),
             new SwiftmailerBundle(),

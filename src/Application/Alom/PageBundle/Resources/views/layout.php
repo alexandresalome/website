@@ -8,11 +8,11 @@
         <link rel="stylesheet" href="<?php echo $view->get('assets')->getUrl('css/main.css'); ?>" />
     </head>
     <body>
-        <?php $view->output('PageBundle::banner'); ?>
+        <?php $view->output('PageBundle::banner.php'); ?>
         <div id="wrapper">
 
             <div id="header" class="no-print">
-                <?php $view->output('PageBundle::header'); ?>
+                <?php $view->output('PageBundle::header.php'); ?>
             </div>
 
             <div id="content">
@@ -20,7 +20,7 @@
             </div>
 
             <div id="footer" class="no-print">
-                <?php $view->output('PageBundle::footer'); ?>
+                <?php $view->output('PageBundle::footer.php'); ?>
             </div>
 
         </div>

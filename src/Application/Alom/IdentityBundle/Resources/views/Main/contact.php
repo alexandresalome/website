@@ -1,4 +1,4 @@
-<?php $view->extend('PageBundle::layout') ?>
+<?php $view->extend('PageBundle::layout.php') ?>
 <?php $view->get('slots')->set('head.title', 'Contact'); ?>
 <?php $view->get('slots')->set('menu.active', 'contact'); ?>
 
@@ -15,5 +15,5 @@
 
         <h2>Contact form</h2>
     </div>
-    <?php echo $view->render('ContactBundle:Contact:edit-form'); ?>
+    <?php echo $view->render('ContactBundle:Contact:edit-form.php'); ?>
 </div>

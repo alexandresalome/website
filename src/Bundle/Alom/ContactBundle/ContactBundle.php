@@ -2,7 +2,7 @@
 
 namespace Bundle\Alom\ContactBundle;
 
-use Symfony\Framework\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Bundle for contact.
