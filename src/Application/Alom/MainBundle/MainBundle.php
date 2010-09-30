@@ -8,10 +8,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Application\Alom\PageBundle;
+namespace Application\Alom\MainBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class PageBundle extends Bundle
+class MainBundle extends Bundle
 {
 }

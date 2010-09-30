@@ -4,6 +4,7 @@ namespace Bundle\Alom\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Blog post controller
@@ -19,10 +20,10 @@ class PostController extends Controller
         $post = $this->container->get('blog.helper.post')->find($slug);
 
         if (null === $post) {
-            return $this->forward('PageBundle:Main:error404');
+            throw new NotFoundHttpException("Blog post with slug \"$slug\" not found");
         }
 
-        return $this->render('BlogBundle:Post:view', array('post' => $post));
+        return $this->render('BlogBundle:Post:view.php', array('post' => $post));
     }
 
     /**
@@ -34,10 +35,10 @@ class PostController extends Controller
         $posts = $this->container->get('blog.helper.post')->getList($year);
 
         if (count($posts) == 0) {
-            return $this->forward('PageBundle:Main:error404');
+            throw new NotFoundHttpException("No blog post was found");
         }
 
-        $response = $this->render('BlogBundle:Post:list', array('year' => $year, 'posts' => $posts));
+        $response = $this->render('BlogBundle:Post:list.php', array('year' => $year, 'posts' => $posts));
 
         // Cache public=10
         $response->headers->getCacheControl()->setPublic(10);

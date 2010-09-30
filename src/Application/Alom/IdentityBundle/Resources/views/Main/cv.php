@@ -1,4 +1,4 @@
-<?php $view->extend('PageBundle::layout.php') ?>
+<?php $view->extend('::layout.php') ?>
 <?php $view->get('slots')->set('head.title', 'Alexandre Salomé - Web Developer'); ?>
 <?php $view->get('slots')->set('menu.active', 'cv'); ?>
 

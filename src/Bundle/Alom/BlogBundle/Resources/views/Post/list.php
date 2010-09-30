@@ -1,4 +1,4 @@
-<?php $view->extend('PageBundle::layout') ?>
+<?php $view->extend('::layout.php') ?>
 
 <?php $extraTitle = isset($year) ? ' - Year '.$year : ''; ?>
 

@@ -1,4 +1,4 @@
-<?php $view->extend('PageBundle::layout.php') ?>
+<?php $view->extend('::layout.php') ?>
 <?php $view->get('slots')->set('head.title', 'Contact'); ?>
 <?php $view->get('slots')->set('menu.active', 'contact'); ?>
 

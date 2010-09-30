@@ -1,4 +1,4 @@
-<?php $view->extend('PageBundle::layout') ?>
+<?php $view->extend('::layout.php') ?>
 <?php $active = $view->get('slots')->get('menu.active', 'blog'); ?>
 <?php $active = $view->get('slots')->get('head.title', $post->getTitle()); ?>
 

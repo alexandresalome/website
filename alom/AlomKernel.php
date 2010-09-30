@@ -12,7 +12,7 @@ use Symfony\Bundle\ZendBundle\ZendBundle;
 use Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle;
 use Symfony\Bundle\DoctrineBundle\DoctrineBundle;
 use Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle;
-use Application\Alom\PageBundle\PageBundle;
+use Application\Alom\MainBundle\MainBundle;
 use Application\Alom\IdentityBundle\IdentityBundle;
 use Bundle\Alom\BlogBundle\BlogBundle;
 use Bundle\Alom\ContactBundle\ContactBundle;
@@ -42,7 +42,7 @@ class AlomKernel extends Kernel
             new SwiftmailerBundle(),
             new DoctrineBundle(),
             new DoctrineMigrationsBundle(),
-            new PageBundle(),
+            new MainBundle(),
             new IdentityBundle(),
             new BlogBundle(),
             new ContactBundle()

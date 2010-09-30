@@ -1,4 +1,4 @@
-<?php $view->extend('PageBundle::layout.php') ?>
+<?php $view->extend('::layout.php') ?>
 <?php $view->get('slots')->set('head.title', 'Page not found'); ?>
 
 <div class="page-error-404 page-content">
