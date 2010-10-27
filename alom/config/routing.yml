@@ -9,22 +9,13 @@ _contact:
 # Page
 page_main_homepage:
     pattern:  /
-    defaults: { _controller: PageBundle:Main:homepage }
+    defaults: { _controller: MainBundle:Main:homepage }
 
-# Contact bundle
-contact_contact_edit:
-    pattern:  /contact/form
-    defaults: { _controller: ContactBundle:Contact:edit }
-
-contact_contact_confirmation:
-    pattern:  /contact/confirmation
-    defaults: { _controller: ContactBundle:Contact:confirmation }
-
+# Identity
 identity_main_cv:
     pattern:  /cv
     defaults: { _controller: IdentityBundle:Main:cv }
 
-# Identity
 identity_main_contact:
     pattern:  /contact
     defaults: { _controller: IdentityBundle:Main:contact }

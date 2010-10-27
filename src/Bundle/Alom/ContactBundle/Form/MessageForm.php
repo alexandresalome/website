@@ -18,6 +18,6 @@ class MessageForm extends Form
         $this->add(new \Symfony\Component\Form\TextField('name'));
         $this->add(new \Symfony\Component\Form\TextField('email'));
         $this->add(new \Symfony\Component\Form\TextField('subject'));
-        $this->add(new \Symfony\Component\Form\TextField('body'));
+        $this->add(new \Symfony\Component\Form\TextareaField('body'));
     }
 }

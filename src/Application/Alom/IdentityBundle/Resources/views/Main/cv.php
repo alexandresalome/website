@@ -4,5 +4,5 @@
 
 <div class="page-content">
     <h1>Alexandre Salomé - Web Developer</h1>
-    <?php echo $view->render('IdentityBundle:Main:cv-card.php'); ?>
+    <?php echo $view->render('IdentityBundle:Main:_cv_card.php'); ?>
 </div>

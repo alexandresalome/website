@@ -19,16 +19,16 @@ class MessageController extends Controller
      */
     public function editAction()
     {
-        return $this->render('ContactBundle:Message:edit', array('form' => $this->getForm()));
+        return $this->render('ContactBundle:Message:Edit.php', array('form' => $this->getForm()));
     }
 
     /**
      * Frontend user posts form data to this controller
      */
-    public function saveAction($contact)
+    public function saveAction()
     {
         // TODO
-        return $this->redirect('ContactBundle:Message:confirmation');
+        return $this->redirect($this->generateUrl('ContactBundle_Message_Confirmation'));
     }
 
     /**
@@ -36,7 +36,7 @@ class MessageController extends Controller
      */
     public function confirmationAction()
     {
-        return $this->render('ContactBundle:Message:confirmation');
+        return $this->render('ContactBundle:Message:Confirmation.php');
     }
 
     /**

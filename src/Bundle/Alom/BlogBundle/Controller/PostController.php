@@ -23,7 +23,7 @@ class PostController extends Controller
             throw new NotFoundHttpException("Blog post with slug \"$slug\" not found");
         }
 
-        return $this->render('BlogBundle:Post:view.php', array('post' => $post));
+        return $this->render('BlogBundle:Post:View.php', array('post' => $post));
     }
 
     /**
@@ -38,7 +38,7 @@ class PostController extends Controller
             throw new NotFoundHttpException("No blog post was found");
         }
 
-        $response = $this->render('BlogBundle:Post:list.php', array('year' => $year, 'posts' => $posts));
+        $response = $this->render('BlogBundle:Post:List.php', array('year' => $year, 'posts' => $posts));
 
         // Cache public=10
         $response->headers->getCacheControl()->setPublic(10);

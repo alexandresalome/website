@@ -3,7 +3,9 @@
 <?php $view->get('slots')->set('menu.active', 'contact'); ?>
 
 <div class="page-content">
+
     <h1>Contact</h1>
+
     <div class="rich-content">
         <h2>Email is good</h2>
         <p>
@@ -14,6 +16,9 @@
         </p>
 
         <h2>Contact form</h2>
+
+        <p>
+            <a href="<?php echo $view->get('router')->generate('ContactBundle_Message_Edit') ?>">Go to</a>
     </div>
-    <?php echo $view->render('ContactBundle:Contact:edit-form.php'); ?>
+
 </div>

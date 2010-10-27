@@ -1,12 +1,14 @@
+<?php $formattedDate = $post->getPublishedAt()->format("F j, Y"); ?>
+
 <?php $view->extend('::layout.php') ?>
-<?php $active = $view->get('slots')->get('menu.active', 'blog'); ?>
-<?php $active = $view->get('slots')->get('head.title', $post->getTitle()); ?>
+<?php $view->get('slots')->set('menu.active', 'blog'); ?>
+<?php $view->get('slots')->set('head.title', $post->getTitle() . ' - ' . $formattedDate); ?>
 
 <div class="page-content">
     <h1>«&nbsp;<?php echo $post->getTitle(); ?>&nbsp;»</h1>
 
     <div class="blog-post-date">
-        <?php echo $post->getPublishedAt()->format("F j, Y"); ?>
+        <?php echo $formattedDate; ?>
     </div>
 
     <div class="blog-post-history no-print">

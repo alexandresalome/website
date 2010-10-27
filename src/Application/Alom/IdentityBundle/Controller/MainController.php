@@ -19,7 +19,7 @@ class MainController extends Controller
      */
     public function cvAction()
     {
-        return $this->render('IdentityBundle:Main:cv.php');
+        return $this->render('IdentityBundle:Main:Cv.php');
     }
 
     /**
@@ -27,6 +27,6 @@ class MainController extends Controller
      */
     public function contactAction()
     {
-        return $this->render('IdentityBundle:Main:contact.php');
+        return $this->render('IdentityBundle:Main:Contact.php');
     }
 }

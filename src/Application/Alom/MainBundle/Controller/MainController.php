@@ -24,6 +24,6 @@ class MainController extends Controller
      * CV
      */
     public function homepageAction() {
-        return $this->render('MainBundle:Main:homepage.php');
+        return $this->render('MainBundle:Main:Homepage.php');
     }
 }
