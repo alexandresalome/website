@@ -21,8 +21,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\ZendBundle\ZendBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             new Alom\Website\BlogBundle\AlomBlogBundle(),
             new Alom\Website\MainBundle\AlomMainBundle()            
@@ -30,7 +28,6 @@ class AppKernel extends Kernel
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-            $bundles[] = new Symfony\Bundle\WebConfiguratorBundle\SymfonyWebConfiguratorBundle();
         }
 
         return $bundles;

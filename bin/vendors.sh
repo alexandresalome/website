@@ -35,9 +35,6 @@ install_git()
     cd ..
 }
 
-# Assetic
-install_git assetic git://github.com/kriswallsmith/assetic.git
-
 # Symfony
 install_git symfony git://github.com/symfony/symfony.git
 
@@ -79,18 +76,6 @@ mkdir -p zend-log/Zend
 cd zend-log/Zend
 install_git Log git://github.com/symfony/zend-log.git
 cd ../..
-
-# FrameworkExtraBundle
-mkdir -p bundles/Sensio/Bundle
-cd bundles/Sensio/Bundle
-install_git FrameworkExtraBundle git://github.com/sensio/FrameworkExtraBundle.git
-cd ../../..
-
-# WebConfiguratorBundle
-mkdir -p bundles/Symfony/Bundle
-cd bundles/Symfony/Bundle
-install_git WebConfiguratorBundle git://github.com/symfony/WebConfiguratorBundle.git
-cd ../../..
 
 # Update assets
 ../app/console assets:install ../web/

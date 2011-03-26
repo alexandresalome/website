@@ -13,6 +13,3 @@ zend:
     logger:
         priority: debug
         path:     %kernel.logs_dir%/%kernel.environment%.log
-
-assetic:
-    use_controller: true
