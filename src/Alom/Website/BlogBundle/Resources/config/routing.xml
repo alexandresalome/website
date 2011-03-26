@@ -7,4 +7,8 @@
     <route id="blog_post_list" pattern="/blog">
         <default key="_controller">AlomBlogBundle:Post:list</default>
     </route>
+
+    <route id="blog_post_view" pattern="/blog/{{slug}}">
+        <default key="_controller">AlomBlogBundle:Post:view</default>
+    </route>
 </routes>

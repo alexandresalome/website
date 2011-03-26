@@ -28,14 +28,4 @@ class MainController extends Controller
     {
         return $this->render('AlomMainBundle:Main:homepage.html.twig');
     }
-
-    /**
-     * Error 404
-     *
-     * @return Response
-     */
-    public function error404Action()
-    {
-        return $this->render('AlomMainBundle:Main:error404.html.twig');
-    }
 }

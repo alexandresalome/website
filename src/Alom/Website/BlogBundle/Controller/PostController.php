@@ -31,7 +31,7 @@ class PostController extends Controller
     public function viewAction($slug)
     {
         $post = $this
-            ->get('doctrine.default_entity_manager')
+            ->get('doctrine.orm.default_entity_manager')
             ->getRepository('AlomBlogBundle:Post')
             ->findOneBySlug($slug)
         ;
@@ -50,17 +50,17 @@ class PostController extends Controller
      */
     public function listAction($year = null)
     {
-        $post = $this
-            ->get('doctrine.default_entity_manager')
+        $posts = $this
+            ->get('doctrine.orm.default_entity_manager')
             ->getRepository('AlomBlogBundle:Post')
-            ->findByYear($year)
+            ->findAll()
         ;
 
         if (count($posts) == 0) {
             throw new NotFoundHttpException("No blog post was found");
         }
 
-        return $this->render('BlogBundle:Post:list.html.twig', array(
+        return $this->render('AlomBlogBundle:Post:list.html.twig', array(
             'year' => $year,
             'posts' => $posts
         ));

@@ -1,30 +1,39 @@
-{% extends '::layout.html.twig' %}
+{% extends "::layout.html.twig" %}
 
-{% block title %}Blog posts{% endblock %}
+{% block title %}Alexandre Salomé - Blog{% endblock %}
+{% set active = "blog" %}
 
-{% set menu = 'blog' %}
+{% block content %}
+    <div id="block-post-list" class="page-content">
 
-<div id="block-post-list" class="page-content">
+        <h1>Blog posts</h1>
 
-    <h1>Blog posts</h1>
-
-    <div class="rich-content">
-        <?php $curDate = null; ?>
-        <?php foreach ($posts as $post): ?>
-            <?php $date = $post->getPublishedAt()->format('F Y'); ?>
-            <?php if ($date !== $curDate): ?>
-                <?php if ($curDate !== null): ?>
-                    </div>
-                <?php endif ?>
-                <h2><?php echo $curDate = $date ?></h2>
-                <div class="button-set">
-            <?php endif ?>
-
-            <a class="button" href="/dev.php/blog/<?php echo $post->getSlug(); ?>"><?php echo $post->getTitle(); ?></a>
-        <?php endforeach; ?>
-
-        <?php if (null !== $curDate): ?>
+        <div class="rich-content">
+            <div class="button-set">
+            {% for post in posts %}
+                <a class="button" href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a>
+            {% endfor %}
             </div>
-        <?php endif ?>
+
+            {#
+            <?php $curDate = null; ?>
+            <?php foreach ($posts as $post): ?>
+                <?php $date = $post->getPublishedAt()->format('F Y'); ?>
+                <?php if ($date !== $curDate): ?>
+                    <?php if ($curDate !== null): ?>
+                        </div>
+                    <?php endif ?>
+                    <h2><?php echo $curDate = $date ?></h2>
+                    <div class="button-set">
+                <?php endif ?>
+
+                <a class="button" href="/dev.php/blog/<?php echo $post->getSlug(); ?>"><?php echo $post->getTitle(); ?></a>
+            <?php endforeach; ?>
+
+            <?php if (null !== $curDate): ?>
+                </div>
+            <?php endif ?>
+            #}
+        </div>
     </div>
-</div>
+{% endblock %}
