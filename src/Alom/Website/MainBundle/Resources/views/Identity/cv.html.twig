@@ -1,0 +1,11 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}CV de Alexandre Salomé{% endblock %}
+{% set active = "cv" %}
+
+{% block content %}
+    <div class="page-content">
+        <h1>Alexandre Salomé - Consultant</h1>
+        {% include "AlomMainBundle:Identity:_cv_card.html.twig" %}
+    </div>
+{% endblock %}

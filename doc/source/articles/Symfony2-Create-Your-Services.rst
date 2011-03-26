@@ -28,16 +28,16 @@ sfContext has renamed to Container
 ----------------------------------
 
 In symfony 1.x, beginners called ``sfContext::getInstance()`` anywhere in the
-application : forms, templates, models, etc. It provides an asy access to
+application : forms, templates, models, etc. It provides an easy access to
 current application context (user, request, etc.); but also generated a lot
-of conception problems : critic coupling, errors from outer space and lot of
+of conception problems : critical coupling, errors from outer space and lot of
 funny stuff.
 
 Now, in Symfony2, there is another big supermassive object : the container.
 
 It contains every services of the application.
 
-The container must keep in the controller.
+The container must kept in the controller.
 
 Use it as argument will **never** be a good idea.
 
@@ -107,7 +107,7 @@ So easy to use it :
         $manager->save($message);
     }
 
-The only problem is : how to create my manager ?
+The only problem is : how to get my manager ?
 
 Approach of services
 --------------------
@@ -125,7 +125,7 @@ What we want, in our controller :
     public function saveAction(Contact $contact) {
         $this->container->get('contact.handler')->persistAndSend($contact);
 
-        return $this->redirect('ContactBundle:Contact:Confirmation');
+        return $this->redirect('ContactBundle:Contact:Confirmation.html.twig');
     }
 
 How we want to configure it :

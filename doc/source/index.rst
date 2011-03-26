@@ -8,20 +8,6 @@ Alom Documentation
 
    install
 
-Shared bundles
---------------
-
-.. warning::
-
-   Bundles are not yet developed. The framework is not stable enough to develop
-   on it.
-
-.. toctree::
-   :maxdepth: 1
-
-   bundles/Blog-Bundle
-   bundles/Contact-Bundle
-
 Articles from the author
 ------------------------
 
@@ -39,4 +25,3 @@ Others
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

@@ -1,0 +1,5 @@
+content:
+  resource: "@AlomMainBundle/Resources/config/routing.xml"
+
+blog:
+  resource: "@AlomBlogBundle/Resources/config/routing.xml"

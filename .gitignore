@@ -1,6 +1,6 @@
-/build
-/alom/cache
-/alom/logs
-/alom/config/config_local.yml
+/app/cache
+/app/logs
+/app/config/parameters.ini
+/vendor
 /web/bundles
 

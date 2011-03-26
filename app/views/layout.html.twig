@@ -1,0 +1,33 @@
+{#
+  This file is part of the Alom project.
+
+  (c) Alexandre Salomé <alexandre.salome@gmail.com>
+
+  This source file is subject to the GPL license that is bundled
+  with this source code in the file LICENSE.
+#}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Alexandre Salomé{% endblock %}</title>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body>
+        {% include "::banner.html.twig" %}
+        <div id="wrapper">
+
+            <div id="header" class="no-print">
+                {% include "::header.html.twig" %}
+            </div>
+
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+
+            <div id="footer" class="no-print">
+                {% include "::footer.html.twig" %}
+            </div>
+
+        </div>
+    </body>
+</html>

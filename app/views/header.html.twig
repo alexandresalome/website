@@ -1,0 +1,21 @@
+{#
+  This file is part of the Alom project.
+
+  (c) Alexandre Salomé <alexandre.salome@gmail.com>
+
+  This source file is subject to the GPL license that is bundled
+  with this source code in the file LICENSE.
+#}
+
+<h1><a href="{{ path("homepage") }}">Alexandre Salomé</a></h1>
+<ul>
+    <li{% if active == "blog" %} class="active"{% endif %}>
+        <a href="{{ path("blog_post_list") }}">Blog</a>
+    </li>
+    <li{% if active == "cv" %} class="active"{% endif %}>
+        <a href="{{ path("identity_main_cv") }}">CV</a>
+    </li>
+    <li{% if active == "contact" %} class="active"{% endif %}>
+        <a href="{{ path("identity_main_contact") }}">Contact</a>
+    </li>
+</ul>

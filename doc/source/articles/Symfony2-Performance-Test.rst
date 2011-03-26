@@ -33,7 +33,8 @@ the cost for the request to be handled to the controller.
     {
         public function showAction($slug)
         {
-        return new Response();
+            return new Response();
+        }
     }
 
 In the controller, we retrieve a Project object. This phase is splitted in two
