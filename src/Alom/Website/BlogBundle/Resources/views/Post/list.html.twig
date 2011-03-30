@@ -10,30 +10,20 @@
 
         <div class="rich-content">
             <div class="button-set">
+            {% set curDate = '' %}
             {% for post in posts %}
+                {% set date = post.getPublishedAt().format('F Y') %}
+                {% if date != curDate %}
+                    {% set curDate = date %}
+                    {% if curDate != '' %}
+                        </div>
+                    {% endif %}
+                    <h2>{{ date }}</h2>
+                    <div class="button-set">
+                {% endif %}
                 <a class="button" href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a>
             {% endfor %}
             </div>
-
-            {#
-            <?php $curDate = null; ?>
-            <?php foreach ($posts as $post): ?>
-                <?php $date = $post->getPublishedAt()->format('F Y'); ?>
-                <?php if ($date !== $curDate): ?>
-                    <?php if ($curDate !== null): ?>
-                        </div>
-                    <?php endif ?>
-                    <h2><?php echo $curDate = $date ?></h2>
-                    <div class="button-set">
-                <?php endif ?>
-
-                <a class="button" href="/dev.php/blog/<?php echo $post->getSlug(); ?>"><?php echo $post->getTitle(); ?></a>
-            <?php endforeach; ?>
-
-            <?php if (null !== $curDate): ?>
-                </div>
-            <?php endif ?>
-            #}
         </div>
     </div>
 {% endblock %}
