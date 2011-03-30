@@ -53,7 +53,7 @@ class PostController extends Controller
         $posts = $this
             ->get('doctrine.orm.default_entity_manager')
             ->getRepository('AlomBlogBundle:Post')
-            ->findAll()
+            ->fetchAllOrderedByDate()
         ;
 
         if (count($posts) == 0) {

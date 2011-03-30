@@ -15,7 +15,7 @@ namespace Alom\Website\BlogBundle\Entity;
  *
  * @author Alexandre Salomé <alexandre.salome@gmail.com>
  *
- * @orm:Entity
+ * @orm:Entity(repositoryClass="Alom\Website\BlogBundle\Entity\PostRepository")
  */
 class Post
 {
