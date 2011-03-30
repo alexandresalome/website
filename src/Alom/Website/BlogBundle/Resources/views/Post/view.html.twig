@@ -1,22 +1,25 @@
-<?php $formattedDate = $post->getPublishedAt()->format("F j, Y"); ?>
+{% extends "::layout.html.twig" %}
 
-<?php $view->extend('::layout.php') ?>
-<?php $view->get('slots')->set('menu.active', 'blog'); ?>
-<?php $view->get('slots')->set('head.title', $post->getTitle() . ' - ' . $formattedDate); ?>
+{% set formattedDate = post.getPublishedAt().format("F j, Y") %}
 
-<div class="page-content">
-    <h1>«&nbsp;<?php echo $post->getTitle(); ?>&nbsp;»</h1>
+{% block title %}Alexandre Salomé - {{ post.getTitle() }} - {{ formattedDate }}{% endblock %}
+{% set active = "blog" %}
 
-    <div class="blog-post-date">
-        <?php echo $formattedDate; ?>
+{% block content %}
+    <div class="page-content">
+        <h1>«&nbsp;{{ post.getTitle() }}&nbsp;»</h1>
+
+        <div class="blog-post-date">
+            {{ formattedDate }}
+        </div>
+
+        <div class="blog-post-history no-print">
+            <a class="button previous" href="#">&lt; Previous</a>
+            <a class="button next"     href="#">Next &gt;</a>
+        </div>
+
+        <div class="rich-content">
+            {{ post.getBody() }}
+        </div>
     </div>
-
-    <div class="blog-post-history no-print">
-        <a class="button previous" href="#">&lt; Previous</a>
-        <a class="button next"     href="#">Next &gt;</a>
-    </div>
-
-    <div class="rich-content">
-        <?php echo $post->getBody(); ?>
-    </div>
-</div>
+{% endblock %}

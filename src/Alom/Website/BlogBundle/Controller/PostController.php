@@ -40,7 +40,7 @@ class PostController extends Controller
             throw new NotFoundHttpException("Blog post with slug \"$slug\" not found");
         }
 
-        return $this->render('BlogBundle:Post:view.html.twig', array('post' => $post));
+        return $this->render('AlomBlogBundle:Post:view.html.twig', array('post' => $post));
     }
 
     /**
