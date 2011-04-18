@@ -1,5 +1,5 @@
 <?php
-namespace Alom\Website\ContentBundle\Tests\Controller;
+namespace Alom\Website\ContentBundle\Tests\Functional;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

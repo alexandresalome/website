@@ -47,7 +47,7 @@ class Post implements FixtureInterface {
 
         $post_Opening = new BlogPost();
         $post_Opening->setTitle('Blog Opening');
-        $post_Opening->setSlug('Blog Opening');
+        $post_Opening->setSlug('Blog-Opening');
         $post_Opening->setPublishedAt("2010-08-24 00:00:00");
 
         $post_Opening->setBody('@todo');
