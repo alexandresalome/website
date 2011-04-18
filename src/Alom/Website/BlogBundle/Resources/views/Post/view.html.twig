@@ -14,8 +14,12 @@
         </div>
 
         <div class="blog-post-history no-print">
-            <a class="button previous" href="#">&lt; Previous</a>
-            <a class="button next"     href="#">Next &gt;</a>
+            {% if post.hasPrevious() %}
+                <a title="{{ post.getPrevious().getTitle() }}" class="button previous" href="{{ path('blog_post_view', { 'slug': post.getPrevious().getSlug() }) }}">&lt; Previous</a>
+            {% endif %}
+            {% if post.hasNext() %}
+                <a title="{{ post.getNext().getTitle() }}" class="button next" href="{{ path('blog_post_view', { 'slug': post.getNext().getSlug() }) }}">Next &gt;</a>
+            {% endif %}
         </div>
 
         <div class="rich-content">

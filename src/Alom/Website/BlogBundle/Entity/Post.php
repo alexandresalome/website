@@ -47,6 +47,28 @@ class Post
     protected $publishedAt;
 
     /**
+     * Next post
+     *
+     * null:   unknown
+     * false:  no next post
+     * object: the next post
+     *
+     * @var Alom\Website\BlogBundle\Entity\Post
+     */
+    protected $nextPost;
+
+    /**
+     * Previous post
+     *
+     * null:   unknown
+     * false:  no next post
+     * object: the next post
+     *
+     * @var Alom\Website\BlogBundle\Entity\Post
+     */
+    protected $previousPost;
+
+    /**
      * Get id
      *
      * @return integer $id
@@ -117,7 +139,56 @@ class Post
         $this->publishedAt = $publishedAt;
     }
 
+    /**
+     * @return DateTime
+     */
     public function getPublishedAt() {
         return $this->publishedAt;
+    }
+
+    public function setNext($post)
+    {
+        $this->nextPost = $post;
+    }
+
+    public function setPrevious($post)
+    {
+        $this->previousPost = $post;
+    }
+
+    public function getNext()
+    {
+        if (null === $this->nextPost)
+        {
+            throw new \Exception("No next post was set !");
+        }
+        return $this->nextPost;
+    }
+
+    public function hasNext()
+    {
+        if (null === $this->nextPost)
+        {
+            throw new \Exception("No next post was set !");
+        }
+        return $this->nextPost !== false;
+    }
+
+    public function getPrevious()
+    {
+        if (null === $this->previousPost)
+        {
+            throw new \Exception("No previous post was set !");
+        }
+        return $this->previousPost;
+    }
+
+    public function hasPrevious()
+    {
+        if (null === $this->previousPost)
+        {
+            throw new \Exception("No previous post was set !");
+        }
+        return $this->previousPost !== false;
     }
 }

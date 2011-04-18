@@ -30,15 +30,15 @@ class PostController extends Controller
      */
     public function viewAction($slug)
     {
-        $post = $this
-            ->get('doctrine.orm.default_entity_manager')
-            ->getRepository('AlomBlogBundle:Post')
-            ->findOneBySlug($slug)
-        ;
+        $repository = $this->get('doctrine.orm.default_entity_manager')->getRepository('AlomBlogBundle:Post');
+
+        $post = $repository->findOneBySlug($slug);
 
         if (null === $post) {
             throw new NotFoundHttpException("Blog post with slug \"$slug\" not found");
         }
+
+        $repository->addPreviousAndNext($post);
 
         return $this->render('AlomBlogBundle:Post:view.html.twig', array('post' => $post));
     }
