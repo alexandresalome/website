@@ -1,18 +1,25 @@
 #!/bin/sh
 
-DIR=`php -r "echo realpath(dirname(\\$_SERVER['argv'][0]));"`
-VENDOR=$DIR/vendor
+DIR=`php -r "echo dirname(dirname(realpath('$0')));"`
+VENDOR="$DIR/vendor"
+BUNDLES=$VENDOR/bundles
 
 # initialization
-if [ "$1" = "--reinstall" ]; then
+if [ "$1" = "--reinstall" -o "$2" = "--reinstall" ]; then
     rm -rf $VENDOR
 fi
 
-mkdir -p $VENDOR && cd $VENDOR
+# just the latest revision
+CLONE_OPTIONS=''
+if [ "$1" = "--min" -o "$2" = "--min" ]; then
+    CLONE_OPTIONS='--depth 1'
+fi
+
+mkdir -p "$VENDOR" && cd "$VENDOR"
 
 ##
 # @param destination directory (e.g. "doctrine")
-# @param URL of the git remote (e.g. git://github.com/doctrine/doctrine2.git)
+# @param URL of the git remote (e.g. https://github.com/doctrine/doctrine2.git)
 # @param revision to point the head (e.g. origin/HEAD)
 #
 install_git()
@@ -21,12 +28,14 @@ install_git()
     SOURCE_URL=$2
     REV=$3
 
+    echo "> Installing/Updating " $INSTALL_DIR
+
     if [ -z $REV ]; then
         REV=origin/HEAD
     fi
 
     if [ ! -d $INSTALL_DIR ]; then
-        git clone $SOURCE_URL $INSTALL_DIR
+        git clone $CLONE_OPTIONS $SOURCE_URL $INSTALL_DIR
     fi
 
     cd $INSTALL_DIR
@@ -36,46 +45,31 @@ install_git()
 }
 
 # Symfony
-install_git symfony git://github.com/symfony/symfony.git
-
-# Update the bootstrap files
-../bin/build_bootstrap.php
+install_git symfony https://github.com/symfony/symfony.git
 
 # Doctrine ORM
-install_git doctrine git://github.com/doctrine/doctrine2.git 2.0.2
-
-# Doctrine Data Fixtures Extension
-install_git doctrine-data-fixtures git://github.com/doctrine/data-fixtures.git
+install_git doctrine https://github.com/doctrine/doctrine2.git 2.0.3
 
 # Doctrine DBAL
-install_git doctrine-dbal git://github.com/doctrine/dbal.git 2.0.2
+install_git doctrine-dbal https://github.com/doctrine/dbal.git 2.0.3
 
 # Doctrine Common
-install_git doctrine-common git://github.com/doctrine/common.git 2.0.1
-
-# Doctrine migrations
-install_git doctrine-migrations git://github.com/doctrine/migrations.git
-
-# Doctrine MongoDB
-install_git doctrine-mongodb git://github.com/doctrine/mongodb.git
-
-# Doctrine MongoDB
-install_git doctrine-mongodb-odm git://github.com/doctrine/mongodb-odm.git 1.0.0BETA3
+install_git doctrine-common https://github.com/doctrine/common.git 2.0.1
 
 # Swiftmailer
-install_git swiftmailer git://github.com/swiftmailer/swiftmailer.git origin/4.1
+install_git swiftmailer https://github.com/swiftmailer/swiftmailer.git origin/4.1
 
 # Twig
-install_git twig git://github.com/fabpot/Twig.git
+install_git twig https://github.com/fabpot/Twig.git v1.0.0
 
 # Twig Extensions
-install_git twig-extensions git://github.com/fabpot/Twig-extensions.git
+install_git twig-extensions https://github.com/fabpot/Twig-extensions.git
 
-# Zend Framework Log
-mkdir -p zend-log/Zend
-cd zend-log/Zend
-install_git Log git://github.com/symfony/zend-log.git
-cd ../..
+# Monolog
+install_git monolog https://github.com/Seldaek/monolog.git
+
+# Update the bootstrap files
+$DIR/bin/build_bootstrap.php
 
 # Update assets
-../app/console assets:install ../web/
+$DIR/app/console assets:install $DIR/web/
