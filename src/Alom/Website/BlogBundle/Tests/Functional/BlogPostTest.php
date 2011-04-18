@@ -17,11 +17,11 @@ class BlogPostTest extends WebTestCase
         $this->assertEquals($response->getStatusCode(), 200);
 
         // Check title
-        $this->assertRegExp($crawler->filter('title')->text(), '/Blog Opening/');
+        $this->assertRegExp('/Blog Opening/', $crawler->filter('title')->text());
 
         // Check page title
         $this->assertEquals($crawler->filter('#content h1')->count(), 1);
-        $this->assertEquals($crawler->filter('#content h1')->text(), '« Blog Opening »');
+        $this->assertContains('Blog Opening', $crawler->filter('#content h1')->text());
 
         // Has no previous
     }
