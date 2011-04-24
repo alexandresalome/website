@@ -10,6 +10,8 @@
 
 namespace Alom\Website\BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Blog post
  *
@@ -68,6 +70,15 @@ class Post
      */
     protected $previousPost;
 
+    /**
+     * @orm:OneToMany(targetEntity="PostComment", mappedBy="post")
+     */
+    protected $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -190,5 +201,10 @@ class Post
             throw new \Exception("No previous post was set !");
         }
         return $this->previousPost !== false;
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

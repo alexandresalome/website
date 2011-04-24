@@ -8,7 +8,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Bundle\Alom\BlogBundle\Entity;
+namespace Alom\Website\BlogBundle\Entity;
 
 /**
  * Comment on a blog post
@@ -32,12 +32,12 @@ class PostComment
     protected $email;
 
     /**
-     * @Column(type="string", length="255")
+     * @orm:Column(type="string", length="255")
      */
     protected $fullname;
 
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm:Column(type="string", length="255", nullable="true")
      */
     protected $website;
 
@@ -50,6 +50,19 @@ class PostComment
      * @orm:Column(type="datetime")
      */
     protected $createdAt;
+
+    /**
+     * @orm:ManyToOne(targetEntity="Post", inversedBy="comments")
+     * @orm:JoinColumn(name="post_id", referencedColumnName="id")
+     *
+     * @var Alom\Website\AlomBlogBundle\Post
+     */
+    protected $post;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -85,6 +98,11 @@ class PostComment
      */
     public function setFullname($fullname) {
         $this->fullname = $fullname;
+    }
+
+    public function getFullname()
+    {
+        return $this->fullname;
     }
 
     /**
@@ -132,7 +150,18 @@ class PostComment
      *
      * @return DateTime
      */
-    public function getCreatedAt() {
+    public function getCreatedAt()
+    {
         return $this->createdAt;
+    }
+
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    public function setPost($post)
+    {
+        $this->post = $post;
     }
 }

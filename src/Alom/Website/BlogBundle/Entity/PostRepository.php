@@ -1,11 +1,27 @@
 <?php
-
 namespace Alom\Website\BlogBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NoResultException;
 
 class PostRepository extends EntityRepository
 {
+    public function findOneBySlugWithComments($slug)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->where('p.slug = :slug')
+            ->leftJoin('p.comments', 'pc')
+            ->setParameter('slug', $slug)
+            ->setMaxResults(1)
+            ->getQuery();
+
+        try {
+            return $query->getSingleResult();
+        } catch (NoResultException $exception) {
+            return null;
+        }
+    }
+
     public function addPreviousAndNext(Post $post)
     {
         $next = $this

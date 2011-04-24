@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         $repository = $this->get('doctrine.orm.default_entity_manager')->getRepository('AlomBlogBundle:Post');
 
-        $post = $repository->findOneBySlug($slug);
+        $post = $repository->findOneBySlugWithComments($slug);
 
         if (null === $post) {
             throw new NotFoundHttpException("Blog post with slug \"$slug\" not found");

@@ -25,5 +25,23 @@
         <div class="rich-content">
             {{ post.getBody() }}
         </div>
+
+        <div class="blog-post-comments">
+            <h2>Comments</h2>
+            {% for comment in post.getComments() %}
+                {% if loop.first %}
+                    <div class="comment">
+                {% endif %}
+                <h3>{{ comment.getFullname() }}<em>, {{ comment.getCreatedAt().format("F j, Y") }}</em></h3>
+                <p>{{ comment.getBody() }}</p>
+                {% if loop.last %}
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="no-comments">
+                    <p>Be the first to comment !</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

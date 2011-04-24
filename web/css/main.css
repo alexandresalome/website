@@ -426,18 +426,35 @@ form textarea
   color: black;
 }
 
+/** Blog post comments **/
+
 .blog-post-comments
 {
   padding-top: 50px;
-  text-align: center;
 }
 
-.blog-post-comments #idc-container
+.blog-post-comments h2
 {
-  width: 800px;
-  margin: 0 auto;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
+.blog-post-comments h3
+{
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.blog-post-comments h3 em
+{
+    font-weight: normal;
+}
+
+.blog-post-comments > div
+{
+    padding-left:  20px;
+    padding-top:   10px;
+}
 
 /** Blog post list **/
 
