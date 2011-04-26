@@ -430,30 +430,39 @@ form textarea
 
 .blog-post-comments
 {
-  padding-top: 50px;
+    margin-top: 20px;
+    border-top:  1px solid black;
 }
 
-.blog-post-comments h2
+.blog-post-comments p.author
 {
-    font-size: 1.2em;
-    font-weight: bold;
+    font-family: Georgia;
+    font-size:   1.2em;
+    margin:      15px 0;
 }
 
-.blog-post-comments h3
+.blog-post-comments p.body
 {
-    font-weight: bold;
-    margin-bottom: 4px;
+    padding-left: 15px;
+    padding-bottom: 15px;
 }
 
-.blog-post-comments h3 em
+.blog-post-comments .comment
 {
-    font-weight: normal;
+    padding-top: 15px;
 }
 
-.blog-post-comments > div
+.blog-post-comments p.author em
 {
-    padding-left:  20px;
-    padding-top:   10px;
+    font-size:   0.7em;
+}
+
+.no-comments
+{
+    text-align: center;
+    padding:     15px 0;
+    font-family: Georgia;
+    font-size: 1.4em;
 }
 
 /** Blog post list **/
