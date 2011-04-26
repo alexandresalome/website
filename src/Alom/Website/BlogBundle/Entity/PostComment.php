@@ -164,4 +164,9 @@ class PostComment
     {
         $this->post = $post;
     }
+
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+    }
 }
