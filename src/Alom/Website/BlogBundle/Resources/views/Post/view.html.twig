@@ -39,6 +39,17 @@
                     <p>Be the first to comment !</p>
                 </div>
             {% endfor %}
+
+            <form action="{{ path('blog_post_view', { 'slug' : post.getSlug() }) }}" method="POST">
+                <h2>Post a comment</h2>
+                {{ form_row(commentForm.fullname) }}
+                {{ form_row(commentForm.email) }}
+                {{ form_row(commentForm.website) }}
+                {{ form_row(commentForm.body) }}
+
+                {{ form_rest(commentForm) }}
+                <input type="submit" value="Submit" class="button" />
+            </form>
         </div>
     </div>
 {% endblock %}

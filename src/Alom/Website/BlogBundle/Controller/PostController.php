@@ -14,6 +14,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use Alom\Website\BlogBundle\Entity\PostComment;
+use Alom\Website\BlogBundle\Form\PostComment as PostCommentForm;
+
 /**
  * Blog post controller
  *
@@ -30,17 +33,33 @@ class PostController extends Controller
      */
     public function viewAction($slug)
     {
-        $repository = $this->get('doctrine.orm.default_entity_manager')->getRepository('AlomBlogBundle:Post');
+        $em = $this->get('doctrine.orm.default_entity_manager');
+        $repository = $em->getRepository('AlomBlogBundle:Post');
 
-        $post = $repository->findOneBySlugWithComments($slug);
-
+        $post = $repository->findOneBySlugWithRelated($slug);
         if (null === $post) {
             throw new NotFoundHttpException("Blog post with slug \"$slug\" not found");
         }
 
-        $repository->addPreviousAndNext($post);
+        $form    = $this->get('form.factory')->create(new PostCommentForm());
+        $request = $this->get('request');
 
-        return $this->render('AlomBlogBundle:Post:view.html.twig', array('post' => $post));
+        if ($request->getMethod() === 'POST') {
+            $comment = new PostComment();
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $comment = $form->getData();
+                $comment->setPost($post);
+                $em->persist($comment);
+                $em->flush();
+                return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $slug)));
+            }
+        }
+
+        return $this->render('AlomBlogBundle:Post:view.html.twig', array(
+            'post'        => $post,
+            'commentForm' => $form->createView()
+        ));
     }
 
     /**

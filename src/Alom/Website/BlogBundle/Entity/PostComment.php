@@ -28,21 +28,32 @@ class PostComment
 
     /**
      * @orm:Column(type="string", length="255")
+     *
+     * @assert:Email
+     * @assert:NotBlank
      */
     protected $email;
 
     /**
      * @orm:Column(type="string", length="255")
+     *
+     * @assert:MinLength(limit=3)
+     * @assert:NotBlank
      */
     protected $fullname;
 
     /**
      * @orm:Column(type="string", length="255", nullable="true")
+     *
+     * @assert:Url(protocols={"http", "https"})
      */
     protected $website;
 
     /**
      * @orm:Column(type="text")
+     *
+     * @assert:MinLength(limit=7, message="Try to make a sentence")
+     * @assert:NotBlank
      */
     protected $body;
 

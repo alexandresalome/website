@@ -6,23 +6,25 @@ use Doctrine\ORM\NoResultException;
 
 class PostRepository extends EntityRepository
 {
-    public function findOneBySlugWithComments($slug)
+    public function findOneBySlugWithRelated($slug)
     {
         $query = $this->createQueryBuilder('p')
+            ->select(array('p', 'pc'))
             ->where('p.slug = :slug')
             ->leftJoin('p.comments', 'pc')
             ->setParameter('slug', $slug)
-            ->setMaxResults(1)
             ->getQuery();
 
         try {
-            return $query->getSingleResult();
+            $post = $query->getSingleResult();
+            $this->addPreviousAndNext($post);
+            return $post;
         } catch (NoResultException $exception) {
             return null;
         }
     }
 
-    public function addPreviousAndNext(Post $post)
+    protected function addPreviousAndNext(Post $post)
     {
         $next = $this
             ->createQueryBuilder('p')
