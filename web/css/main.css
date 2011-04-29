@@ -3,7 +3,8 @@
 body, div, p, ul, ol, li, pre,
 h1, h2, h3, h4, h5, h6,
 table, tbody, thead, tfoot, tr, th, td
-dt, dl, dd
+dt, dl, dd,
+form
 {
   margin:      0;
   padding:     0;
@@ -378,7 +379,13 @@ body
 
 /** Generic form **/
 
-form p
+form
+{
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+form > div
 {
     padding-bottom: 1em;
 }
@@ -389,10 +396,19 @@ form label
 }
 
 form input[type=text],
+form input[type=url],
 form textarea
 {
-    font-size: 1.4em;
+    font-family: Georgia;
+    font-size: 1.3em;
     width: 100%;
+
+    border: 1px solid #bbbbbb;
+}
+
+form textarea
+{
+    height: 4em;
 }
 
 /** Blog: Post **/
@@ -430,8 +446,8 @@ form textarea
 
 .blog-post-comments
 {
-    margin-top: 20px;
-    border-top:  1px solid black;
+    margin: 20px 0;
+    border-top:  1px solid #BBBBBB;
 }
 
 .blog-post-comments p.author
@@ -455,6 +471,13 @@ form textarea
 .blog-post-comments p.author em
 {
     font-size:   0.7em;
+}
+
+form.post-comment h2
+{
+    font-size: 1.4em;
+    font-family: Georgia;
+    padding-bottom: 1em;
 }
 
 .no-comments
