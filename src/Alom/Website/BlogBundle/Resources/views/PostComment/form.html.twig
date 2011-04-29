@@ -1,0 +1,10 @@
+<form action="{{ action }}" method="POST">
+    <h2>Post a comment</h2>
+    {{ form_row(form.fullname) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.website) }}
+    {{ form_row(form.body) }}
+
+    {{ form_rest(form) }}
+    <input type="submit" value="Submit" class="button" />
+</form>

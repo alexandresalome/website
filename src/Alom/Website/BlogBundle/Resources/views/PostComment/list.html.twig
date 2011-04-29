@@ -1,0 +1,9 @@
+ <div class="blog-post-comments">
+   {% for comment in comments %}
+        {% include "AlomBlogBundle:PostComment:view.html.twig" with { "comment": comment } only %}
+    {% else %}
+        <div class="no-comments">
+            <p>Be the first to comment !</p>
+        </div>
+    {% endfor %}
+ </div>

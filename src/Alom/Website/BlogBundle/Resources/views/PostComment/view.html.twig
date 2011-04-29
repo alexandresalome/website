@@ -1,0 +1,12 @@
+<div class="comment">
+    <p class="author">
+        {{ comment.getFullname() }}
+        <em>
+            {% if comment.getWebsite() %}
+                <a href="{{ comment.getWebsite() }}">{{ comment.getWebsite() }}</a>
+            {% endif %}
+            {{ comment.getCreatedAt().format("F j, Y") }}
+        </em>
+    </p>
+    <p class="body">{{ comment.getBody() }}</p>
+</div>
