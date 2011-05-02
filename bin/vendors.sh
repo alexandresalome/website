@@ -44,8 +44,11 @@ install_git()
     cd ..
 }
 
+# Assetic
+install_git assetic https://github.com/kriswallsmith/assetic.git v1.0.0alpha2
+
 # Symfony
-install_git symfony https://github.com/symfony/symfony.git
+install_git symfony https://github.com/symfony/symfony.git v2.0.0BETA1
 
 # Doctrine ORM
 install_git doctrine https://github.com/doctrine/doctrine2.git 2.0.4
@@ -70,9 +73,3 @@ install_git twig-extensions https://github.com/fabpot/Twig-extensions.git
 
 # Monolog
 install_git monolog https://github.com/Seldaek/monolog.git
-
-# Update the bootstrap files
-$DIR/bin/build_bootstrap.php
-
-# Update assets
-$DIR/app/console assets:install $DIR/web/

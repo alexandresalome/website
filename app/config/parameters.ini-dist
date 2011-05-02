@@ -13,3 +13,5 @@
     locale=en
 
     csrf_secret=xxxxxxxxxx
+
+    yui_compiler_path=/var/java/yuicompressor-2.4.6.jar

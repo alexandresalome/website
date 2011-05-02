@@ -13,6 +13,7 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
     'Symfony'                        => __DIR__.'/../vendor/symfony/src',
+    'Assetic'                        => __DIR__.'/../vendor/assetic/src',
     'Doctrine\\Common\\DataFixtures' => __DIR__.'/../vendor/doctrine-fixtures/lib',
     'Doctrine\\Common'               => __DIR__.'/../vendor/doctrine-common/lib',
     'Doctrine\\DBAL'                 => __DIR__.'/../vendor/doctrine-dbal/lib',

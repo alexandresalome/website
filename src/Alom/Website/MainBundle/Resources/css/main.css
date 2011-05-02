@@ -168,22 +168,22 @@ body
 
 #banner-social li.delicious a
 {
-  background-image: url(../images/social/delicious.png);
+  background-image: url(/images/social/delicious.png);
 }
 
 #banner-social li.reader a
 {
-  background-image: url(../images/social/reader.png);
+  background-image: url(/images/social/reader.png);
 }
 
 #banner-social li.twitter a
 {
-  background-image:url(../images/social/twitter.png);
+  background-image:url(/images/social/twitter.png);
 }
 
 #banner-social li.github a
 {
-  background-image: url(../images/social/github.png);
+  background-image: url(/images/social/github.png);
 }
 
 #banner-social a:hover

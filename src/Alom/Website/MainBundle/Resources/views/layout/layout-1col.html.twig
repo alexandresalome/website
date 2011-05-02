@@ -1,0 +1,25 @@
+{#
+  This file is part of the Alom project.
+
+  (c) Alexandre Salomé <alexandre.salome@gmail.com>
+
+  This source file is subject to the GPL license that is bundled
+  with this source code in the file LICENSE.
+#}
+{% extends "::base.html.twig" %}
+
+{% block head %}
+    <title>{% block title %}Alexandre Salomé{% endblock %}</title>
+    {% include "AlomMainBundle::common/assets.html.twig" %}
+{% endblock %}
+
+{% block body %}
+    {% include "AlomMainBundle::common/banner.html.twig" %}
+    <div id="wrapper">
+        {% include "AlomMainBundle::common/header.html.twig" %}
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+        {% include "AlomMainBundle::common/footer.html.twig" %}
+    </div>
+{% endblock %}
