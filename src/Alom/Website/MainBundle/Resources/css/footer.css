@@ -1,0 +1,19 @@
+#footer p
+{
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 2em;
+  font-size:  0.7em;
+  text-align: center;
+  color: #555555;
+}
+
+#footer a
+{
+  color: #555555;
+  text-decoration: underline;
+}
+
+#footer a:hover
+{
+  text-decoration: none;
+}

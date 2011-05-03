@@ -1,0 +1,64 @@
+.rich-content p
+{
+  line-height: 1.5em;
+  margin: 1em 0.4em;
+}
+
+.rich-content pre
+{
+  font-size: 0.9em;
+  padding: 1em 2em;
+  background-color: black;
+  color: white;
+  border:  1px solid #888888;
+}
+
+.rich-content ul
+{
+  list-style-type: disc;
+  padding-left:    2em;
+}
+
+.rich-content li
+{
+  line-height: 1.5em;
+}
+
+.rich-content h2
+{
+  margin-top: 1em;
+  padding-left: 1em;
+  line-height: 1.8em;
+  font-size:   1.7em;
+  background-color: #f0f0f0;
+  border: 1px solid #d0d0d0;
+}
+
+.rich-content h3
+{
+  line-height:  1.4em;
+  font-size:    1.4em;
+  padding-top: 1em;
+  padding-left: 1em;
+  border-bottom: 1px solid black;
+}
+
+.rich-content table
+{
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.rich-content table td,
+.rich-content table th
+{
+  padding: 0.4em 0.4em;
+  border: 1px solid #bbbbbb;
+}
+
+.rich-content table th
+{
+  background-color: #efefef;
+  font-weight: bold;
+}

@@ -1,0 +1,61 @@
+#header
+{
+  text-align: center;
+  height: 50px;
+
+  position: relative;
+}
+
+#header h1
+{
+  font-family: 'Georgia';
+  line-height: 1em;
+  font-size:   2em;
+
+  margin-left: 0.3em;
+
+  position:    absolute;
+  bottom:      0;
+  left:        0;
+}
+
+#header ul
+{
+  line-height: 1.2em;
+
+  position:    absolute;
+  bottom:      -1px;
+  right:       20px;
+}
+
+#header li
+{
+  display:          inline-block;
+  border-top:       1px solid #cccccc;
+  border-left:      1px solid #cccccc;
+  border-right:     1px solid #cccccc;
+  padding:          0.4em 0.5em;
+  margin-bottom:    1px;
+  background-color: white;
+  margin-left:     0.4em;
+}
+
+#header li.active
+{
+  margin-bottom: 0;
+}
+
+#header li.active a
+{
+  color: white;
+}
+
+#header li.active
+{
+  border-color:    #555555;
+  background-color: #555555;
+}
+#header a
+{
+  color: black;
+}
