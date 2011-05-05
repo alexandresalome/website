@@ -1,9 +1,9 @@
 <?php
-namespace Alom\Website\ContentBundle\Tests\Functional;
+namespace Alom\Website\ContentBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class MainTest extends WebTestCase
+class MainControllerTest extends WebTestCase
 {
     public function testHomepage()
     {
