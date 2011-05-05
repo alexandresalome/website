@@ -12,7 +12,7 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
-    'Symfony'                        => __DIR__.'/../vendor/symfony/src',
+    'Symfony'                        => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles' ),
     'Assetic'                        => __DIR__.'/../vendor/assetic/src',
     'Doctrine\\Common\\DataFixtures' => __DIR__.'/../vendor/doctrine-fixtures/lib',
     'Doctrine\\Common'               => __DIR__.'/../vendor/doctrine-common/lib',

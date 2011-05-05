@@ -73,3 +73,8 @@ install_git twig-extensions https://github.com/fabpot/Twig-extensions.git
 
 # Monolog
 install_git monolog https://github.com/Seldaek/monolog.git
+
+# Datafixtures Bundle
+mkdir -p $BUNDLES/Symfony/Bundle
+cd $BUNDLES/Symfony/Bundle
+install_git DoctrineFixturesBundle https://github.com/symfony/DoctrineFixturesBundle.git 59a7b03af68acb5eb0b2c57acf31fb5688155f66
