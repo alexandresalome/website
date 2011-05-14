@@ -49,6 +49,11 @@ class Post
     protected $publishedAt;
 
     /**
+     * @orm:Column(type="boolean")
+     */
+    protected $isActive;
+
+    /**
      * Next post
      *
      * null:   unknown
@@ -206,5 +211,15 @@ class Post
     public function getComments()
     {
         return $this->comments;
+    }
+
+    public function isActive()
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
     }
 }
