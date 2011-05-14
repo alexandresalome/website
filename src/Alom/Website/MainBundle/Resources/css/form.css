@@ -29,3 +29,10 @@ form textarea
 {
     height: 4em;
 }
+
+form .errors
+{
+    color:        red;
+    padding-left: 1em;
+    font-size:    0.9em;
+}
