@@ -1,5 +1,5 @@
 <?php
-namespace Alom\Website\BlogBundle\Tests\Functional;
+namespace Alom\Website\BlogBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -8,7 +8,6 @@ class BlogPostTest extends WebTestCase
     public function testPostView()
     {
         $client = $this->createClient();
-        $em = $client->getContainer()->get('doctrine.orm.entity_manager');
 
         $crawler = $client->request('GET', '/blog/Blog-Opening');
 
@@ -23,6 +22,11 @@ class BlogPostTest extends WebTestCase
         $this->assertEquals($crawler->filter('#content h1')->count(), 1);
         $this->assertContains('Blog Opening', $crawler->filter('#content h1')->text());
 
-        // Has no previous
+        // Previous/Next
+        $this->assertEquals($crawler->filter('.blog-post-history a.previous')->count(), 0);
+        $this->assertEquals($crawler->filter('.blog-post-history a.next')->count(), 1);
+
+        // Date formating
+        $this->assertEquals($crawler->filter('.blog-post-date')->reduceText(), "August 24, 2010");
     }
 }
