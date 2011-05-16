@@ -1,0 +1,16 @@
+security:
+    encoders:
+        Alom\Website\MainBundle\Entity\User:
+            algorithm:        sha512
+            encode-as-base64: true
+            iterations:       5
+    providers:
+        entity:
+            entity: { class: "Alom\Website\MainBundle\Entity\User", property: "username" }
+    firewalls:
+        main:
+            pattern:    "/.*"
+            security:   true
+            form_login: true
+            logout:     true
+            anonymous:  true

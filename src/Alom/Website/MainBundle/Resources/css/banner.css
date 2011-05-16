@@ -6,6 +6,7 @@
 
 #banner-social
 {
+  position: relative;
   margin: 0 auto;
   width: 1000px;
 }
@@ -57,11 +58,26 @@
   background-image: url(/images/social/github.png);
 }
 
-#banner-social a:hover
+#banner-social li.delicious a:hover,
+#banner-social li.reader a:hover,
+#banner-social li.twitter a:hover,
+#banner-social li.github a:hover
 {
   background-color: white;
   -moz-border-radius-bottomleft:      10px;
   -webkit-border-bottom-left-radius:  10px;
   -moz-border-radius-bottomright:     10px;
   -webkit-border-bottom-right-radius: 10px;
+}
+
+#banner-social li.auth
+{
+    position: absolute;
+    right:    0;
+}
+
+#banner-social li.auth a
+{
+    display: inline;
+    color: #444;
 }

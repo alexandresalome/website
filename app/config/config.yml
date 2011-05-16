@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.ini }
+    - { resource: security.yml }
 
 framework:
     secret:        %csrf_secret%
@@ -39,6 +40,7 @@ doctrine:
             default:
                 mappings:
                     AlomBlogBundle: ~
+                    AlomMainBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
