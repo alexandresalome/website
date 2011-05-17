@@ -1,7 +1,7 @@
 <?php
 namespace Alom\Website\BlogBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Alom\Website\MainBundle\Test\WebTestCase;
 
 class BlogPostTest extends WebTestCase
 {
@@ -27,6 +27,6 @@ class BlogPostTest extends WebTestCase
         $this->assertEquals($crawler->filter('.blog-post-history a.next')->count(), 1);
 
         // Date formating
-        $this->assertEquals($crawler->filter('.blog-post-date')->reduceText(), "August 24, 2010");
+        $this->assertTextSimilar($crawler->filter('.blog-post-date')->text(), "August 24, 2010");
     }
 }
