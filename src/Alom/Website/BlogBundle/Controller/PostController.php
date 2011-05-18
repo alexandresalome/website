@@ -69,10 +69,12 @@ class PostController extends Controller
      */
     public function listAction($year = null)
     {
+        $fetchInactive = $this->get('security.context')->isGranted('ROLE_ADMIN');
+
         $posts = $this
             ->get('doctrine.orm.default_entity_manager')
             ->getRepository('AlomBlogBundle:Post')
-            ->fetchAllOrderedByDate()
+            ->fetchAllOrderedByDate($fetchInactive)
         ;
 
         if (count($posts) == 0) {

@@ -8,9 +8,11 @@
 
         <h1>Blog posts</h1>
 
-        <div style="text-align: right">
-            <a class="button button-add"><span>New post</span></a>
-        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div style="text-align: right">
+                <a class="button button-add"><span>New post</span></a>
+            </div>
+        {% endif %}
         <div class="rich-content">
             {% set curDate = '' %}
             {% for post in posts %}

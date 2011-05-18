@@ -47,12 +47,16 @@ class PostRepository extends EntityRepository
         $post->setPrevious(count($previous) ? $previous[0] : false);
     }
 
-    public function fetchAllOrderedByDate()
+    public function fetchAllOrderedByDate($fetchInactive = false)
     {
-        return $this
+        $query = $this
             ->createQueryBuilder('p')
-            ->addOrderBy('p.publishedAt', 'DESC')
-            ->getQuery()
-            ->execute();
+            ->addOrderBy('p.publishedAt', 'DESC');
+
+        if (false === $fetchInactive) {
+            $query->andWhere('p.isActive = true');
+        }
+
+        return $query->getQuery()->execute();
     }
 }
