@@ -2,6 +2,9 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
 
+parameters:
+    test.client.class: Alom\Website\MainBundle\Test\Client
+
 framework:
     secret:        %csrf_secret%
     charset:       UTF-8

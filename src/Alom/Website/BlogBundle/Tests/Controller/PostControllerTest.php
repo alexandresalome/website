@@ -5,6 +5,28 @@ use Alom\Website\MainBundle\Test\WebTestCase;
 
 class BlogPostTest extends WebTestCase
 {
+    public function testIndexAsAdmin()
+    {
+        $client = $this->createClient();
+        $client->connect('admin', 'admin');
+
+        $crawler = $client->request('GET', '/blog');
+        $this->assertEquals($crawler->filter('a.button-add')->count(), 1, "Add button is present");
+        $this->assertEquals($crawler->filter('a.button-hidden')->count(), 2, "Two inactive posts");
+    }
+
+    /**
+     * @depends testIndexAsAdmin
+     */
+    public function testIndexAsAnonymous()
+    {
+        $client = $this->createClient();
+
+        $crawler = $client->request('GET', '/blog');
+        $this->assertEquals($crawler->filter('a.button-add')->count(), 0, "No add button");
+        $this->assertEquals($crawler->filter('a.button-hidden')->count(), 0, "No inactive post");
+    }
+
     public function testPostView()
     {
         $client = $this->createClient();
