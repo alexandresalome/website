@@ -51,4 +51,104 @@ class BlogPostTest extends WebTestCase
         // Date formating
         $this->assertTextSimilar($crawler->filter('.blog-post-date')->text(), "August 24, 2010");
     }
+
+    public function testCorrectComment()
+    {
+        $client = $this->createClient();
+        $client->followRedirects(false);
+
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+        $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
+            'postcomment[fullname]' => 'Bobby',
+            'postcomment[email]'    => 'bobby@example.org',
+            'postcomment[body]'     => 'Hey this is a cool website'
+        ));
+
+        $crawler = $client->submit($form);
+        $this->assertTrue($client->getResponse()->isRedirected('/blog/Blog-Opening'));
+    }
+
+    /**
+     * @dataProvider provideDataIncorrectFullname
+     */
+    public function testIncorrectFullname($fullname, $message)
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+        $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
+            'postcomment[fullname]' => $fullname,
+            'postcomment[email]'    => 'bobby@example.org',
+            'postcomment[body]'     => 'Hey this is a cool website'
+        ));
+
+        $crawler = $client->submit($form);
+        $error = $crawler->filter('#postcomment_fullname + ul > li')->text();
+        $this->assertEquals($message, $error);
+    }
+
+    public function provideDataIncorrectFullname()
+    {
+        return array(
+            array('', 'This value should not be blank'),
+            array('  ', 'This value should not be blank'),
+        );
+    }
+
+    /**
+     * @dataProvider provideDataIncorrectEmail
+     */
+    public function testIncorrectEmail($email, $message)
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+        $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
+            'postcomment[fullname]' => 'Bobby',
+            'postcomment[email]'    => $email,
+            'postcomment[body]'     => 'Hey this is a cool website'
+        ));
+
+        $crawler = $client->submit($form);
+        $error = $crawler->filter('#postcomment_email + ul > li')->text();
+        $this->assertEquals($message, $error);
+    }
+
+    public function provideDataIncorrectEmail()
+    {
+        return array(
+            array('', 'This value should not be blank'),
+            array('bobby', 'This value is not a valid email address'),
+            array('bobby@laposte', 'This value is not a valid email address'),
+            array('bobby@laposte@laposte.net', 'This value is not a valid email address'),
+            array('bobby@laposté.net', 'This value is not a valid email address'),
+        );
+    }
+
+    /**
+     * @dataProvider provideDataIncorrectWebsite
+     */
+    public function testIncorrectWebsite($website, $message)
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+        $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
+            'postcomment[fullname]' => 'Bobby',
+            'postcomment[email]'    => 'bobby@example.org',
+            'postcomment[website]'  => $website,
+            'postcomment[body]'     => 'Hey this is a cool website'
+        ));
+
+        $crawler = $client->submit($form);
+        $error = $crawler->filter('#postcomment_website + ul > li')->text();
+        $this->assertEquals($message, $error);
+    }
+
+    public function provideDataIncorrectWebsite()
+    {
+        return array(
+            array('http://', 'This value is not a valid URL'),
+            array('http://bobby', 'This value is not a valid URL'),
+            array('http://bobby/', 'This value is not a valid URL'),
+            array('ftp://bobby', 'This value is not a valid URL'),
+        );
+    }
 }
