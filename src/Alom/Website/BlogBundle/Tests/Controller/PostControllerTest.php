@@ -59,13 +59,26 @@ class BlogPostTest extends WebTestCase
 
         $crawler = $client->request('GET', '/blog/Blog-Opening');
         $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
-            'postcomment[fullname]' => 'Bobby',
+            'postcomment[fullname]' => 'Bobby Commentor',
             'postcomment[email]'    => 'bobby@example.org',
             'postcomment[body]'     => 'Hey this is a cool website'
         ));
 
         $crawler = $client->submit($form);
         $this->assertTrue($client->getResponse()->isRedirected('/blog/Blog-Opening'));
+
+        $entityManager = $client
+            ->getContainer()
+            ->get('doctrine.orm.default_entity_manager');
+
+        $post = $entityManager
+            ->getRepository('AlomBlogBundle:PostComment')
+            ->findOneBy(array('fullname' => 'Bobby Commentor'))
+        ;
+
+        $this->assertTrue($post instanceof \Alom\Website\BlogBundle\Entity\PostComment);
+        $entityManager->remove($post);
+        $entityManager->flush();
     }
 
     /**
