@@ -67,20 +67,39 @@ class BlogPostTest extends WebTestCase
         $crawler = $client->submit($form);
         $this->assertTrue($client->getResponse()->isRedirected('/blog/Blog-Opening'));
 
-        $entityManager = $client
-            ->getContainer()
-            ->get('doctrine.orm.default_entity_manager');
-
-        $post = $entityManager
-            ->getRepository('AlomBlogBundle:PostComment')
-            ->findOneBy(array('fullname' => 'Bobby Commentor'))
-        ;
+        $post = $this->findPostComment($client, 'Bobby Commentor');
 
         $this->assertTrue($post instanceof \Alom\Website\BlogBundle\Entity\PostComment);
-        $entityManager->remove($post);
-        $entityManager->flush();
+
+        $this->getEntityManager($client)->remove($post);
+        $this->getEntityManager($client)->flush();
     }
 
+    public function testHtmlEscaping()
+    {
+        $client = $this->createClient();
+        $client->followRedirects(false);
+
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+        $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
+            'postcomment[fullname]' => 'Bobby <em>Commentor</em>',
+            'postcomment[email]'    => 'bobby@example.org',
+            'postcomment[body]'     => 'Hey this is a cool <a href="http://example.org">website</a>'
+        ));
+
+        $crawler = $client->submit($form);
+        $this->assertTrue($client->getResponse()->isRedirected('/blog/Blog-Opening'));
+
+        $crawler  = $client->request('GET', '/blog/Blog-Opening');
+        $responseContent = $client->getResponse()->getContent();
+
+        $this->assertFalse(strpos($responseContent, '<em>Commentor</em>'));
+        $this->assertFalse(strpos($responseContent, '<a href="http://example.org">Website</a>'));
+
+        $post = $this->findPostComment($client, 'Bobby <em>Commentor</em>');
+        $this->getEntityManager($client)->remove($post);
+        $this->getEntityManager($client)->flush();
+    }
     /**
      * @dataProvider provideDataIncorrectFullname
      */
@@ -163,5 +182,20 @@ class BlogPostTest extends WebTestCase
             array('http://bobby/', 'This value is not a valid URL'),
             array('ftp://bobby', 'This value is not a valid URL'),
         );
+    }
+
+    protected function getEntityManager($client)
+    {
+        return $client
+            ->getContainer()
+            ->get('doctrine.orm.default_entity_manager');
+    }
+
+    protected function findPostComment($client, $fullname)
+    {
+        return $this->getEntityManager($client)
+            ->getRepository('AlomBlogBundle:PostComment')
+            ->findOneBy(array('fullname' => $fullname))
+        ;
     }
 }
