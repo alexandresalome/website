@@ -70,9 +70,15 @@ class PostComment
      */
     protected $post;
 
+    /**
+     * @orm:Column(type="boolean")
+     */
+    protected $isModerated;
+
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->createdAt   = new \DateTime();
+        $this->isModerated = false;
     }
 
     /**
@@ -179,5 +185,15 @@ class PostComment
     public function setWebsite($website)
     {
         $this->website = $website;
+    }
+
+    public function getIsModerated()
+    {
+        return $this->isModerated;
+    }
+
+    public function setIsModerated($isModerated)
+    {
+        $this->isModerated = $isModerated;
     }
 }

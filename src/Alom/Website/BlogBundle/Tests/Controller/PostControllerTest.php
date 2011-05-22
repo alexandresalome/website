@@ -184,6 +184,14 @@ class BlogPostTest extends WebTestCase
         );
     }
 
+    public function testNotModeratedNotDisplayed()
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+
+        $this->assertNotContains('Enlarge your penis', $client->getResponse()->getContent());
+    }
+
     protected function getEntityManager($client)
     {
         return $client

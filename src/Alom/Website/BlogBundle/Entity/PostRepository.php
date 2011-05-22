@@ -3,6 +3,7 @@ namespace Alom\Website\BlogBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
+use Doctrine\ORM\Query\Expr;
 
 class PostRepository extends EntityRepository
 {
@@ -11,7 +12,7 @@ class PostRepository extends EntityRepository
         $query = $this->createQueryBuilder('p')
             ->select(array('p', 'pc'))
             ->where('p.slug = :slug')
-            ->leftJoin('p.comments', 'pc')
+            ->leftJoin('p.comments', 'pc', Expr\Join::WITH, 'pc.isModerated = true')
             ->setParameter('slug', $slug)
             ->getQuery();
 
