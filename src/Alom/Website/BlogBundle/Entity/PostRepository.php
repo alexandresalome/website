@@ -11,7 +11,7 @@ class PostRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('p')
             ->select(array('p', 'pc'))
-            ->where('p.slug = :slug')
+            ->where('p.slug = :slug AND p.isActive = true')
             ->leftJoin('p.comments', 'pc', Expr\Join::WITH, 'pc.isModerated = true')
             ->setParameter('slug', $slug)
             ->getQuery();

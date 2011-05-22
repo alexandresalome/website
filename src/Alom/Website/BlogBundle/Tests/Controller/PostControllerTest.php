@@ -192,6 +192,14 @@ class BlogPostTest extends WebTestCase
         $this->assertNotContains('Enlarge your penis', $client->getResponse()->getContent());
     }
 
+    public function testInactivePost()
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/blog/Symfony2-A-Performance-Test');
+
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
+    }
+
     protected function getEntityManager($client)
     {
         return $client
