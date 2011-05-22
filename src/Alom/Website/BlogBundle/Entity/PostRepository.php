@@ -30,7 +30,7 @@ class PostRepository extends EntityRepository
         $next = $this
             ->createQueryBuilder('p')
             ->orderBy('p.publishedAt', 'ASC')
-            ->where('p.publishedAt > :publication')
+            ->where('p.publishedAt > :publication AND p.isActive = true')
             ->setParameter('publication', $post->getPublishedAt()->format('Y-m-d H:i:s'))
             ->setMaxResults(1)
             ->getQuery()
@@ -40,7 +40,7 @@ class PostRepository extends EntityRepository
         $previous = $this
             ->createQueryBuilder('p')
             ->orderBy('p.publishedAt', 'DESC')
-            ->where('p.publishedAt < :publication')
+            ->where('p.publishedAt < :publication AND p.isActive = true')
             ->setParameter('publication', $post->getPublishedAt()->format('Y-m-d H:i:s'))
             ->setMaxResults(1)
             ->getQuery()

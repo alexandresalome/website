@@ -200,6 +200,24 @@ class BlogPostTest extends WebTestCase
         $this->assertEquals(404, $client->getResponse()->getStatusCode());
     }
 
+    public function testPostNextIsActive()
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+
+        $nextUrl = $crawler->filter('a.next')->attr('href');
+        $this->assertRegExp('/HTTP-Caching$/', $nextUrl);
+    }
+
+    public function testPostPreviousIsActive()
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/blog/HTTP-Caching');
+
+        $nextUrl = $crawler->filter('a.previous')->attr('href');
+        $this->assertRegExp('/Blog-Opening$/', $nextUrl);
+    }
+
     protected function getEntityManager($client)
     {
         return $client
