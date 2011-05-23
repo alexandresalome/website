@@ -22,7 +22,8 @@ class Client extends BaseClient
         if (! $this->getResponse()->isRedirect()) {
             throw new \LogicException("Login should redirect !");
         }
-        $this->followRedirect();
+
+        $this->request('GET', '/');
 
         if (!preg_match('/Logout/', $this->getResponse()->getContent())) {
             throw new \LogicException("Doesn't look like you are connected !");

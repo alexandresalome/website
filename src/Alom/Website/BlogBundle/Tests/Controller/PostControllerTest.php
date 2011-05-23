@@ -3,7 +3,7 @@ namespace Alom\Website\BlogBundle\Tests\Controller;
 
 use Alom\Website\MainBundle\Test\WebTestCase;
 
-class BlogPostTest extends WebTestCase
+class PostControllerTest extends WebTestCase
 {
     public function testIndexAsAdmin()
     {
