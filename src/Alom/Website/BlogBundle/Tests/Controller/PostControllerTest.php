@@ -218,6 +218,34 @@ class BlogPostTest extends WebTestCase
         $this->assertRegExp('/Blog-Opening$/', $nextUrl);
     }
 
+    public function testInactiveCommentButtons()
+    {
+        $client = $this->createClient();
+        $client->connect('admin', 'admin');
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+        $comment = $this->findPostComment($client, 'Spam Robot');
+        $id = $comment->getId();
+
+        $filter = $crawler->filter('a[href$="/blog/comment/' . $id . '/activate"]');
+
+        $this->assertEquals(1, $filter->count());
+        $this->assertEquals("Activate", $filter->text());
+    }
+
+    public function testActiveCommentButtons()
+    {
+        $client = $this->createClient();
+        $client->connect('admin', 'admin');
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+        $comment = $this->findPostComment($client, 'Henry Turbino');
+        $id = $comment->getId();
+
+        $filter = $crawler->filter('a[href$="/blog/comment/' . $id . '/inactivate"]');
+
+        $this->assertEquals(1, $filter->count());
+        $this->assertEquals("Inactivate", $filter->text());
+    }
+
     protected function getEntityManager($client)
     {
         return $client

@@ -47,8 +47,8 @@ class PostCommentData extends AbstractFixture implements OrderedFixtureInterface
                                   'an article about opening is very, very ' .
                                   'useless'
                 ), array(
-                    'fullname'    => 'Bobby Lapointe',
-                    'email'       => 'bobby@example.org',
+                    'fullname'    => 'Spam Robot',
+                    'email'       => 'spam@example.org',
                     'isModerated' => false,
                     'body'        => 'Enlarge your penis'
                 )
