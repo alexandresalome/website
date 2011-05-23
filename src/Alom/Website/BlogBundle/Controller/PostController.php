@@ -36,7 +36,8 @@ class PostController extends Controller
         $em = $this->get('doctrine.orm.default_entity_manager');
         $repository = $em->getRepository('AlomBlogBundle:Post');
 
-        $post = $repository->findOneBySlugWithRelated($slug);
+        $fetchModerated = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        $post = $repository->findOneBySlugWithRelated($slug, $fetchModerated);
         if (null === $post) {
             throw new NotFoundHttpException("Blog post with slug \"$slug\" not found");
         }

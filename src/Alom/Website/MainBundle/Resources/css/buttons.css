@@ -58,11 +58,60 @@
   background: -moz-linear-gradient(top,  #f4f4f4,  #dddddd);
   filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#dddddd');
 }
+
 .button-hidden:hover
 {
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
   background: -moz-linear-gradient(top,  #ffffff,  #f0f0f0);
   filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f0f0');
+}
+
+/** Green **/
+.button-green
+{
+  color: white;
+  border: solid 1px #282;
+  background: #6d6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#6d6), to(#282));
+  background: -moz-linear-gradient(top,  #60d060,  #208020);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d6', endColorstr='#282');
+}
+
+.button-green:hover
+{
+  background: -webkit-gradient(linear, left top, left bottom, from(#80e080), to(#409040));
+  background: -moz-linear-gradient(top,  #80e080,  #409040);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#8e8', endColorstr='#494');
+
+}
+
+
+/** Red **/
+.button-red
+{
+  color: white;
+  border: solid 1px #822;
+  background: #d66;
+  background: -webkit-gradient(linear, left top, left bottom, from(#d66), to(#822));
+  background: -moz-linear-gradient(top,  #d06060,  #802020);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#d66', endColorstr='#822');
+}
+
+.button-red:hover
+{
+  background: -webkit-gradient(linear, left top, left bottom, from(#e08080), to(#904040));
+  background: -moz-linear-gradient(top,  #e08080,  #904040);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#e88', endColorstr='#944');
+
+}
+
+
+/** Small buttons **/
+
+.button-small
+{
+    font-size: 0.8em;
+    padding:   0.3em 0.6em;
 }
 
 

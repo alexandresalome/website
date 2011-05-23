@@ -187,7 +187,7 @@ class PostComment
         $this->website = $website;
     }
 
-    public function getIsModerated()
+    public function isModerated()
     {
         return $this->isModerated;
     }

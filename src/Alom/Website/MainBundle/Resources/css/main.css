@@ -139,6 +139,16 @@ form.post-comment h2
     font-size: 1.4em;
 }
 
+.comment-actions
+{
+    float: right;
+}
+
+.comment-inactive
+{
+    color: #aaa;
+}
+
 /** Blog post list **/
 
 .blog-post-list

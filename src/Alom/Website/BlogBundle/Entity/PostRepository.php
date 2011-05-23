@@ -7,17 +7,28 @@ use Doctrine\ORM\Query\Expr;
 
 class PostRepository extends EntityRepository
 {
-    public function findOneBySlugWithRelated($slug)
+    public function findOneBySlugWithRelated($slug, $fetchInactive = false)
     {
-        $query = $this->createQueryBuilder('p')
+        $query = $this
+            ->createQueryBuilder('p')
             ->select(array('p', 'pc'))
-            ->where('p.slug = :slug AND p.isActive = true')
-            ->leftJoin('p.comments', 'pc', Expr\Join::WITH, 'pc.isModerated = true')
+            ->where('p.slug = :slug')
             ->setParameter('slug', $slug)
-            ->getQuery();
+        ;
+
+        if (false === $fetchInactive) {
+            $query
+                ->andWhere('p.isActive = true')
+                ->leftJoin('p.comments', 'pc', Expr\Join::WITH, 'pc.isModerated = true')
+            ;
+        } else {
+            $query
+                ->leftJoin('p.comments', 'pc')
+            ;
+        }
 
         try {
-            $post = $query->getSingleResult();
+            $post = $query->getQuery()->getSingleResult();
             $this->addPreviousAndNext($post);
             return $post;
         } catch (NoResultException $exception) {
