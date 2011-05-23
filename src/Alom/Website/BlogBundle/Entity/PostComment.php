@@ -196,4 +196,14 @@ class PostComment
     {
         $this->isModerated = $isModerated;
     }
+
+    public function activate()
+    {
+        $this->isModerated = true;
+    }
+
+    public function inactivate()
+    {
+        $this->isModerated = false;
+    }
 }
