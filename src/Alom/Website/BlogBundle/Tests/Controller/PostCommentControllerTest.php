@@ -22,10 +22,7 @@ class PostCommentControllerTest extends WebTestCase
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
 
-        $comment = $this->findPostComment($client, 'Spam Robot');
-        $comment->inactivate();
-        $this->getEntityManager($client)->persist($comment);
-        $this->getEntityManager($client)->flush();
+        $client->request('GET', '/blog/comment/' . $comment->getId() . '/inactivate');
      }
 
     public function testInactivate()
@@ -45,10 +42,7 @@ class PostCommentControllerTest extends WebTestCase
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
 
-        $comment = $this->findPostComment($client, 'Spam Robot');
-        $comment->activate();
-        $this->getEntityManager($client)->persist($comment);
-        $this->getEntityManager($client)->flush();
+        $client->request('GET', '/blog/comment/' . $comment->getId() . '/activate');
      }
 
     protected function getEntityManager($client)
