@@ -7,6 +7,18 @@
 
 {% block content %}
     <div class="page-content">
+        {% if is_granted("ROLE_ADMIN") %}
+            <div class="blog-post-actions">
+                {% if post.isActive() %}
+                    <a href="#" class="button button-hidden">Disable</a>
+                {% else %}
+                    <a href="#" class="button">Enable</a>
+                {% endif %}
+                <a href="#" class="button button-edit"><span>Edit</span></a>
+                <a href="#" class="button button-delete"><span>Delete</span></a>
+            </div>
+        {% endif %}
+
         <h1>«&nbsp;{{ post.getTitle() }}&nbsp;»</h1>
 
         <div class="blog-post-date">

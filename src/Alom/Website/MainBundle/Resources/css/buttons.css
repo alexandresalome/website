@@ -105,6 +105,24 @@
 
 }
 
+/** Blue **/
+.button-blue
+{
+  color: white;
+  border: solid 1px #228;
+  background: #66d;
+  background: -webkit-gradient(linear, left top, left bottom, from(#66d), to(#228));
+  background: -moz-linear-gradient(top,  #6060d0,  #202080);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#66d', endColorstr='#228');
+}
+
+.button-blue:hover
+{
+  background: -webkit-gradient(linear, left top, left bottom, from(#8080e0), to(#404090));
+  background: -moz-linear-gradient(top,  #8080e0,  #404090);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#88e', endColorstr='#449');
+
+}
 
 /** Small buttons **/
 
@@ -139,6 +157,65 @@
     cursor:              pointer;
     padding-left:        1.7em;
     background-image:    url(/images/icon-add.png);
+    line-height:         24px;
+    background-repeat:   no-repeat;
+    background-position: top left;
+}
+
+
+/* Edit */
+
+.button-edit
+{
+  color: white;
+  border: solid 1px #228;
+  background: #66d;
+  background: -webkit-gradient(linear, left top, left bottom, from(#66d), to(#228));
+  background: -moz-linear-gradient(top,  #6060d0,  #202080);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#66d', endColorstr='#228');
+}
+
+.button-edit:hover
+{
+  background: -webkit-gradient(linear, left top, left bottom, from(#8080e0), to(#404090));
+  background: -moz-linear-gradient(top,  #8080e0,  #404090);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#88e', endColorstr='#449');
+}
+
+.button-edit span
+{
+    cursor:              pointer;
+    padding-left:        1.7em;
+    background-image:    url(/images/icon-edit.png);
+    line-height:         24px;
+    background-repeat:   no-repeat;
+    background-position: top left;
+}
+
+/* Delete */
+
+.button-delete
+{
+  color: white;
+  border: solid 1px #822;
+  background: #d66;
+  background: -webkit-gradient(linear, left top, left bottom, from(#d66), to(#822));
+  background: -moz-linear-gradient(top,  #d06060,  #802020);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#d66', endColorstr='#822');
+}
+
+.button-delete:hover
+{
+  background: -webkit-gradient(linear, left top, left bottom, from(#e08080), to(#904040));
+  background: -moz-linear-gradient(top,  #e08080,  #904040);
+  filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr='#e88', endColorstr='#944');
+}
+
+.button-delete span
+{
+    cursor:              pointer;
+    padding-left:        1.7em;
+    background-image:    url(/images/icon-delete.png);
     line-height:         24px;
     background-repeat:   no-repeat;
     background-position: top left;

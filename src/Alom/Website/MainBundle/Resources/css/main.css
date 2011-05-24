@@ -162,6 +162,12 @@ form.post-comment h2
   margin-bottom: 1em;
 }
 
+.blog-post-actions
+{
+    text-align:right;
+    padding-bottom: 40px;
+}
+
 /** CV **/
 
 .page-main-cv .current-status
