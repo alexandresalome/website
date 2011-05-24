@@ -29,19 +29,20 @@ class PostRepository extends EntityRepository
 
         try {
             $post = $query->getQuery()->getSingleResult();
-            $this->addPreviousAndNext($post);
+            $this->addPreviousAndNext($post, $fetchInactive);
             return $post;
         } catch (NoResultException $exception) {
             return null;
         }
     }
 
-    protected function addPreviousAndNext(Post $post)
+    protected function addPreviousAndNext(Post $post, $fetchInactive = false)
     {
+        $activeCondition = $fetchInactive ? '' : ' AND p.isActive = true';
         $next = $this
             ->createQueryBuilder('p')
             ->orderBy('p.publishedAt', 'ASC')
-            ->where('p.publishedAt > :publication AND p.isActive = true')
+            ->where('p.publishedAt > :publication' . $activeCondition)
             ->setParameter('publication', $post->getPublishedAt()->format('Y-m-d H:i:s'))
             ->setMaxResults(1)
             ->getQuery()
@@ -51,7 +52,7 @@ class PostRepository extends EntityRepository
         $previous = $this
             ->createQueryBuilder('p')
             ->orderBy('p.publishedAt', 'DESC')
-            ->where('p.publishedAt < :publication AND p.isActive = true')
+            ->where('p.publishedAt < :publication' . $activeCondition)
             ->setParameter('publication', $post->getPublishedAt()->format('Y-m-d H:i:s'))
             ->setMaxResults(1)
             ->getQuery()
