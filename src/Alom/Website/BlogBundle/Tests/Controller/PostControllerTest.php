@@ -254,6 +254,76 @@ class PostControllerTest extends WebTestCase
         $this->assertEquals("Inactivate", $filter->text());
     }
 
+    public function testEnableButtonPost()
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/blog/Symfony2-A-Performance-Test');
+
+        $filter = $crawler->filter('a:contains("Enable")');
+        $this->assertEquals(0, $filter->count());
+
+        $client->connect('admin', 'admin');
+
+        $crawler = $client->request('GET', '/blog/Symfony2-A-Performance-Test');
+        $filter = $crawler->filter('a:contains("Enable")');
+        $this->assertEquals(1, $filter->count());
+    }
+
+    public function testDisableButtonPost()
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+
+        $filter = $crawler->filter('a:contains("Disable")');
+        $this->assertEquals(0, $filter->count());
+
+        $client->connect('admin', 'admin');
+
+        $crawler = $client->request('GET', '/blog/Blog-Opening');
+        $filter = $crawler->filter('a:contains("Disable")');
+        $this->assertEquals(1, $filter->count());
+    }
+
+    public function testEnable()
+    {
+        $client = $this->createClient();
+        $client->request('GET', '/');
+
+        $post = $this->findPost($client, 'Symfony2-A-Performance-Test');
+
+        $client->request('GET', '/blog/' . $post->getId() . '/enable');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect('/login'));
+
+        $client->connect('admin', 'admin');
+
+        $client->request('GET', '/blog/' . $post->getId() . '/enable');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect('/blog/Symfony2-A-Performance-Test'));
+
+        $client->request('GET', '/blog/' . $post->getId() . '/disable');
+    }
+
+    public function testDisable()
+    {
+        $client = $this->createClient();
+        $client->request('GET', '/');
+
+        $post = $this->findPost($client, 'Blog-Opening');
+
+        $client->request('GET', '/blog/' . $post->getId() . '/disable');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect('/login'));
+
+        $client->connect('admin', 'admin');
+
+        $client->request('GET', '/blog/' . $post->getId() . '/disable');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
+
+        $client->request('GET', '/blog/' . $post->getId() . '/enable');
+     }
+
     protected function getEntityManager($client)
     {
         return $client
@@ -266,6 +336,14 @@ class PostControllerTest extends WebTestCase
         return $this->getEntityManager($client)
             ->getRepository('AlomBlogBundle:PostComment')
             ->findOneBy(array('fullname' => $fullname))
+        ;
+    }
+
+    protected function findPost($client, $slug)
+    {
+        return $this->getEntityManager($client)
+            ->getRepository('AlomBlogBundle:Post')
+            ->findOneBy(array('slug' => $slug))
         ;
     }
 }
