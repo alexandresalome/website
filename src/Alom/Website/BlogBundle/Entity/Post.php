@@ -222,4 +222,14 @@ class Post
     {
         $this->isActive = $isActive;
     }
+
+    public function enable()
+    {
+        $this->isActive = true;
+    }
+
+    public function disable()
+    {
+        $this->isActive = false;
+    }
 }

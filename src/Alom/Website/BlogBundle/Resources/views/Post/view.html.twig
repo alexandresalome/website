@@ -10,9 +10,9 @@
         {% if is_granted("ROLE_ADMIN") %}
             <div class="blog-post-actions">
                 {% if post.isActive() %}
-                    <a href="#" class="button button-hidden">Disable</a>
+                    <a href="{{ path('blog_post_disable', { 'id': post.getId() }) }}" class="button button-hidden">Disable</a>
                 {% else %}
-                    <a href="#" class="button">Enable</a>
+                    <a href="{{ path('blog_post_enable', { 'id': post.getId() }) }}" class="button">Enable</a>
                 {% endif %}
                 <a href="#" class="button button-edit"><span>Edit</span></a>
                 <a href="#" class="button button-delete"><span>Delete</span></a>

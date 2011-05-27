@@ -13,6 +13,7 @@ namespace Alom\Website\BlogBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Alom\Website\BlogBundle\Entity\PostComment;
 use Alom\Website\BlogBundle\Form\PostComment as PostCommentForm;
@@ -86,5 +87,39 @@ class PostController extends Controller
             'year' => $year,
             'posts' => $posts
         ));
+    }
+
+    public function enableAction($id)
+    {
+        if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $em = $this->get('doctrine.orm.default_entity_manager');
+        $repository = $em->getRepository('AlomBlogBundle:Post');
+        $post = $repository->findOneBy(array('id' => $id));
+
+        $post->enable();
+        $em->persist($post);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $post->getSlug())));
+    }
+
+    public function disableAction($id)
+    {
+        if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $em = $this->get('doctrine.orm.default_entity_manager');
+        $repository = $em->getRepository('AlomBlogBundle:Post');
+        $post = $repository->findOneBy(array('id' => $id));
+
+        $post->disable();
+        $em->persist($post);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $post->getSlug())));
     }
 }

@@ -12,6 +12,14 @@
         <default key="_controller">AlomBlogBundle:Post:view</default>
     </route>
 
+    <route id="blog_post_enable" pattern="/blog/{id}/enable">
+        <default key="_controller">AlomBlogBundle:Post:enable</default>
+    </route>
+
+    <route id="blog_post_disable" pattern="/blog/{id}/disable">
+        <default key="_controller">AlomBlogBundle:Post:disable</default>
+    </route>
+
     <route id="blog_post_comment_activate" pattern="/blog/comment/{id}/activate">
         <default key="_controller">AlomBlogBundle:PostComment:activate</default>
     </route>
