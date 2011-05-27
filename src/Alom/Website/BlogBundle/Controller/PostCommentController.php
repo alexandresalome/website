@@ -20,6 +20,25 @@ use Alom\Website\BlogBundle\Form\PostComment as PostCommentForm;
 
 class PostCommentController extends Controller
 {
+    public function deleteAction($id)
+    {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $em = $this->get('doctrine.orm.default_entity_manager');
+        $comment = $em->getRepository('AlomBlogBundle:PostComment')->find($id);
+
+        if (!$comment) {
+            throw new NotFoundHttpException();
+        }
+        $comment->activate();
+        $em->remove($comment);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $comment->getPost()->getSlug())));
+    }
+
     public function activateAction($id)
     {
         if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {

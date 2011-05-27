@@ -6,7 +6,7 @@
             {% else %}
                 <a href="{{ path("blog_post_comment_activate", { "id": comment.getId() }) }}" class="button button-small button-green">Activate</a>
             {% endif %}
-            <a href="#" class="button button-small">Delete</a>
+            <a href="{{ path('blog_post_comment_delete', { 'id': comment.getId() }) }}" class="button button-small">Delete</a>
         </div>
     {% endif %}
     <p class="author">
