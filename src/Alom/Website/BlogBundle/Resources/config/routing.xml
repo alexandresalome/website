@@ -20,6 +20,10 @@
         <default key="_controller">AlomBlogBundle:Post:disable</default>
     </route>
 
+    <route id="blog_post_delete" pattern="/blog/{id}/delete">
+        <default key="_controller">AlomBlogBundle:Post:delete</default>
+    </route>
+
     <route id="blog_post_comment_delete" pattern="/blog/comment/{id}/delete">
         <default key="_controller">AlomBlogBundle:PostComment:delete</default>
     </route>

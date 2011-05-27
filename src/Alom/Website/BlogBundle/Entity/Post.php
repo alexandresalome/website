@@ -76,7 +76,7 @@ class Post
     protected $previousPost;
 
     /**
-     * @orm:OneToMany(targetEntity="PostComment", mappedBy="post")
+     * @orm:OneToMany(targetEntity="PostComment", mappedBy="post", cascade={"remove"})
      */
     protected $comments;
 

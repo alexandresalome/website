@@ -122,4 +122,20 @@ class PostController extends Controller
 
         return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $post->getSlug())));
     }
+
+    public function deleteAction($id)
+    {
+        if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $em = $this->get('doctrine.orm.default_entity_manager');
+        $repository = $em->getRepository('AlomBlogBundle:Post');
+        $post = $repository->findOneBy(array('id' => $id));
+
+        $em->remove($post);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('blog_post_list'));
+    }
 }
