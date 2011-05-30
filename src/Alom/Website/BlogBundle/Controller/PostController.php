@@ -15,8 +15,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+use Alom\Website\BlogBundle\Entity\Post;
 use Alom\Website\BlogBundle\Entity\PostComment;
-use Alom\Website\BlogBundle\Form\PostComment as PostCommentForm;
+use Alom\Website\BlogBundle\Form\PostCommentFormType;
+use Alom\Website\BlogBundle\Form\PostFormType;
 
 /**
  * Blog post controller
@@ -43,7 +45,7 @@ class PostController extends Controller
             throw new NotFoundHttpException("Blog post with slug \"$slug\" not found");
         }
 
-        $form    = $this->get('form.factory')->create(new PostCommentForm());
+        $form    = $this->get('form.factory')->create(new PostCommentFormType());
         $request = $this->get('request');
 
         if ($request->getMethod() === 'POST') {
@@ -86,6 +88,42 @@ class PostController extends Controller
         return $this->render('AlomBlogBundle:Post:list.html.twig', array(
             'year' => $year,
             'posts' => $posts
+        ));
+    }
+
+    /**
+     * Edit a post
+     */
+    public function editAction($id)
+    {
+        if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $em = $this->get('doctrine.orm.default_entity_manager');
+        $factory = $this->get('form.factory');
+        $form = $factory->create(new PostFormType());
+        $post = $em->getRepository('AlomBlogBundle:Post')->findOneBy(array('id' => $id));
+
+        if (! $post) {
+            throw new NotFoundHttpException("No blog post was found");
+        }
+
+        $form->setData($post);
+
+        if ($this->get('request')->getMethod() === 'POST') {
+            $form->bindRequest($this->get('request'));
+            if ($form->isValid()) {
+                $em->persist($post);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('blog_post_edit', array('id' => $post->getId())));
+            }
+        }
+
+        return $this->render('AlomBlogBundle:Post:edit.html.twig', array(
+            'post' => $post,
+            'form' => $form->createView()
         ));
     }
 

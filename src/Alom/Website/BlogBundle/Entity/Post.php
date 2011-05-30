@@ -44,7 +44,7 @@ class Post
     protected $body;
 
     /**
-     * @orm:Column(type="datetime")
+     * @orm:Column(type="date")
      */
     protected $publishedAt;
 
@@ -213,7 +213,7 @@ class Post
         return $this->comments;
     }
 
-    public function isActive()
+    public function getIsActive()
     {
         return $this->isActive;
     }

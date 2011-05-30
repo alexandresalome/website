@@ -12,6 +12,10 @@
         <default key="_controller">AlomBlogBundle:Post:view</default>
     </route>
 
+    <route id="blog_post_edit" pattern="/blog/{id}/edit">
+        <default key="_controller">AlomBlogBundle:Post:edit</default>
+    </route>
+
     <route id="blog_post_enable" pattern="/blog/{id}/enable">
         <default key="_controller">AlomBlogBundle:Post:enable</default>
     </route>

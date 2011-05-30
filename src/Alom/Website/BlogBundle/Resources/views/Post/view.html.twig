@@ -14,7 +14,7 @@
                 {% else %}
                     <a href="{{ path('blog_post_enable', { 'id': post.getId() }) }}" class="button">Enable</a>
                 {% endif %}
-                <a href="#" class="button button-edit"><span>Edit</span></a>
+                <a href="{{ path('blog_post_edit', { 'id': post.getId() }) }}" class="button button-edit"><span>Edit</span></a>
                 <a href="{{ path('blog_post_delete', { 'id': post.getId() }) }}" class="button button-delete"><span>Delete</span></a>
             </div>
         {% endif %}

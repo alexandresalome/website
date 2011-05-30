@@ -168,6 +168,11 @@ form.post-comment h2
     padding-bottom: 40px;
 }
 
+#post-edit #post_body
+{
+    height: 250px;
+}
+
 /** CV **/
 
 .page-main-cv .current-status
