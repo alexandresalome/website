@@ -1,7 +1,5 @@
 {% extends "AlomMainBundle::layout/layout-1col.html.twig" %}
 
-{% set formattedDate = post.getPublishedAt().format("F j, Y") %}
-
 {% block title %}Alexandre Salomé - {{ post.getTitle() }} - Edition{% endblock %}
 {% set active = "blog" %}
 
@@ -13,8 +11,13 @@
             <a class="button" href="{{ path('blog_post_list') }}">&lt; Back to the list</a>
         </div>
 
+        {% if post.getId() %}
+            {% set action = path("blog_post_edit", { "id": post.getId() }) %}
+        {% else %}
+            {% set action = path("blog_post_create") %}
+        {% endif %}
         {% include "AlomBlogBundle:Post:form.html.twig" with {
-            "action" : path("blog_post_edit", { "id": post.getId() }),
+            "action" : action,
             "form" : form
         } only %}
     </div>

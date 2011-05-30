@@ -94,7 +94,7 @@ class PostController extends Controller
     /**
      * Edit a post
      */
-    public function editAction($id)
+    public function editAction($id = null)
     {
         if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException();
@@ -103,10 +103,14 @@ class PostController extends Controller
         $em = $this->get('doctrine.orm.default_entity_manager');
         $factory = $this->get('form.factory');
         $form = $factory->create(new PostFormType());
-        $post = $em->getRepository('AlomBlogBundle:Post')->findOneBy(array('id' => $id));
 
-        if (! $post) {
-            throw new NotFoundHttpException("No blog post was found");
+        if (null !== $id) {
+            $post = $em->getRepository('AlomBlogBundle:Post')->findOneBy(array('id' => $id));
+            if (! $post) {
+                throw new NotFoundHttpException("No blog post was found");
+            }
+        } else {
+            $post = new Post();
         }
 
         $form->setData($post);

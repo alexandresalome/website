@@ -8,6 +8,10 @@
         <default key="_controller">AlomBlogBundle:Post:list</default>
     </route>
 
+    <route id="blog_post_create" pattern="/blog/create">
+        <default key="_controller">AlomBlogBundle:Post:edit</default>
+    </route>
+
     <route id="blog_post_view" pattern="/blog/{slug}">
         <default key="_controller">AlomBlogBundle:Post:view</default>
     </route>
