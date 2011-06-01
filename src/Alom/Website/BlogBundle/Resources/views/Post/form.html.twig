@@ -2,6 +2,16 @@
     {{ form_row(form.title) }}
     {{ form_row(form.slug) }}
     {{ form_row(form.body) }}
+    <div id="post-body-preview" class="rich-content" style="display:none;"></div>
+    <div class="post-body-actions">
+        <a id="post-body-html-button" href="{{ path('blog_post_markdown_preview') }}" class="button button-small">Preview HTML</a>
+        <a id="post-body-markdown-button" style="display:none;" href="#" class="button button-small">Show markdown</a>
+    </div>
+    <script type="text/javascript">
+        $(window).load(function (){
+            blog.PostEdit.bind();
+        });
+    </script>
     {{ form_row(form.publishedAt) }}
 
     {{ form_rest(form) }}

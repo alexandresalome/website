@@ -188,7 +188,7 @@ class PostController extends Controller
         }
 
         if ($this->get('request')->getMethod() === 'POST') {
-            $markdown = $this->get('request')->post->get('markdown');
+            $markdown = $this->get('request')->request->get('markdown');
         }
 
         $content = $this->get('alom.blog.rst2html')->convert($markdown);

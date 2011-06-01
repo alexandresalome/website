@@ -171,6 +171,15 @@ form.post-comment h2
 #post-edit #post_body
 {
     height: 250px;
+    font-family: Courier New, monospace;
+}
+
+#post-body-preview
+{
+    height: 250px;
+    background-color: white;
+    border: 1px solid #bbbbbb;
+    overflow: auto;
 }
 
 /** CV **/
