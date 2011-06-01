@@ -180,4 +180,19 @@ class PostController extends Controller
 
         return $this->redirect($this->generateUrl('blog_post_list'));
     }
+
+    public function markdownPreviewAction()
+    {
+        if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        if ($this->get('request')->getMethod() === 'POST') {
+            $markdown = $this->get('request')->post->get('markdown');
+        }
+
+        $content = $this->get('alom.blog.rst2html')->convert($markdown);
+
+        return new Response($content);
+    }
 }
