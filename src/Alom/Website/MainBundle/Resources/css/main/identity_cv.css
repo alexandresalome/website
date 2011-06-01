@@ -1,0 +1,47 @@
+.page-main-cv .current-status
+{
+  text-align:  center;
+  font-size:   0.9em;
+  color:       #555555;
+
+  border-top:       1px solid #ddbbaa;
+  border-bottom:    1px solid #ddbbaa;
+  background-color: #fff8f4;
+
+  padding:       1em;
+  margin-bottom: 2em;
+}
+
+.page-main-cv
+{
+  font-size: 0.8em;
+}
+
+.page-main-cv p
+{
+  line-height: 1.5em;
+}
+
+.page-main-cv h2
+{
+  font-size: 1.4em;
+  border-bottom: 1px solid black;
+  margin-right: 10px;
+}
+
+.page-main-cv dl
+{
+  margin-bottom: 1em;
+}
+
+.page-main-cv dt
+{
+  padding-top: 1em;
+  font-weight: bold;
+}
+
+.page-main-cv dd
+{
+  line-height: 1.3em;
+  padding:  0.3em 3em 0 1em;
+}

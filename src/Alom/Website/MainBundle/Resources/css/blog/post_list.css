@@ -1,0 +1,10 @@
+.blog-post-list
+{
+  text-align: center;
+  padding:    2em 0em;
+}
+
+.blog-post-list li
+{
+  margin-bottom: 1em;
+}
