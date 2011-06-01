@@ -3,6 +3,14 @@
 {% block title %}Login | Alexandre Salomé{% endblock %}
 {% set active = false %}
 
+{% block before_body_end %}
+<script>
+    jQuery(window).load(function (){
+        $("#username").focus();
+    });
+</script>
+{% endblock %}
+
 {% block content %}
     <div class="page-content">
         <h1>Login</h1>
