@@ -1,3 +1,9 @@
+{% javascripts filter="?yui_css" output="js/all.js"
+    "@AlomMainBundle/Resources/js/jquery-1.6.1.js"
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
 {% stylesheets filter="?yui_css" output="css/all.css"
     "@AlomMainBundle/Resources/css/reset.css"
     "@AlomMainBundle/Resources/css/columns.css"
