@@ -25,7 +25,7 @@
             {{ formattedDate }}
         </div>
 
-        <div class="blog-post-history no-print">
+        <div class="blog-post-history">
             {% if post.hasPrevious() %}
                 <a title="{{ post.getPrevious().getTitle() }}" class="button previous" href="{{ path('blog_post_view', { 'slug': post.getPrevious().getSlug() }) }}">&lt; Previous</a>
             {% endif %}

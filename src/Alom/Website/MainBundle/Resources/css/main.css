@@ -5,16 +5,6 @@ body, input
   font-size: 20px;
 }
 
-/** Generic styles **/
-
-@media print
-{
-  .no-print
-  {
-      display:none;
-  }
-}
-
 /** Layout **/
 
 body
