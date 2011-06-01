@@ -82,3 +82,9 @@ form.post-comment h2
 {
     color: #aaa;
 }
+
+.blog-post-actions
+{
+    text-align:right;
+    padding-bottom: 40px;
+}

@@ -22,5 +22,9 @@ blog.PostEdit = {
             $("#post-body-markdown-button").hide();
             return false;
         });
+        $("#post-body-fullscreen-button").click(function (){
+            $("#form-body-edit").toggleClass("fullscreen");
+            return false;
+        });
     }
 };
