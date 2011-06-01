@@ -10,7 +10,7 @@
 
     <services>
         <service id="alom.blog.rst2html" class="%alom.blog.rst2html.class%">
-            <argument>%kernel.root_dir%/../bin/rst2html-pygments</argument>
+            <argument>%kernel.root_dir%/../bin/rst2html-pygments --no-doc-title --initial-header-level=2</argument>
         </service>
     </services>
 </container>
