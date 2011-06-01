@@ -22,13 +22,6 @@ body
   padding-bottom: 50px;
 }
 
-/** Error page **/
-
-.page-error-404
-{
-  text-align: center;
-}
-
 /** Global content **/
 
 #content
