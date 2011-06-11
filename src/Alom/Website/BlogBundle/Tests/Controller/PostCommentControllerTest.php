@@ -22,7 +22,7 @@ class PostCommentControllerTest extends WebTestCase
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
 
-        $client->request('GET', '/blog/comment/' . $comment->getId() . '/inactivate');
+        $client->shutdown();
      }
 
     public function testInactivate()
@@ -42,7 +42,7 @@ class PostCommentControllerTest extends WebTestCase
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
 
-        $client->request('GET', '/blog/comment/' . $comment->getId() . '/activate');
+        $client->shutdown();
      }
 
     protected function getEntityManager($client)

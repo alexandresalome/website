@@ -52,6 +52,16 @@ class Client extends BaseClient
     }
 
     /**
+     * Shutdown the client (close the connection and shutdown the kernel).
+     */
+    public function shutdown()
+    {
+        if (null !== $this->connection) {
+            $this->connection->close();
+        }
+        $this->kernel->shutdown();
+    }
+    /**
      * Connect to Alom website
      *
      * @param string $username Username to use

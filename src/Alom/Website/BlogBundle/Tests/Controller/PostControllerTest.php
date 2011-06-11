@@ -13,6 +13,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/blog');
         $this->assertEquals($crawler->filter('a.button-add')->count(), 1, "Add button is present");
         $this->assertEquals($crawler->filter('a.button-hidden')->count(), 2, "Two inactive posts");
+
+        $client->shutdown();
     }
 
     /**
@@ -25,6 +27,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/blog');
         $this->assertEquals($crawler->filter('a.button-add')->count(), 0, "No add button");
         $this->assertEquals($crawler->filter('a.button-hidden')->count(), 0, "No inactive post");
+
+        $client->shutdown();
     }
 
     public function testPostView()
@@ -50,6 +54,8 @@ class PostControllerTest extends WebTestCase
 
         // Date formating
         $this->assertTextSimilar($crawler->filter('.blog-post-date')->text(), "August 24, 2010");
+
+        $client->shutdown();
     }
 
     public function testCorrectComment()
@@ -68,11 +74,9 @@ class PostControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isRedirected('/blog/Blog-Opening'));
 
         $post = $this->findPostComment($client, 'Bobby Commentor');
-
         $this->assertTrue($post instanceof \Alom\Website\BlogBundle\Entity\PostComment);
 
-        $this->getEntityManager($client)->remove($post);
-        $this->getEntityManager($client)->flush();
+        $client->shutdown();
     }
 
     public function testHtmlEscaping()
@@ -96,10 +100,9 @@ class PostControllerTest extends WebTestCase
         $this->assertFalse(strpos($responseContent, '<em>Commentor</em>'));
         $this->assertFalse(strpos($responseContent, '<a href="http://example.org">Website</a>'));
 
-        $post = $this->findPostComment($client, 'Bobby <em>Commentor</em>');
-        $this->getEntityManager($client)->remove($post);
-        $this->getEntityManager($client)->flush();
+        $client->shutdown();
     }
+
     /**
      * @dataProvider provideDataIncorrectFullname
      */
@@ -116,6 +119,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->submit($form);
         $error = $crawler->filter('#postcomment_fullname + ul > li')->text();
         $this->assertEquals($message, $error);
+
+        $client->shutdown();
     }
 
     public function provideDataIncorrectFullname()
@@ -142,6 +147,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->submit($form);
         $error = $crawler->filter('#postcomment_email + ul > li')->text();
         $this->assertEquals($message, $error);
+
+        $client->shutdown();
     }
 
     public function provideDataIncorrectEmail()
@@ -172,6 +179,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->submit($form);
         $error = $crawler->filter('#postcomment_website + ul > li')->text();
         $this->assertEquals($message, $error);
+
+        $client->shutdown();
     }
 
     public function provideDataIncorrectWebsite()
@@ -190,6 +199,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/blog/Blog-Opening');
 
         $this->assertNotContains('Enlarge your penis', $client->getResponse()->getContent());
+
+        $client->shutdown();
     }
 
     public function testInactivePost()
@@ -207,6 +218,8 @@ class PostControllerTest extends WebTestCase
 
         $nextUrl = $crawler->filter('a.next')->attr('href');
         $this->assertRegExp('/HTTP-Caching$/', $nextUrl);
+
+        $client->shutdown();
     }
 
     public function testPostPreviousIsActive()
@@ -216,6 +229,8 @@ class PostControllerTest extends WebTestCase
 
         $nextUrl = $crawler->filter('a.previous')->attr('href');
         $this->assertRegExp('/Blog-Opening$/', $nextUrl);
+
+        $client->shutdown();
     }
 
     public function testInactiveCommentButtons()
@@ -234,6 +249,8 @@ class PostControllerTest extends WebTestCase
         $filter = $crawler->filter('a[href$="/blog/comment/' . $id . '/activate"]');
         $this->assertEquals(1, $filter->count());
         $this->assertEquals("Activate", $filter->text());
+
+        $client->shutdown();
     }
 
     public function testActiveCommentButtons()
@@ -252,6 +269,8 @@ class PostControllerTest extends WebTestCase
         $filter = $crawler->filter('a[href$="/blog/comment/' . $id . '/inactivate"]');
         $this->assertEquals(1, $filter->count());
         $this->assertEquals("Inactivate", $filter->text());
+
+        $client->shutdown();
     }
 
     public function testEnableButtonPost()
@@ -267,6 +286,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/blog/Symfony2-A-Performance-Test');
         $filter = $crawler->filter('a:contains("Enable")');
         $this->assertEquals(1, $filter->count());
+
+        $client->shutdown();
     }
 
     public function testDisableButtonPost()
@@ -282,6 +303,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/blog/Blog-Opening');
         $filter = $crawler->filter('a:contains("Disable")');
         $this->assertEquals(1, $filter->count());
+
+        $client->shutdown();
     }
 
     public function testEnable()
@@ -301,7 +324,7 @@ class PostControllerTest extends WebTestCase
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertTrue($client->getResponse()->isRedirect('/blog/Symfony2-A-Performance-Test'));
 
-        $client->request('GET', '/blog/' . $post->getId() . '/disable');
+        $client->shutdown();
     }
 
     public function testDisable()
@@ -322,6 +345,8 @@ class PostControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
 
         $client->request('GET', '/blog/' . $post->getId() . '/enable');
+
+        $client->shutdown();
      }
 
     protected function getEntityManager($client)
