@@ -371,7 +371,7 @@ class PostControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isRedirected('/blog/' . $post->getId() . '/edit'));
 
         $client->request('GET', '/blog/Ouverture');
-        $this->assertContains('WELCOME !', $client->getResponse()->getContent());
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $client->shutdown();
     }
 
