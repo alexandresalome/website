@@ -45,36 +45,36 @@ install_git()
 }
 
 # Assetic
-install_git assetic https://github.com/kriswallsmith/assetic.git v1.0.0alpha2
+install_git assetic git://github.com/kriswallsmith/assetic.git v1.0.0alpha2
 
 # Symfony
-install_git symfony https://github.com/symfony/symfony.git v2.0.0BETA1
+install_git symfony git://github.com/symfony/symfony.git v2.0.0BETA1
 
 # Doctrine ORM
-install_git doctrine https://github.com/doctrine/doctrine2.git 2.0.4
+install_git doctrine git://github.com/doctrine/doctrine2.git 2.0.4
 
 # Doctrine DBAL
-install_git doctrine-dbal https://github.com/doctrine/dbal.git 2.0.4
+install_git doctrine-dbal git://github.com/doctrine/dbal.git 2.0.4
 
 # Doctrine Common
-install_git doctrine-common https://github.com/doctrine/common.git 2.0.2
+install_git doctrine-common git://github.com/doctrine/common.git 2.0.2
 
 # Doctrine Fixtures
-install_git doctrine-fixtures https://github.com/doctrine/data-fixtures.git
+install_git doctrine-fixtures git://github.com/doctrine/data-fixtures.git
 
 # Swiftmailer
-install_git swiftmailer https://github.com/swiftmailer/swiftmailer.git origin/4.1
+install_git swiftmailer git://github.com/swiftmailer/swiftmailer.git origin/4.1
 
 # Twig
-install_git twig https://github.com/fabpot/Twig.git v1.0.0
+install_git twig git://github.com/fabpot/Twig.git v1.0.0
 
 # Twig Extensions
-install_git twig-extensions https://github.com/fabpot/Twig-extensions.git
+install_git twig-extensions git://github.com/fabpot/Twig-extensions.git
 
 # Monolog
-install_git monolog https://github.com/Seldaek/monolog.git
+install_git monolog git://github.com/Seldaek/monolog.git
 
 # Datafixtures Bundle
 mkdir -p $BUNDLES/Symfony/Bundle
 cd $BUNDLES/Symfony/Bundle
-install_git DoctrineFixturesBundle https://github.com/symfony/DoctrineFixturesBundle.git 59a7b03af68acb5eb0b2c57acf31fb5688155f66
+install_git DoctrineFixturesBundle git://github.com/symfony/DoctrineFixturesBundle.git 59a7b03af68acb5eb0b2c57acf31fb5688155f66
