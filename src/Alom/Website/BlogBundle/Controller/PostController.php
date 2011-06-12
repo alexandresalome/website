@@ -56,6 +56,16 @@ class PostController extends Controller
                 $comment->setPost($post);
                 $em->persist($comment);
                 $em->flush();
+
+                // send mail
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('New comment on article "' . $post->getTitle() . '" by ' . $comment->getFullname())
+                    ->setFrom($this->container->getParameter('mailer_user'))
+                    ->setTo($this->container->getParameter('comment_mail'))
+                    ->setBody($this->renderView('AlomBlogBundle:PostComment:email.txt.twig', array('comment' => $comment)))
+                ;
+                $this->get('mailer')->send($message);
+
                 return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $slug)));
             }
         }

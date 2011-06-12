@@ -47,8 +47,7 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
+    transport: gmail
     username:  %mailer_user%
     password:  %mailer_password%
 
