@@ -347,7 +347,33 @@ class PostControllerTest extends WebTestCase
         $client->request('GET', '/blog/' . $post->getId() . '/enable');
 
         $client->shutdown();
-     }
+    }
+
+    public function testEdit()
+    {
+        $client = $this->createClient();
+
+        $post = $this->findPost($client, 'Blog-Opening');
+
+        $crawler = $client->request('GET', '/blog/' . $post->getId() . '/edit');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+
+        $client->connect('admin', 'admin');
+
+        $crawler = $client->request('GET', '/blog/' . $post->getId() . '/edit');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $form = $crawler->filter('form#post-edit input[type=submit]')->form(array(
+            'post[slug]'  => 'Ouverture',
+            'post[body]'  => 'WELCOME !'
+        ));
+
+        $crawler = $client->submit($form);
+        $this->assertTrue($client->getResponse()->isRedirected('/blog/' . $post->getId() . '/edit'));
+
+        $client->request('GET', '/blog/Ouverture');
+        $this->assertContains('WELCOME !', $client->getResponse()->getContent());
+        $client->shutdown();
+    }
 
     protected function getEntityManager($client)
     {
