@@ -206,4 +206,17 @@ class PostController extends Controller
 
         return new Response($content);
     }
+
+    public function rssAction()
+    {
+        $posts = $this
+            ->get('doctrine.orm.default_entity_manager')
+            ->getRepository('AlomBlogBundle:Post')
+            ->fetchAllOrderedByDate()
+        ;
+
+        return $this->render('AlomBlogBundle:Post:rss.xml.twig', array(
+            'posts' => $posts
+        ));
+    }
 }
