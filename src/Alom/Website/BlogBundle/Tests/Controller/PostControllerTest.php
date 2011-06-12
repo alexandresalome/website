@@ -209,6 +209,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/blog/Symfony2-A-Performance-Test');
 
         $this->assertEquals(404, $client->getResponse()->getStatusCode());
+
+        $client->shutdown();
     }
 
     public function testPostNextIsActive()

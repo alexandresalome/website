@@ -21,5 +21,7 @@ class MainControllerTest extends WebTestCase
         $this->assertEquals($crawler->filter('h1')->text(), 'Alexandre Salomé');
 
         $this->assertRegExp('/coffee/', $crawler->filter('#footer')->text());
+
+        $client->shutdown();
     }
 }
