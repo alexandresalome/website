@@ -10,4 +10,5 @@ web_profiler:
     intercept_redirects: false
 
 swiftmailer:
+    transport:        mail
     disable_delivery: true
