@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Alom project.
+ *
+ * (c) Alexandre Salomé <alexandre.salome@gmail.com>
+ *
+ * This source file is subject to the GPL license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace Alom\Website\BlogBundle\DataFixtures\ORM;
 
@@ -18,6 +26,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
         $post_Symfony2_Services->setIsActive(true);
 
         $post_Symfony2_Services->setBody('@todo');
+        $post_Symfony2_Services->setBodyHtml('<p>@todo</p>');
 
         $manager->persist($post_Symfony2_Services);
 
@@ -28,6 +37,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
         $post_HTTP_Caching->setIsActive(true);
 
         $post_HTTP_Caching->setBody('@todo');
+        $post_HTTP_Caching->setBodyHtml('<p>@todo</p>');
 
         $manager->persist($post_HTTP_Caching);
 
@@ -38,6 +48,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
         $post_Ide->setIsActive(false);
 
         $post_Ide->setBody('@todo');
+        $post_Ide->setBodyHtml('<p>@todo</p>');
 
         $manager->persist($post_Ide);
 
@@ -48,6 +59,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
         $post_Symfony2_Cache->setIsActive(false);
 
         $post_Symfony2_Cache->setBody('@todo');
+        $post_Symfony2_Cache->setBodyHtml('<p>@todo</p>');
 
         $manager->persist($post_Symfony2_Cache);
 
@@ -58,6 +70,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
         $post_Opening->setIsActive(true);
 
         $post_Opening->setBody('@todo');
+        $post_Opening->setBodyHtml('<p>@todo</p>');
 
         $manager->persist($post_Opening);
         $manager->flush();

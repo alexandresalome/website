@@ -30,18 +30,27 @@ class Post
 
     /**
      * @orm:Column(type="string", length="255")
+     * @assert:MinLength(limit=3)
+     * @assert:NotBlank
      */
     protected $title;
 
     /**
      * @orm:Column(type="string", length="255")
+     * @assert:NotBlank
      */
     protected $slug;
 
     /**
      * @orm:Column(type="text")
+     * @assert:NotBlank
      */
     protected $body;
+
+    /**
+     * @orm:Column(type="text")
+     */
+    protected $bodyHtml;
 
     /**
      * @orm:Column(type="date")
@@ -80,16 +89,21 @@ class Post
      */
     protected $comments;
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->comments = new ArrayCollection();
     }
+
     /**
      * Get id
      *
      * @return integer $id
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -98,7 +112,8 @@ class Post
      *
      * @param string $title
      */
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
 
@@ -107,7 +122,8 @@ class Post
      *
      * @return string $title
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
@@ -116,7 +132,8 @@ class Post
      *
      * @param string $slug
      */
-    public function setSlug($slug) {
+    public function setSlug($slug)
+    {
         $this->slug = $slug;
     }
 
@@ -125,7 +142,8 @@ class Post
      *
      * @return string $slug
      */
-    public function getSlug() {
+    public function getSlug()
+    {
         return $this->slug;
     }
 
@@ -134,7 +152,8 @@ class Post
      *
      * @param string $body Body to set
      */
-    public function setBody($body) {
+    public function setBody($body)
+    {
         $this->body = $body;
     }
 
@@ -143,11 +162,18 @@ class Post
      *
      * @return string
      */
-    public function getBody() {
+    public function getBody()
+    {
         return $this->body;
     }
 
-    public function setPublishedAt($publishedAt) {
+    /**
+     * Set the publication date
+     *
+     * @param DateTime|string $publishedAt The date to set
+     */
+    public function setPublishedAt($publishedAt)
+    {
         if (!$publishedAt instanceof \DateTime) {
             $publishedAt = new \DateTime($publishedAt);
         }
@@ -156,78 +182,160 @@ class Post
     }
 
     /**
+     * Get declared publication date
+     *
      * @return DateTime
      */
-    public function getPublishedAt() {
+    public function getPublishedAt()
+    {
         return $this->publishedAt;
     }
 
+    /**
+     * Get the body HTML
+     *
+     * @return string The body as HTML
+     */
+    public function getBodyHtml()
+    {
+        return $this->bodyHtml;
+    }
+
+    /**
+     * Set the body HTML
+     *
+     * @param string $bodyHtml Value to set
+     */
+    public function setBodyHtml($bodyHtml)
+    {
+        $this->bodyHtml = $bodyHtml;
+    }
+
+    /**
+     * Set the next post
+     *
+     * @param Alom\Website\BlogBundle\Entity\Post $post The next post
+     */
     public function setNext($post)
     {
         $this->nextPost = $post;
     }
 
+    /**
+     * Set the previous post
+     *
+     * @param Alom\Website\BlogBundle\Entity\Post $post The previous post
+     */
     public function setPrevious($post)
     {
         $this->previousPost = $post;
     }
 
+    /**
+     * Get the next post
+     *
+     * @return Alom\Website\BlogBundle\Entity\Post The next post, or false if
+     *                                             there is no previous post
+     *
+     * @throws Exception Throws an exception if the previous post was not set
+     */
     public function getNext()
     {
-        if (null === $this->nextPost)
-        {
+        if (null === $this->nextPost) {
             throw new \Exception("No next post was set !");
         }
+
         return $this->nextPost;
     }
 
+    /**
+     * Test if the post has a next post configured
+     *
+     * @return boolean A boolean indicating if there is a next post
+     *
+     * @throws Exception Throws an exception if the next post was not set
+     */
     public function hasNext()
     {
-        if (null === $this->nextPost)
-        {
+        if (null === $this->nextPost) {
             throw new \Exception("No next post was set !");
         }
         return $this->nextPost !== false;
     }
 
+    /**
+     * Get the previous post
+     *
+     * @return Alom\Website\BlogBundle\Entity\Post The previous post, or false
+     *                                             if there is no previous post
+     *
+     * @throws Exception Throws an exception if the previous post was not set
+     */
     public function getPrevious()
     {
-        if (null === $this->previousPost)
-        {
+        if (null === $this->previousPost) {
             throw new \Exception("No previous post was set !");
         }
+
         return $this->previousPost;
     }
 
+    /**
+     * Test if the post has a previous post configured
+     *
+     * @return boolean A boolean indicating if there is a previous post
+     *
+     * @throws Exception Throws an exception if the previous post was not set
+     */
     public function hasPrevious()
     {
-        if (null === $this->previousPost)
-        {
+        if (null === $this->previousPost) {
             throw new \Exception("No previous post was set !");
         }
         return $this->previousPost !== false;
     }
 
+    /**
+     * Get comments of the post
+     *
+     * @return array
+     */
     public function getComments()
     {
         return $this->comments;
     }
 
+    /**
+     * Get the isActive value (true = activated, false = disactivated)
+     *
+     * @return boolean
+     */
     public function getIsActive()
     {
         return $this->isActive;
     }
 
+    /**
+     * Set the isActive value (true = activate, false, = disactivate)
+     *
+     * @param boolean $isActive The value to set
+     */
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
     }
 
+    /**
+     * Enable the post
+     */
     public function enable()
     {
         $this->isActive = true;
     }
 
+    /**
+     * Disable the post
+     */
     public function disable()
     {
         $this->isActive = false;
