@@ -118,6 +118,7 @@ class PostController extends Controller
         if ($this->get('request')->getMethod() === 'POST') {
             $form->bindRequest($this->get('request'));
             if ($form->isValid()) {
+                $post->setBodyHtml($this->get('alom.blog.rst2html')->convert($post->getBody()));
                 $em->persist($post);
                 $em->flush();
 

@@ -9,6 +9,7 @@
 
         <div style="padding: 20px 0;">
             <a class="button" href="{{ path('blog_post_list') }}">&lt; Back to the list</a>
+            <a class="button" href="{{ path('blog_post_view', { 'slug': post.getSlug() }) }}">View</a>
         </div>
 
         {% if post.getId() %}

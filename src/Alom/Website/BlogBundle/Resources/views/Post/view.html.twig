@@ -35,7 +35,7 @@
         </div>
 
         <div class="rich-content">
-            {{ post.getBody() }}
+            {{ post.getBodyHtml() | raw }}
         </div>
 
         {% include "AlomBlogBundle:PostComment:list.html.twig" with { "comments" : post.getComments() } only %}
