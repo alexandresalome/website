@@ -58,6 +58,7 @@ class Client extends BaseClient
     {
         if (null !== $this->connection) {
             $this->connection->close();
+            $this->connection = null;
         }
         $this->kernel->shutdown();
     }
