@@ -9,6 +9,9 @@ identity.CV = {
         $(".page-main-cv dt").css("cursor", "pointer");
 
         var currentDefinition = null;
+        $(".page-main-cv dt").each(function (i, e) {
+            $(e).html('<span class="more">+</span> ' + $(e).html());
+        });
         $(".page-main-cv dt").click(function () {
             var title = $(this);
             var definition = title.next();

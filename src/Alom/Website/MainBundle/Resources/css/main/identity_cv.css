@@ -45,12 +45,19 @@
     color:       #222;
     margin-top:  0.4em;
     padding:     0.4em 0.6em;
+    border: 1px solid white;
+}
+
+.page-main-cv .more
+{
+    color: #E96;
+    font-weight: bold;
 }
 
 .page-main-cv dt.active
 {
     margin-right: 10px;
-    background-color: #F8F4F0;
+    border: 1px solid #E96;
 }
 
 .page-main-cv dd
