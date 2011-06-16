@@ -12,6 +12,11 @@
   margin-bottom: 2em;
 }
 
+.page-main-cv a
+{
+    color: #008;
+}
+
 .page-main-cv
 {
   font-size: 0.8em;
