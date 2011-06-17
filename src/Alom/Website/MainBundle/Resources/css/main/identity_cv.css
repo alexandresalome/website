@@ -57,7 +57,7 @@
 .page-main-cv dt.active
 {
     margin-right: 10px;
-    border: 1px solid #E96;
+    border-bottom: 1px solid #E96;
 }
 
 .page-main-cv dd

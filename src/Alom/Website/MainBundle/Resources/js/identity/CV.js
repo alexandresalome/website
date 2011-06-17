@@ -2,31 +2,52 @@ if (typeof identity === "undefined"){
     identity = {};
 }
 
+/**
+ * Javascript library for CV page
+ *
+ * @author Alexandre Salomé <alexandre.salome@gmail.com>
+ */
 identity.CV = {
+    /**
+     * Bind events to the CV page
+     */
     bind: function ()
     {
-        $(".page-main-cv dd").hide();
-        $(".page-main-cv dt").css("cursor", "pointer");
+        $(".page-main-cv dl.accordion").each(identity.CV.bindList);
+    },
 
-        var currentDefinition = null;
-        $(".page-main-cv dt").each(function (i, e) {
-            $(e).html('<span class="more">+</span> ' + $(e).html());
+    /**
+     * Bind events to a given definition list
+     *
+     * @param Integer    number  The current cursor(jQuery requirement)
+     * @param DOMElement element The DOM element to bind
+     */
+    bindList: function (number, element)
+    {
+        var current = null;
+        var titles = $(element).find("dt");
+
+        titles.css("cursor", "pointer");
+        titles.each(function (i, e) {
+            var element = $(e);
+            element.html('<span class="more">+</span> ' + $(e).html());
+            element.next().hide();
         });
-        $(".page-main-cv dt").click(function () {
+        titles.click(function () {
             var title = $(this);
             var definition = title.next();
 
-            if (currentDefinition) {
-                currentDefinition.slideUp();
-                currentDefinition.prev().removeClass("active");
+            if (current) {
+                current.slideUp();
+                current.prev().removeClass("active");
             }
-            if (definition.is(currentDefinition)) {
-                currentDefinition = null;
+            if (definition.is(current)) {
+                current = null;
                 return;
             }
             definition.slideDown();
             title.addClass("active");
-            currentDefinition = definition;
+            current = definition;
         });
     }
 };
