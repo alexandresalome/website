@@ -12,6 +12,13 @@
     margin-bottom: 2em;
 }
 
+.page-cv-subtitle
+{
+    text-align: center;
+    font-style: italic;
+    padding-bottom: 1em;
+}
+
 .page-main-cv a
 {
     color: #008;
