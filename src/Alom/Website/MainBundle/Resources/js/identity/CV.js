@@ -39,7 +39,9 @@ identity.CV = {
 
             if (current) {
                 current.slideUp();
-                current.prev().removeClass("active");
+                var currentTitle = current.prev();
+                currentTitle.removeClass("active");
+                currentTitle.find(".more").text("+");
             }
             if (definition.is(current)) {
                 current = null;
@@ -47,6 +49,7 @@ identity.CV = {
             }
             definition.slideDown();
             title.addClass("active");
+            title.find(".more").text("");
             current = definition;
         });
     }
