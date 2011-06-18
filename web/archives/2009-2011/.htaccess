@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /archives/2009-2011
+RewriteRule ^$ fr [R=301]
+RewriteRule ^(fr|en)/contact$ $1-contact.html [L]
+RewriteRule ^(fr|en)$ $1.html [L]
