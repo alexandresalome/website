@@ -28,6 +28,7 @@
   display: block;
 }
 
+#banner-social li.rss a,
 #banner-social li.delicious a,
 #banner-social li.reader a,
 #banner-social li.twitter a,
@@ -36,6 +37,11 @@
   padding:             0px 10px 0 35px;
   background-repeat:   no-repeat;
   background-position: 10px 5px;
+}
+
+#banner-social li.rss a
+{
+  background-image: url(/images/social/rss.png);
 }
 
 #banner-social li.delicious a
@@ -58,6 +64,7 @@
   background-image: url(/images/social/github.png);
 }
 
+#banner-social li.rss a:hover,
 #banner-social li.delicious a:hover,
 #banner-social li.reader a:hover,
 #banner-social li.twitter a:hover,

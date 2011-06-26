@@ -10,6 +10,7 @@
 
 {% block head %}
     <title>{% block title %}Alexandre Salomé{% endblock %}</title>
+    <link rel="alternate" type="application/rss+xml" title="{{ rssTitle }}" href="{{ rssAddress }}" />
     {% include "AlomMainBundle::common/assets.html.twig" %}
 {% endblock %}
 
