@@ -21,4 +21,11 @@ class UserRepository extends EntityRepository implements UserProviderInterface
     {
         return $class == 'Alom\Website\MainBundle\Entity\User';
     }
+
+    public function refreshUser(UserInterface $user)
+    {
+        $this->getEntityManager()->refresh($user);
+
+        return $user;
+    }
 }

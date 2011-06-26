@@ -11,54 +11,56 @@
 namespace Alom\Website\BlogBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Blog post
  *
  * @author Alexandre Salomé <alexandre.salome@gmail.com>
  *
- * @orm:Entity(repositoryClass="Alom\Website\BlogBundle\Entity\PostRepository")
+ * @ORM\Entity(repositoryClass="Alom\Website\BlogBundle\Entity\PostRepository")
  */
 class Post
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue()
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
      */
     protected $id;
 
     /**
-     * @orm:Column(type="string", length="255")
-     * @assert:MinLength(limit=3)
-     * @assert:NotBlank
+     * @ORM\Column(type="string", length="255")
+     * @Assert\MinLength(limit=3)
+     * @Assert\NotBlank
      */
     protected $title;
 
     /**
-     * @orm:Column(type="string", length="255")
-     * @assert:NotBlank
+     * @ORM\Column(type="string", length="255")
+     * @Assert\NotBlank
      */
     protected $slug;
 
     /**
-     * @orm:Column(type="text")
-     * @assert:NotBlank
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     protected $body;
 
     /**
-     * @orm:Column(type="text")
+     * @ORM\Column(type="text")
      */
     protected $bodyHtml;
 
     /**
-     * @orm:Column(type="date")
+     * @ORM\Column(type="date")
      */
     protected $publishedAt;
 
     /**
-     * @orm:Column(type="boolean")
+     * @ORM\Column(type="boolean")
      */
     protected $isActive;
 
@@ -85,7 +87,7 @@ class Post
     protected $previousPost;
 
     /**
-     * @orm:OneToMany(targetEntity="PostComment", mappedBy="post", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="PostComment", mappedBy="post", cascade={"remove"})
      */
     protected $comments;
 

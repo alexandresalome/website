@@ -1,7 +1,18 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__.'/../vendor/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
+/*
+ * This file is part of the Symfony Standard Edition.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+$baseDir = __DIR__.'/..';
+
+require_once $baseDir.'/vendor/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
 
 /*
  * This file is part of the Symfony package.
@@ -16,10 +27,10 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 use Symfony\Component\ClassLoader\ClassCollectionLoader;
 
 $loader = new UniversalClassLoader();
-$loader->registerNamespaces(array('Symfony' => __DIR__.'/../vendor/symfony/src'));
+$loader->registerNamespaces(array('Symfony' => $baseDir.'/vendor/symfony/src'));
 $loader->register();
 
-$file = __DIR__.'/../app/bootstrap.php.cache';
+$file = $baseDir.'/app/bootstrap.php.cache';
 if (file_exists($file)) {
     unlink($file);
 }
@@ -27,8 +38,6 @@ if (file_exists($file)) {
 ClassCollectionLoader::load(array(
     'Symfony\\Component\\DependencyInjection\\ContainerInterface',
     'Symfony\\Component\\DependencyInjection\\Container',
-    'Symfony\\Component\\DependencyInjection\\ContainerAwareInterface',
-    'Symfony\\Component\\DependencyInjection\\ContainerAware',
 
     'Symfony\\Component\\HttpKernel\\Bundle\\BundleInterface',
     'Symfony\\Component\\HttpKernel\\Bundle\\Bundle',
@@ -54,7 +63,7 @@ ClassCollectionLoader::load(array(
 
 file_put_contents($file, "<?php\n\nnamespace { require_once __DIR__.'/autoload.php'; }\n\n".substr(file_get_contents($file), 5));
 
-$file = __DIR__.'/../app/bootstrap_cache.php.cache';
+$file = $baseDir.'/app/bootstrap_cache.php.cache';
 if (file_exists($file)) {
     unlink($file);
 }

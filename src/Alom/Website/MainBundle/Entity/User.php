@@ -2,38 +2,40 @@
 
 namespace Alom\Website\MainBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 /**
- * @orm:Entity(repositoryClass="Alom\Website\MainBundle\Entity\UserRepository")
+ * @ORM\Entity(repositoryClass="Alom\Website\MainBundle\Entity\UserRepository")
  */
 class User implements UserInterface
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue()
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
      */
     protected $id;
 
     /**
-     * @orm:Column(type="string", length="32")
+     * @ORM\Column(type="string", length="32")
      */
     protected $username;
 
 
     /**
-     * @orm:Column(type="string", length="128")
+     * @ORM\Column(type="string", length="128")
      */
     protected $password;
 
     /**
-     * @orm:Column(type="string", length="32")
+     * @ORM\Column(type="string", length="32")
      */
     protected $passwordSalt;
 
     /**
-     * @orm:Column(type="boolean")
+     * @ORM\Column(type="boolean")
      */
     protected $isAdmin;
 

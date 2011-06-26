@@ -10,68 +10,71 @@
 
 namespace Alom\Website\BlogBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Comment on a blog post
  *
  * @author Alexandre Salomé <alexandre.salome@gmail.com>
  *
- * @orm:Entity
+ * @ORM\Entity
  */
 class PostComment
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue()
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
      */
     protected $id;
 
     /**
-     * @orm:Column(type="string", length="255")
+     * @ORM\Column(type="string", length="255")
      *
-     * @assert:Email
-     * @assert:NotBlank
+     * @Assert\Email
+     * @Assert\NotBlank
      */
     protected $email;
 
     /**
-     * @orm:Column(type="string", length="255")
+     * @ORM\Column(type="string", length="255")
      *
-     * @assert:MinLength(limit=3)
-     * @assert:NotBlank
+     * @Assert\MinLength(limit=3)
+     * @Assert\NotBlank
      */
     protected $fullname;
 
     /**
-     * @orm:Column(type="string", length="255", nullable="true")
+     * @ORM\Column(type="string", length="255", nullable="true")
      *
-     * @assert:Url(protocols={"http", "https"})
+     * @Assert\Url(protocols={"http", "https"})
      */
     protected $website;
 
     /**
-     * @orm:Column(type="text")
+     * @ORM\Column(type="text")
      *
-     * @assert:MinLength(limit=7, message="Try to make a sentence")
-     * @assert:NotBlank
+     * @Assert\MinLength(limit=7, message="Try to make a sentence")
+     * @Assert\NotBlank
      */
     protected $body;
 
     /**
-     * @orm:Column(type="datetime")
+     * @ORM\Column(type="datetime")
      */
     protected $createdAt;
 
     /**
-     * @orm:ManyToOne(targetEntity="Post", inversedBy="comments")
-     * @orm:JoinColumn(name="post_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      *
      * @var Alom\Website\AlomBlogBundle\Post
      */
     protected $post;
 
     /**
-     * @orm:Column(type="boolean")
+     * @ORM\Column(type="boolean")
      */
     protected $isModerated;
 
