@@ -11,6 +11,7 @@
 
     ; Blog configuration
     comment_mail=alexandre.salome@gmail.com
+    rss_token=rsstoken
 
     locale=en
 

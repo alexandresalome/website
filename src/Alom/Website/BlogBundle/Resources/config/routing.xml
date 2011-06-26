@@ -48,7 +48,7 @@
         <default key="_controller">AlomBlogBundle:PostComment:inactivate</default>
     </route>
 
-    <route id="blog_post_rss" pattern="/rss">
+    <route id="blog_post_rss" pattern="/rss/{token}">
         <default key="_controller">AlomBlogBundle:Post:rss</default>
     </route>
 </routes>

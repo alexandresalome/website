@@ -207,8 +207,11 @@ class PostController extends Controller
         return new Response($content);
     }
 
-    public function rssAction()
+    public function rssAction($token)
     {
+        if ($token !== $this->container->getParameter('rss_token')) {
+            throw new NotFoundHttpException("Token is not valid");
+        }
         $posts = $this
             ->get('doctrine.orm.default_entity_manager')
             ->getRepository('AlomBlogBundle:Post')
