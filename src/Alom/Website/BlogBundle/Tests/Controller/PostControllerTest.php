@@ -377,6 +377,30 @@ class PostControllerTest extends WebTestCase
         $client->shutdown();
     }
 
+    public function testRssInvalid()
+    {
+        $client = $this->createClient();
+
+        $crawler = $client->request('GET', '/rss/invalid');
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
+
+        $client->shutdown();
+    }
+
+    public function testRssValid()
+    {
+        $client = $this->createClient();
+
+        $token = $client->getContainer()->getParameter('rss_token');
+
+        $crawler = $client->request('GET', '/rss/'.$token);
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertEquals('Blog Opening', $crawler->filter('item title')->last()->text());
+        $this->assertEquals('Symfony2 - Create your services', $crawler->filter('item title')->first()->text());
+
+        $client->shutdown();
+    }
+
     protected function getEntityManager($client)
     {
         return $client
