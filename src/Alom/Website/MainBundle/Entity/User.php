@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 
 /**
- * @ORM\Entity(repositoryClass="Alom\Website\MainBundle\Entity\UserRepository")
+ * @ORM\Entity
  */
 class User implements UserInterface
 {
