@@ -286,7 +286,7 @@ class PostControllerTest extends WebTestCase
 
         $client->request('GET', '/blog/' . $post->getId() . '/enable');
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertTrue($client->getResponse()->isRedirect('/login'));
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
 
         $client->connect('admin', 'admin');
 
@@ -304,7 +304,7 @@ class PostControllerTest extends WebTestCase
 
         $client->request('GET', '/blog/' . $post->getId() . '/disable');
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertTrue($client->getResponse()->isRedirect('/login'));
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
 
         $client->connect('admin', 'admin');
 

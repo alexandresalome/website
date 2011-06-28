@@ -14,7 +14,7 @@ class PostCommentControllerTest extends WebTestCase
 
         $client->request('GET', '/blog/comment/' . $comment->getId() . '/activate');
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertTrue($client->getResponse()->isRedirect('/login'));
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
 
         $client->connect('admin', 'admin');
 
@@ -32,7 +32,7 @@ class PostCommentControllerTest extends WebTestCase
 
         $client->request('GET', '/blog/comment/' . $comment->getId() . '/inactivate');
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertTrue($client->getResponse()->isRedirect('/login'));
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
 
         $client->connect('admin', 'admin');
 
