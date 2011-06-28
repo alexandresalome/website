@@ -27,8 +27,6 @@ class IdentityControllerTest extends WebTestCase
         foreach ($keywords as $keyword) {
             $this->assertRegExp('/' . preg_quote($keyword) . '/', $content);
         }
-
-        $client->shutdown();
     }
 
     public function testContact()
@@ -47,7 +45,5 @@ class IdentityControllerTest extends WebTestCase
         $this->assertEquals($crawler->filter('#content h1')->text(), 'Contact');
 
         $this->assertRegExp('/alexandre\.salome@gmail\.com/', $client->getResponse()->getContent());
-
-        $client->shutdown();
     }
 }

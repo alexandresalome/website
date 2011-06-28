@@ -7,61 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Client as BaseClient;
 /**
  * Test client for Alom project.
  *
- * By default, it enables the isolation of tests. If you want to override this
- * behavior, you can call the ``commit`` method at the end of your execution.
- *
  * @author Alexandre Salomé <alexandre.salome@gmail.com>
  */
 class Client extends BaseClient
 {
-    /**
-     * Doctrine DBAL connection of the client
-     *
-     * @var Doctrine\DBAL\Driver\Connection
-     */
-    protected $connection;
-
-    /**
-     * @inherited
-     */
-    protected function doRequest($request)
-    {
-        if (null === $this->connection) {
-            $this->connection = $this->kernel->getContainer()->get('doctrine.dbal.default_connection');
-            $this->connection->beginTransaction();
-        }
-        $this->kernel->shutdown();
-        $this->kernel->boot();
-        $this->kernel->getContainer()->set('doctrine.dbal.default_connection', $this->connection);
-
-        return $this->kernel->handle($request);
-    }
-
-    /**
-     * Commit the Doctrine connection transaction.
-     *
-     * @throws \LogicException Throws an exception if no connection was found
-     */
-    public function commit()
-    {
-        if ($this->connection === null) {
-            throw new \LogicException("Cannot commit : no connection found");
-        }
-        $this->connection->commit();
-        $this->connection = null;
-    }
-
-    /**
-     * Shutdown the client (close the connection and shutdown the kernel).
-     */
-    public function shutdown()
-    {
-        if (null !== $this->connection) {
-            $this->connection->close();
-            $this->connection = null;
-        }
-        $this->kernel->shutdown();
-    }
     /**
      * Connect to Alom website
      *
