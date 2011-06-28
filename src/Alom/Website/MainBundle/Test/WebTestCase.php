@@ -11,6 +11,7 @@ abstract class WebTestCase extends BaseWebTestCase
     static protected function createClient(array $options = array(), array $server = array())
     {
         $client = parent::createClient($options, $server);
+        $client->getContainer()->get('session')->clear();
         if (null === self::$connection) {
             self::$connection = $client->getContainer()->get('doctrine.dbal.default_connection');
         } else {
