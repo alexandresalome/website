@@ -24,4 +24,9 @@ class PostFormType extends AbstractType
             'data_class' => 'Alom\Website\BlogBundle\Entity\Post'
         );
     }
+
+    public function getName()
+    {
+        return 'post';
+    }
 }

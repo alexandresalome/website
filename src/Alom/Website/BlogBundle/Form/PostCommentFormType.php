@@ -21,4 +21,9 @@ class PostCommentFormType extends AbstractType
             'data_class' => 'Alom\Website\BlogBundle\Entity\PostComment'
         );
     }
+
+    public function getName()
+    {
+        return 'postcomment';
+    }
 }
