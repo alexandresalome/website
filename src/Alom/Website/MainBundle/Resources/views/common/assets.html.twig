@@ -6,22 +6,22 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 
-{% stylesheets filter="?yui_css" output="css/all.css"
-    "@AlomMainBundle/Resources/css/reset.css"
-    "@AlomMainBundle/Resources/css/columns.css"
-    "@AlomMainBundle/Resources/css/form.css"
-    "@AlomMainBundle/Resources/css/buttons.css"
-    "@AlomMainBundle/Resources/css/rich-content.css"
-    "@AlomMainBundle/Resources/css/main.css"
+{% stylesheets filter="sass,?yui_css" output="css/all.css"
+    "@AlomMainBundle/Resources/css/reset.sass"
+    "@AlomMainBundle/Resources/css/columns.sass"
+    "@AlomMainBundle/Resources/css/form.sass"
+    "@AlomMainBundle/Resources/css/buttons.sass"
+    "@AlomMainBundle/Resources/css/rich-content.sass"
+    "@AlomMainBundle/Resources/css/main.sass"
 
-    "@AlomMainBundle/Resources/css/banner.css"
-    "@AlomMainBundle/Resources/css/header.css"
-    "@AlomMainBundle/Resources/css/footer.css"
+    "@AlomMainBundle/Resources/css/banner.sass"
+    "@AlomMainBundle/Resources/css/header.sass"
+    "@AlomMainBundle/Resources/css/footer.sass"
 
-    "@AlomMainBundle/Resources/css/main/identity_cv.css"
-    "@AlomMainBundle/Resources/css/blog/post_list.css"
-    "@AlomMainBundle/Resources/css/blog/post_view.css"
-    "@AlomMainBundle/Resources/css/blog/post_edit.css"
+    "@AlomMainBundle/Resources/css/main/identity_cv.sass"
+    "@AlomMainBundle/Resources/css/blog/post_list.sass"
+    "@AlomMainBundle/Resources/css/blog/post_view.sass"
+    "@AlomMainBundle/Resources/css/blog/post_edit.sass"
 %}
     <link href="{{ asset_url }}" rel="stylesheet" />
 {% endstylesheets %}

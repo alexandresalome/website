@@ -1,0 +1,45 @@
+#banner
+  background-color: #dddddd
+  height: 30px
+
+#banner-social
+  position: relative
+  margin: 0 auto
+  width: 1000px
+  li
+    display: block
+    float: left
+    height: 30px
+    line-height: 30px
+    font-size: 14px
+    font-family: Arial, Helvetica, sans-serif
+  a
+    color: black
+    display: block
+  li
+    &.rss a, &.delicious a, &.reader a, &.twitter a, &.github a
+      padding: 0px 10px 0 35px
+      background-repeat: no-repeat
+      background-position: 10px 5px
+    &.rss a
+      background-image: url(/images/social/rss.png)
+    &.delicious a
+      background-image: url(/images/social/delicious.png)
+    &.reader a
+      background-image: url(/images/social/reader.png)
+    &.twitter a
+      background-image: url(/images/social/twitter.png)
+    &.github a
+      background-image: url(/images/social/github.png)
+    &.rss a:hover, &.delicious a:hover, &.reader a:hover, &.twitter a:hover, &.github a:hover
+      background-color: white
+      -moz-border-radius-bottomleft: 10px
+      -webkit-border-bottom-left-radius: 10px
+      -moz-border-radius-bottomright: 10px
+      -webkit-border-bottom-right-radius: 10px
+    &.auth
+      position: absolute
+      right: 0
+      a
+        display: inline
+        color: #444
