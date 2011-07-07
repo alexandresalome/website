@@ -1,34 +1,73 @@
+$logo:       "/images/logo.png"
+$logoWidth:  350px
+$logoHeight: 54px
+
+$menu:       "/images/menu.png"
+$menuBlogWidth:    92px
+$menuCVWidth:      73px
+$menuContactWidth: 105px
+$menuHeight:       50px
+
 #header
-  text-align: center
-  height: 50px
-  position: relative
-  h1
-    font-family: 'Georgia'
-    line-height: 1em
-    font-size: 2em
-    margin-left: 0.3em
-    position: absolute
-    bottom: 0
-    left: 0
-  ul
-    line-height: 1.2em
-    position: absolute
-    bottom: -1px
-    right: 20px
-  li
-    display: inline-block
-    border-top: 1px solid #cccccc
-    border-left: 1px solid #cccccc
-    border-right: 1px solid #cccccc
-    padding: 0.4em 0.5em
-    margin-bottom: 1px
-    background-color: white
-    margin-left: 0.4em
-    &.active
-      margin-bottom: 0
-      a
-        color: white
-      border-color: #555555
-      background-color: #555555
-  a
-    color: black
+    height:   $logoHeight
+    position: relative
+
+    h1
+        position: absolute
+        bottom:   13px
+        left:     13px
+        width:    $logoWidth
+        height:   $logoHeight
+        background: url($logo) no-repeat 0 0
+        a
+            overflow:    hidden
+            display:     block
+            width:       $logoWidth
+            height:     $logoHeight
+            span
+                display: none
+
+    ul
+        position: absolute
+        right:    0
+        bottom:   0
+        width:    $menuBlogWidth + $menuCVWidth + $menuContactWidth
+        height:   $menuHeight
+
+        li
+            float: left
+            height: $menuHeight
+
+            a
+                height:  $menuHeight
+                display: block
+                background: url($menu) no-repeat
+                span
+                    display: none
+
+        li.blog
+            width: $menuBlogWidth
+            a
+                background-position: 0 0
+            a.active, a.active:hover
+                background-position: 0 (-$menuHeight)
+            a:hover
+                background-position: 0 (-$menuHeight*2)
+
+        li.cv
+            width: $menuCVWidth
+            a
+                background-position: (-$menuBlogWidth) 0
+            a.active, a.active:hover
+                background-position: (-$menuBlogWidth) (-$menuHeight)
+            a:hover
+                background-position: (-$menuBlogWidth) (-$menuHeight*2)
+
+        li.contact
+            width: $menuContactWidth
+            a
+                background-position: (-($menuBlogWidth+$menuCVWidth)) (0)
+            a.active, a.active:hover
+                background-position: (-($menuBlogWidth+$menuCVWidth)) (-$menuHeight)
+            a:hover
+                background-position: (-($menuBlogWidth+$menuCVWidth)) (-$menuHeight*2)

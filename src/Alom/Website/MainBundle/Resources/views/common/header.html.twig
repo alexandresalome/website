@@ -8,16 +8,16 @@
 #}
 
 <div id="header">
-    <h1><a href="{{ path("homepage") }}">Alexandre Salomé</a></h1>
+    <h1><a href="{{ path("homepage") }}"><span>Alexandre Salomé</span></a></h1>
     <ul>
-        <li{% if active == "blog" %} class="active"{% endif %}>
-            <a href="{{ path("blog_post_list") }}">Blog</a>
+        <li class="blog">
+            <a{% if active == "blog" %} class="active"{% endif %} href="{{ path("blog_post_list") }}"><span>Blog</span></a>
         </li>
-        <li{% if active == "cv" %} class="active"{% endif %}>
-            <a href="{{ path("identity_main_cv") }}">CV</a>
+        <li class="cv">
+            <a{% if active == "cv" %} class="active"{% endif %} href="{{ path("identity_main_cv") }}"><span>CV</span></a>
         </li>
-        <li{% if active == "contact" %} class="active"{% endif %}>
-            <a href="{{ path("identity_main_contact") }}">Contact</a>
+        <li class="contact">
+            <a{% if active == "contact" %} class="active"{% endif %} href="{{ path("identity_main_contact") }}"><span>Contact</span></a>
         </li>
     </ul>
 </div>
