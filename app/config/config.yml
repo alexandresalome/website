@@ -4,7 +4,7 @@ imports:
 
 parameters:
     test.client.class: Alom\Website\MainBundle\Test\Client
-    rss_address:       http://feedburner.com/AlexandreSalome
+    rss_address:       http://feeds.feedburner.com/AlexandreSalome
     rss_title:         "Blog posts from the alexandre-salome.fr"
 
 framework:
