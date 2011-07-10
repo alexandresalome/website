@@ -65,7 +65,14 @@ class PostControllerTest extends WebTestCase
         ));
 
         $crawler = $client->submit($form);
-        $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
+        $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening#post-comment'));
+        $client->followRedirect();
+
+        // post-moderation
+        $this->assertContains('Bobby Commentor', $client->getResponse()->getContent());
+
+        // confirmation
+        $this->assertContains('Your comment was successfully posted', $client->getResponse()->getContent());
 
         $post = $this->findPostComment($client, 'Bobby Commentor');
         $this->assertTrue($post instanceof \Alom\Website\BlogBundle\Entity\PostComment);
@@ -84,7 +91,7 @@ class PostControllerTest extends WebTestCase
         ));
 
         $crawler = $client->submit($form);
-        $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
+        $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening#post-comment'));
 
         $crawler  = $client->request('GET', '/blog/Blog-Opening');
         $responseContent = $client->getResponse()->getContent();
