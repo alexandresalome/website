@@ -9,10 +9,18 @@ class PostCommentFormType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('fullname');
-        $builder->add('email');
-        $builder->add('website');
-        $builder->add('body');
+        $builder->add('fullname', 'text', array(
+            'label' => 'Fullname *'
+        ));
+        $builder->add('email', 'email', array(
+            'label' => 'Email *'
+        ));
+        $builder->add('website', 'url', array(
+            'label' => 'Website'
+        ));
+        $builder->add('body', 'textarea', array(
+            'label' => 'Comment *'
+        ));
     }
 
     public function getDefaultOptions(array $options)
