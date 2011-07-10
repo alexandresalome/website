@@ -1,20 +1,19 @@
 #!/bin/bash
 baseDir=`php -r "echo dirname(dirname(realpath('$0')));"`
 tempDir="`mktemp -d`"
+version="`cat VERSION`"
 
 echo "Application folder : $baseDir"
 echo "Temporary folder   : $tempDir"
-
+echo "Version            : $version"
 
 # Copy project
+cp -R * .git "$tempDir"
 
-cd $baseDir
-version="`cat VERSION`"
-cp -R * "$tempDir"
-
-# Pre-clean
-rm -Rf app/cache/* app/logs/*
-rm -Rf web/css web/js
+# Clean
+cd $tempDir
+git clean -fdx --exclude=vendor --exclude=app/config/parameters.ini
+mkdir app/cache app/logs
 
 # Update project
 cd $tempDir
@@ -29,14 +28,7 @@ php bin/build_bootstrap.php
 rm -Rf app/cache/* app/logs/*
 find bin/    -type f -name "*" ! -name "rst2html-pygments" -delete
 find vendor/ -type d -name ".git" | xargs rm -Rf
-rm -Rf app/Resources/graphism
 rm -Rf app/config/parameters.ini
-rm -Rf app/console
-rm -Rf app/phpunit.xml.dist
-rm -Rf src/Alom/Website/*/DataFixtures
-rm -Rf src/Alom/Website/*/Tests
-rm -Rf src/Alom/Website/MainBundle/Resources/css
-rm -Rf src/Alom/Website/MainBundle/Resources/js
 rm -Rf web/bundles
 rm -Rf web/config.php
 rm -Rf web/app_dev.php
