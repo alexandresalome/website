@@ -66,13 +66,15 @@ class PostController extends Controller
                 ;
                 $this->get('mailer')->send($message);
 
-                return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $slug)));
+                $this->get('session')->setFlash('post_comment_confirmation', 'Your comment was successfully posted');
+                return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $slug)). '#post-comment');
             }
         }
 
         return $this->render('AlomBlogBundle:Post:view.html.twig', array(
-            'post'        => $post,
-            'commentForm' => $form->createView()
+            'post'                    => $post,
+            'postCommentConfirmation' => $this->get('session')->getFlash('post_comment_confirmation'),
+            'commentForm'             => $form->createView()
         ));
     }
 

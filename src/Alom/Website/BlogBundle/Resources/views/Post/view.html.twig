@@ -41,7 +41,8 @@
         {% include "AlomBlogBundle:PostComment:list.html.twig" with { "comments" : post.getComments() } only %}
         {% include "AlomBlogBundle:PostComment:form.html.twig" with {
             "action" : path('blog_post_view', { 'slug' : post.getSlug() }),
-            "form"   : commentForm
+            "form"   : commentForm,
+            "postCommentConfirmation": postCommentConfirmation
         } only %}
     </div>
 {% endblock %}
