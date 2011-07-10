@@ -3,16 +3,29 @@
 
   (c) Alexandre Salomé <alexandre.salome@gmail.com>
 
-  This source file is subject to the GPL license that is bundled
+  This  source file is subject to the GPL license that is bundled
   with this source code in the file LICENSE.
 #}
+
+{% macro element(class, href, title, label) %}
+    <li class="{{ class }}">
+        <a href="{{ href }}" title="{{ title }}">
+        <div></div>
+        {{ label }}
+        </a>
+    </li>
+{% endmacro %}
+
 <div id="banner">
     <ul id="banner-social">
-        <li class="rss"><a href="{{ rssAddress }}" title="{{ rssTitle }}">RSS</a></li>
-        <li class="delicious"><a href="http://delicious.com/wodkaist" title="Link to my Delicious profile">Delicious</a></li>
-        <li class="reader"><a href="http://www.google.com/reader/shared/00298601393471074999" title="Link to my Google Reader profile">Reader</a></li>
-        <li class="twitter"><a href="http://twitter.com/alexandresalome" title="Link to my Twitter profile">Twitter</a></li>
-        <li class="github"><a href="http://github.com/alexandresalome" title="Link to my Github profile">Github</a></li>
+        {{ _self.element("rss",         rssAddress,                                                 rssTitle,                           "RSS")       }}
+        {{ _self.element("googleplus",  "https://plus.google.com/100267704447443627455",            "Link to my Google Plus profile",   "Google+")   }}
+        {{ _self.element("twitter",     "http://twitter.com/alexandresalome",                       "Link to my Twitter profile",       "Twitter")   }}
+        {{ _self.element("github",      "http://github.com/alexandresalome",                        "Link to my Github profile",        "Github")    }}
+        {{ _self.element("reader",      "http://www.google.com/reader/shared/00298601393471074999", "Link to my Google Reader profile", "Reader")    }}
+        {{ _self.element("delicious",   "http://delicious.com/wodkaist",                            "Link to my Delicious profile",     "Delicious") }}
+        {{ _self.element("facebook",    "http://facebook.com/alexandresalome",                      "Link to my Facebook profile",      "Facebook")  }}
+        {{ _self.element("lastfm",      "http://lastfm.fr/user/wodkaist",                           "Link to my Last.fm profile",      "last.fm")    }}
         {% if is_connected %}
             <li class="auth">{{ username }} - <a href="{{ path("logout") }}">Logout</a></li>
         {% endif %}

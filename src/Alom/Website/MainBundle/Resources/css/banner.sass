@@ -1,45 +1,68 @@
+$layoutWidth: 1000px
+
+$bannerHeight:      30px
+$bannerBackground:  #ddd
+$bannerIcon:        20px
+$bannerPaddingIcon: 7px
+$bannerPaddingItem: 15px
+
+$fontSizeNormal:      14px
+$fontFamilySansSerif: Arial, Helvetica, "sans-serif"
+
+
 #banner
-  background-color: #dddddd
-  height: 30px
+    background-color: $bannerBackground
+    height:           $bannerHeight
 
 #banner-social
-  position: relative
-  margin: 0 auto
-  width: 1000px
-  li
-    display: block
-    float: left
-    height: 30px
-    line-height: 30px
-    font-size: 14px
-    font-family: Arial, Helvetica, sans-serif
-  a
-    color: black
-    display: block
-  li
-    &.rss a, &.delicious a, &.reader a, &.twitter a, &.github a
-      padding: 0px 10px 0 35px
-      background-repeat: no-repeat
-      background-position: 10px 5px
-    &.rss a
-      background-image: url(/images/social/rss.png)
-    &.delicious a
-      background-image: url(/images/social/delicious.png)
-    &.reader a
-      background-image: url(/images/social/reader.png)
-    &.twitter a
-      background-image: url(/images/social/twitter.png)
-    &.github a
-      background-image: url(/images/social/github.png)
-    &.rss a:hover, &.delicious a:hover, &.reader a:hover, &.twitter a:hover, &.github a:hover
-      background-color: white
-      -moz-border-radius-bottomleft: 10px
-      -webkit-border-bottom-left-radius: 10px
-      -moz-border-radius-bottomright: 10px
-      -webkit-border-bottom-right-radius: 10px
-    &.auth
-      position: absolute
-      right: 0
-      a
-        display: inline
-        color: #444
+    width:    $layoutWidth
+    height:   $bannerHeight
+    margin:   0 auto
+
+    li
+        float:       left
+        height:      $bannerHeight
+        line-height: $bannerHeight
+        font-size:   $fontSizeNormal
+        font-family: $fontFamilySansSerif
+
+        a
+            padding-left:  ($bannerIcon + $bannerPaddingIcon)
+            padding-right: $bannerPaddingItem
+            position: relative
+            color:    black
+            display:  block
+
+        & div
+            position: absolute
+            left:     0
+            top:      ( ($bannerHeight - $bannerIcon) / 2)
+            height:    $bannerIcon
+            width:     $bannerIcon
+            background: url(/images/social.png) no-repeat
+
+        &.auth
+            position:   absolute
+            right:      0
+            text-align: right
+
+            a
+                display: inline
+                color:   #444
+
+        &.googleplus div
+            background-position: 0 0
+        &.lastfm div
+            background-position: -20px 0
+        &.twitter div
+            background-position: -40px 0
+        &.delicious div
+            background-position: -60px 0
+        &.reader div
+            background-position: -80px 0
+        &.facebook div
+            background-position: -100px 0
+        &.rss div
+            background-position: -120px 0
+        &.github div
+            background-position: -140px 0
