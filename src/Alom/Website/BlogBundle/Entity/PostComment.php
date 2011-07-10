@@ -81,7 +81,7 @@ class PostComment
     public function __construct()
     {
         $this->createdAt   = new \DateTime();
-        $this->isModerated = false;
+        $this->isModerated = true;
     }
 
     /**
