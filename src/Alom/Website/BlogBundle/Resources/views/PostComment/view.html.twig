@@ -18,5 +18,5 @@
             {{ comment.getCreatedAt().format("F j, Y") }}
         </em>
     </p>
-    <p class="body">{{ comment.getBody() }}</p>
+    <p class="body">{{ comment.getBodyAsHtml() | raw }}</p>
 </div>

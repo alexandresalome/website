@@ -148,8 +148,19 @@ class PostComment
      *
      * @return string
      */
-    public function getBody() {
+    public function getBody()
+    {
         return $this->body;
+    }
+
+    /**
+     * Get the body as HTML code
+     *
+     * @return string
+     */
+    public function getBodyAsHtml()
+    {
+        return str_replace("\n", "<br />", htmlentities($this->body));
     }
 
     /**
