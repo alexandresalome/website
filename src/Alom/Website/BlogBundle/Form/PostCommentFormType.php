@@ -16,7 +16,8 @@ class PostCommentFormType extends AbstractType
             'label' => 'Email *'
         ));
         $builder->add('website', 'url', array(
-            'label' => 'Website'
+            'label'    => 'Website',
+            'required' => false
         ));
         $builder->add('body', 'textarea', array(
             'label' => 'Comment *'
