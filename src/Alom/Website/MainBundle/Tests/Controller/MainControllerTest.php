@@ -22,4 +22,12 @@ class MainControllerTest extends WebTestCase
 
         $this->assertRegExp('/coffee/', $crawler->filter('#footer')->text());
     }
+
+    public function testSitemap()
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
 }
