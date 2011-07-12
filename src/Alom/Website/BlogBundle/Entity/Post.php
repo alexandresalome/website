@@ -55,6 +55,11 @@ class Post
     protected $bodyHtml;
 
     /**
+     * @ORM\Column(type="text")
+     */
+    protected $metaDescription;
+
+    /**
      * @ORM\Column(type="date")
      */
     protected $publishedAt;
@@ -325,6 +330,26 @@ class Post
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
+    }
+
+    /**
+     * Get the meta description
+     *
+     * @return string
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    /**
+     * Set the meta description
+     *
+     * @param string $metaDescription Meta description to set
+     */
+    public function setMetaDescription($metaDescription)
+    {
+        $this->metaDescription = $metaDescription;
     }
 
     /**

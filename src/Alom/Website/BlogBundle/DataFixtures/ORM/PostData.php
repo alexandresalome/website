@@ -27,6 +27,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
 
         $post_Symfony2_Services->setBody('@todo');
         $post_Symfony2_Services->setBodyHtml('<p>@todo</p>');
+        $post_Symfony2_Services->setMetaDescription('@todo');
 
         $manager->persist($post_Symfony2_Services);
 
@@ -38,6 +39,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
 
         $post_HTTP_Caching->setBody('@todo');
         $post_HTTP_Caching->setBodyHtml('<p>@todo</p>');
+        $post_HTTP_Caching->setMetaDescription('@todo');
 
         $manager->persist($post_HTTP_Caching);
 
@@ -49,6 +51,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
 
         $post_Ide->setBody('@todo');
         $post_Ide->setBodyHtml('<p>@todo</p>');
+        $post_Ide->setMetaDescription('@todo');
 
         $manager->persist($post_Ide);
 
@@ -60,6 +63,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
 
         $post_Symfony2_Cache->setBody('@todo');
         $post_Symfony2_Cache->setBodyHtml('<p>@todo</p>');
+        $post_Symfony2_Cache->setMetaDescription('@todo');
 
         $manager->persist($post_Symfony2_Cache);
 
@@ -71,6 +75,7 @@ class PostData extends AbstractFixture implements OrderedFixtureInterface
 
         $post_Opening->setBody('@todo');
         $post_Opening->setBodyHtml('<p>@todo</p>');
+        $post_Opening->setMetaDescription('Article about blog opening');
 
         $manager->persist($post_Opening);
         $manager->flush();

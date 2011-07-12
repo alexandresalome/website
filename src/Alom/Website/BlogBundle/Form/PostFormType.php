@@ -14,6 +14,7 @@ class PostFormType extends AbstractType
         $builder->add('title');
         $builder->add('slug');
         $builder->add('body');
+        $builder->add('metaDescription');
         $builder->add('publishedAt');
         $builder->add('isActive');
     }

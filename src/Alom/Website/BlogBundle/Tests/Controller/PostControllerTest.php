@@ -39,6 +39,7 @@ class PostControllerTest extends WebTestCase
 
         // Check title
         $this->assertRegExp('/Blog Opening/', $crawler->filter('title')->text());
+        $this->assertRegExp('/Article about blog opening/', $crawler->filter('meta[name=description]')->attr('content'));
 
         // Check page title
         $this->assertEquals($crawler->filter('#content h1')->count(), 1);

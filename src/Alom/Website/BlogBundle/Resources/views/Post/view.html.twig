@@ -2,7 +2,9 @@
 
 {% set formattedDate = post.getPublishedAt().format("F j, Y") %}
 
-{% block title %}Alexandre Salomé - {{ post.getTitle() }} - {{ formattedDate }}{% endblock %}
+{% block title            post.getTitle() ~ ' | Alexandre Salomé' %}
+{% block meta_description post.getMetaDescription() %}
+
 {% set active = "blog" %}
 
 {% block content %}

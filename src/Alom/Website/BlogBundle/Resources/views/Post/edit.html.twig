@@ -1,6 +1,8 @@
 {% extends "AlomMainBundle::layout.html.twig" %}
 
-{% block title %}Alexandre Salomé - {{ post.getTitle() }} - Edition{% endblock %}
+{% block title            'Edit article: ' ~ post.getTitle() ~ ' | Alexandre Salomé' %}
+{% block meta_description 'Edition of an article, should not be referenced !' %}
+
 {% set active = "blog" %}
 
 {% block javascript %}
