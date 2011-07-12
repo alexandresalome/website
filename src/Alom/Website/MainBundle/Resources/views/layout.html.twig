@@ -1,17 +1,9 @@
-{#
-  This file is part of the Alom project.
-
-  (c) Alexandre Salomé <alexandre.salome@gmail.com>
-
-  This source file is subject to the GPL license that is bundled
-  with this source code in the file LICENSE.
-#}
 {% extends "::base.html.twig" %}
 
 {% block head %}
     <title>{% block title %}Alexandre Salomé{% endblock %}</title>
     <link rel="alternate" type="application/rss+xml" title="{{ rssTitle }}" href="{{ rssAddress }}" />
-    {% include "AlomMainBundle::common/assets.html.twig" %}
+    {% include "AlomMainBundle::stylesheets.html.twig" %}
 {% endblock %}
 
 {% block body %}
@@ -19,8 +11,12 @@
     <div id="wrapper">
         {% include "AlomMainBundle::common/header.html.twig" %}
         <div id="content">
-            {% block content %}{% endblock %}
+            {% block content '' %}
         </div>
         {% include "AlomMainBundle::common/footer.html.twig" %}
     </div>
+
+    {% include "AlomMainBundle::javascripts.html.twig" %}
+    {% block javascript '' %}
+    {% include "::analytics.html.twig" %}
 {% endblock %}

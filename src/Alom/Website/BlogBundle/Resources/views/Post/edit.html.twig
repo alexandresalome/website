@@ -1,7 +1,15 @@
-{% extends "AlomMainBundle::layout/layout-1col.html.twig" %}
+{% extends "AlomMainBundle::layout.html.twig" %}
 
 {% block title %}Alexandre Salomé - {{ post.getTitle() }} - Edition{% endblock %}
 {% set active = "blog" %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(window).load(function (){
+            blog.PostEdit.bind();
+        });
+    </script>
+{% endblock %}
 
 {% block content %}
     <div class="page-content">

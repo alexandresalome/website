@@ -1,14 +1,14 @@
-{% extends "AlomMainBundle::layout/layout-1col.html.twig" %}
+{% extends "AlomMainBundle::layout.html.twig" %}
 
 {% block title %}Login | Alexandre Salomé{% endblock %}
 {% set active = false %}
 
-{% block before_body_end %}
-<script>
-    jQuery(window).load(function (){
-        $("#username").focus();
-    });
-</script>
+{% block javascript %}
+    <script>
+        jQuery(window).load(function (){
+            $("#username").focus();
+        });
+    </script>
 {% endblock %}
 
 {% block content %}
