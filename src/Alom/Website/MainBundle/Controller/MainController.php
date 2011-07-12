@@ -28,4 +28,14 @@ class MainController extends Controller
     {
         return $this->render('AlomMainBundle:Main:homepage.html.twig');
     }
+
+    public function sitemapAction()
+    {
+        $response = $this->render('AlomMainBundle:Main:sitemap.xml.twig', array(
+            'posts' => $this->get('doctrine.orm.default_entity_manager')->getRepository('AlomBlogBundle:Post')->fetchAllOrderedByDate()
+        ));
+
+        $response->headers->set('Content-Type', 'text/xml');
+        return $response;
+    }
 }

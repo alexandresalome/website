@@ -28,4 +28,7 @@
         <default key="_controller">AlomMainBundle:Security:logout</default>
     </route>
 
+    <route id="sitemap" pattern="/sitemap.xml">
+        <default key="_controller">AlomMainBundle:Main:sitemap</default>
+    </route>
 </routes>
