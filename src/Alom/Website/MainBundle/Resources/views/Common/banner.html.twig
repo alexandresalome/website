@@ -1,8 +1,8 @@
 {% macro element(class, href, title, label) %}
     <li class="{{ class }}">
         <a href="{{ href }}" title="{{ title }}">
-        <div></div>
-        {{ label }}
+            <div class="icon"></div>
+            <div class="text">{{ label }}</div>
         </a>
     </li>
 {% endmacro %}

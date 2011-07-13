@@ -1,16 +1,20 @@
-$icons: sprite-map("sprites/banner/*.png")
-
+// LAYOUT
 $layoutWidth: 1000px
 
-$bannerHeight:      30px
-$bannerBackground:  #ddd
-$bannerIcon:        20px
-$bannerPaddingIcon: 7px
+// GLOBAL
+$fontSizeNormal:      14px                            // Font size
+$fontFamilySansSerif: Arial, Helvetica, "sans-serif"  // Font family
+
+// BANNER
+$bannerHeight:      30px // Height of the banner
+$bannerBackground:  #ddd // Background of the banner
+$bannerIcon:        20px // Size of an icon
+$bannerPaddingIcon: 7px  // Padding between an icon and the text
 $bannerPaddingItem: 15px
 
-$fontSizeNormal:      14px
-$fontFamilySansSerif: Arial, Helvetica, "sans-serif"
 
+
+$icons: sprite-map("sprites/banner/*.png")
 
 #banner
     background-color: $bannerBackground
@@ -20,6 +24,7 @@ $fontFamilySansSerif: Arial, Helvetica, "sans-serif"
     width:    $layoutWidth
     height:   $bannerHeight
     margin:   0 auto
+    position: relative
 
     li
         float:       left
@@ -28,19 +33,27 @@ $fontFamilySansSerif: Arial, Helvetica, "sans-serif"
         font-size:   $fontSizeNormal
         font-family: $fontFamilySansSerif
 
-        a
-            padding-left:  ($bannerIcon + $bannerPaddingIcon)
-            padding-right: $bannerPaddingItem
-            position: relative
-            color:    black
-            display:  block
+        &.auth a
+            float:         none
+            display:       inline
 
-        & div
-            position: absolute
-            left:     0
-            top:      ( ($bannerHeight - $bannerIcon) / 2)
-            height:    $bannerIcon
-            width:     $bannerIcon
+        a
+            float:         left
+            height:        $bannerHeight
+            padding-right: $bannerPaddingItem
+            color:         black
+            display:       block
+
+        & .text
+            float:         left
+            padding-left:  $bannerPaddingIcon
+            line-height:   $bannerHeight
+
+        & .icon
+            margin-top: ($bannerHeight - $bannerIcon) / 2
+            float:      left
+            height:     $bannerIcon
+            width:      $bannerIcon
             background: sprite-url($icons) no-repeat
 
         &.auth
