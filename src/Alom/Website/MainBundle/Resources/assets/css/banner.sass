@@ -51,19 +51,7 @@ $fontFamilySansSerif: Arial, Helvetica, "sans-serif"
             a
                 display: inline
                 color:   #444
-        &.googleplus div
-            background-position: sprite-position($icons, "googleplus")
-        &.lastfm div
-            background-position: sprite-position($icons, "lastfm")
-        &.twitter div
-            background-position: sprite-position($icons, "twitter")
-        &.delicious div
-            background-position: sprite-position($icons, "delicious")
-        &.reader div
-            background-position: sprite-position($icons, "reader")
-        &.facebook div
-            background-position: sprite-position($icons, "facebook")
-        &.rss div
-            background-position: sprite-position($icons, "rss")
-        &.github div
-            background-position: sprite-position($icons, "github")
+
+        @each $type in googleplus, lastfm, twitter, delicious, reader, facebook, rss, github
+            &.#{$type} div
+                background-position: sprite-position($icons, $type)
