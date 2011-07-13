@@ -2,11 +2,13 @@ $logo:       "/images/logo.png"
 $logoWidth:  350px
 $logoHeight: 54px
 
-$menu:       "/images/menu.png"
+$menu: sprite-map("sprites/menu/*.png")
+$menuHeight: 50px
+
 $menuBlogWidth:    92px
 $menuCVWidth:      73px
 $menuContactWidth: 105px
-$menuHeight:       50px
+$menuWidth:        $menuBlogWidth + $menuCVWidth + $menuContactWidth
 
 #header
     height:   $logoHeight
@@ -23,7 +25,7 @@ $menuHeight:       50px
             overflow:    hidden
             display:     block
             width:       $logoWidth
-            height:     $logoHeight
+            height:      $logoHeight
             span
                 display: none
 
@@ -31,7 +33,7 @@ $menuHeight:       50px
         position: absolute
         right:    0
         bottom:   0
-        width:    $menuBlogWidth + $menuCVWidth + $menuContactWidth
+        width:    $menuWidth
         height:   $menuHeight
 
         li
@@ -41,33 +43,33 @@ $menuHeight:       50px
             a
                 height:  $menuHeight
                 display: block
-                background: url($menu) no-repeat
+                background: sprite-url($menu) no-repeat
                 span
                     display: none
 
         li.blog
             width: $menuBlogWidth
             a
-                background-position: 0 0
+                background-position: sprite-position($menu, "blog")
             a.active, a.active:hover
-                background-position: 0 (-$menuHeight)
+                background-position: sprite-position($menu, "blog_active")
             a:hover
-                background-position: 0 (-$menuHeight*2)
+                background-position: sprite-position($menu, "blog_hover")
 
         li.cv
             width: $menuCVWidth
             a
-                background-position: (-$menuBlogWidth) 0
+                background-position: sprite-position($menu, "cv")
             a.active, a.active:hover
-                background-position: (-$menuBlogWidth) (-$menuHeight)
+                background-position: sprite-position($menu, "cv_active")
             a:hover
-                background-position: (-$menuBlogWidth) (-$menuHeight*2)
+                background-position: sprite-position($menu, "cv_hover")
 
         li.contact
             width: $menuContactWidth
             a
-                background-position: (-($menuBlogWidth+$menuCVWidth)) (0)
+                background-position: sprite-position($menu, "contact")
             a.active, a.active:hover
-                background-position: (-($menuBlogWidth+$menuCVWidth)) (-$menuHeight)
+                background-position: sprite-position($menu, "contact_active")
             a:hover
-                background-position: (-($menuBlogWidth+$menuCVWidth)) (-$menuHeight*2)
+                background-position: sprite-position($menu, "contact_hover")
