@@ -3,7 +3,8 @@
 /app/logs
 /app/config/parameters.ini
 /vendor
+/web/.sass-cache
 /web/bundles
 /web/css
+/web/images/sprites/*.png
 /web/js
-
