@@ -54,4 +54,7 @@ assetic:
         cssrewrite: ~
         yui_js:     { jar: %yui_compiler_path% }
         yui_css:    { jar: %yui_compiler_path% }
-        sass:       ~
+        compass:
+          calls:
+            - [ "setImagesDir", [ %kernel.root_dir%/../web/images ] ]
+            - [ "setHttpPath",  [ /images ] ]

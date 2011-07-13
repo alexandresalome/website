@@ -1,3 +1,5 @@
+$icons: sprite-map("sprites/banner/*.png")
+
 $layoutWidth: 1000px
 
 $bannerHeight:      30px
@@ -39,7 +41,7 @@ $fontFamilySansSerif: Arial, Helvetica, "sans-serif"
             top:      ( ($bannerHeight - $bannerIcon) / 2)
             height:    $bannerIcon
             width:     $bannerIcon
-            background: url(/images/social.png) no-repeat
+            background: sprite-url($icons) no-repeat
 
         &.auth
             position:   absolute
@@ -49,20 +51,19 @@ $fontFamilySansSerif: Arial, Helvetica, "sans-serif"
             a
                 display: inline
                 color:   #444
-
         &.googleplus div
-            background-position: 0 0
+            background-position: sprite-position($icons, "googleplus")
         &.lastfm div
-            background-position: -20px 0
+            background-position: sprite-position($icons, "lastfm")
         &.twitter div
-            background-position: -40px 0
+            background-position: sprite-position($icons, "twitter")
         &.delicious div
-            background-position: -60px 0
+            background-position: sprite-position($icons, "delicious")
         &.reader div
-            background-position: -80px 0
+            background-position: sprite-position($icons, "reader")
         &.facebook div
-            background-position: -100px 0
+            background-position: sprite-position($icons, "facebook")
         &.rss div
-            background-position: -120px 0
+            background-position: sprite-position($icons, "rss")
         &.github div
-            background-position: -140px 0
+            background-position: sprite-position($icons, "github")
