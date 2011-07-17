@@ -6,6 +6,9 @@ parameters:
     test.client.class: Alom\Website\MainBundle\Test\Client
     rss_address:       http://feeds.feedburner.com/AlexandreSalome
     rss_title:         "Blog posts from the alexandre-salome.fr"
+    # Assetic
+    assetic.filter.compass.images_dir: %kernel.root_dir%/../web/images
+    assetic.filter.compass.http_path:  /images
 
 framework:
     secret:          %secret%
@@ -54,7 +57,4 @@ assetic:
         cssrewrite: ~
         yui_js:     { jar: %yui_compiler_path% }
         yui_css:    { jar: %yui_compiler_path% }
-        compass:
-          calls:
-            - [ "setImagesDir", [ %kernel.root_dir%/../web/images ] ]
-            - [ "setHttpPath",  [ /images ] ]
+        compass:    ~
