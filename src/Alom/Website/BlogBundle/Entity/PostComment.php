@@ -160,7 +160,7 @@ class PostComment
      */
     public function getBodyAsHtml()
     {
-        return str_replace("\n", "<br />", htmlentities($this->body));
+        return str_replace("\n", "<br />", htmlentities($this->body, ENT_QUOTES, 'UTF-8'));
     }
 
     /**
