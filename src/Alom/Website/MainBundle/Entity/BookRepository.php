@@ -13,10 +13,15 @@ use Doctrine\ORM\EntityRepository;
 
 class BookRepository extends EntityRepository
 {
-    public function getList()
+    public function getList($showInactive = false)
     {
-        return $this->createQueryBuilder('b')
-            ->where('b.isActive = true')
+        $query = $this->createQueryBuilder('b');
+
+        if (false === $showInactive) {
+            $query->where('b.isActive = true');
+        }
+
+        return $query
             ->orderBy('b.readAt', 'DESC')
             ->getQuery()
             ->execute()

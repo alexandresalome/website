@@ -20,7 +20,8 @@ class BookController extends Controller
 {
     public function listAction()
     {
-        $books = $this->getDoctrine()->getRepository('AlomMainBundle:Book')->getList();
+        $isAdmin = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        $books = $this->getDoctrine()->getRepository('AlomMainBundle:Book')->getList($isAdmin);
 
         return $this->render('AlomMainBundle:Book:list.html.twig', array(
             'books' => $books
