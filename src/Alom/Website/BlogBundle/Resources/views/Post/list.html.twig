@@ -15,21 +15,19 @@
                 <a href="{{ path('blog_post_create') }}" class="button button-add"><span>New post</span></a>
             </div>
         {% endif %}
-        <div class="rich-content">
-            {% set curDate = '' %}
-            {% for post in posts %}
-                {% set date = post.getPublishedAt().format('F Y') %}
-                {% if date != curDate %}
-                    {% if curDate != '' %}
-                        </div>
-                    {% endif %}
-                    {% set curDate = date %}
-                    <h2>{{ date }}</h2>
-                    <div class="button-set">
+        {% set curDate = '' %}
+        {% for post in posts %}
+            {% set date = post.getPublishedAt().format('F Y') %}
+            {% if date != curDate %}
+                {% if curDate != '' %}
+                    </div>
                 {% endif %}
-                <a class="button {% if not post.isActive() %}button-hidden{% endif %}" href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a>
-            {% endfor %}
-            </div> {# End of in-for tag #}
-        </div>
+                {% set curDate = date %}
+                <h2>{{ date }}</h2>
+                <div class="button-set">
+            {% endif %}
+            <a class="button {% if not post.isActive() %}button-hidden{% endif %}" href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a>
+        {% endfor %}
+        </div> {# End of in-for tag #}
     </div>
 {% endblock %}

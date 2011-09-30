@@ -1,3 +1,5 @@
+@import "common"
+
 .rich-content
   p
     line-height: 1.5em
@@ -39,10 +41,7 @@
   li
     line-height: 1.5em
   h2
-    margin-top: 1em
-    font-size: 1.4em
-    font-weight: bold
-    border-bottom: 1px solid #888
+    @include title_section
   h3
     font-size: 1.1em
     padding-top: 1em

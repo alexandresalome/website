@@ -5,19 +5,42 @@
 
 {% set active = "cv" %}
 
+{% macro book_entry(book) %}
+    <div class="book-entry">
+        <div class="book-illustration">
+            <img{% if not book.getIsActive() %} class="inactive"{% endif %} src="{{ ('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_thumb') }}" alt="{{ book.getTitle() }}" />
+        </div>
+        <div class="book-details">
+            <div class="book-title">{{ book.getTitle() }}</div>
+            <div class="book-description">{{ book.getDescription() }}</div>
+        </div>
+    </div>
+{% endmacro %}
+
 {% block content %}
-    <div class="page-content">
-        {% if is_granted('ROLE_ADMIN') %}
-            <div style="text-align: right">
-                <a href="{{ path('main_book_create') }}" class="button button-add"><span>New book</span></a>
-            </div>
-        {% endif %}
-        <h1>Books</h1>
+    <div id="main-book-list">
+        <div class="page-content">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div style="text-align: right">
+                    <a href="{{ path('main_book_create') }}" class="button button-add"><span>New book</span></a>
+                </div>
+            {% endif %}
+            <h1>Books</h1>
 
-        {% for book in books %}
-
-        {% else %}
-            <p><em>No book ?</em></p>
-        {% endfor %}
+            {% set curDate = '' %}
+            {% for book in books %}
+                {% set date = book.getReadAt().format('Y') %}
+                {% if date != curDate %}
+                    {% if curDate != '' %}
+                        </div>
+                    {% endif %}
+                    {% set curDate = date %}
+                    <h2>{{ date }}</h2>
+                    <div class="book-set">
+                {% endif %}
+                {{ _self.book_entry(book) }}
+            {% endfor %}
+            </div> {# end of in-tag #}
+        </div>
     </div>
 {% endblock %}

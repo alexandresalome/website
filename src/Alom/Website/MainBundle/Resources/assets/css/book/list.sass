@@ -1,0 +1,24 @@
+@import "../common"
+
+#main-book-list
+    h2
+        @include title_section
+
+    .book-set
+        padding-top: 10px
+        overflow:    hidden
+
+    .book-entry
+        float: left
+        padding-right: 10px
+
+    .book-details
+        display: none
+
+
+    .book-illustration img
+        border: 1px solid #bbb
+        cursor: hand
+
+    .book-illustration img.inactive
+        opacity: 0.4
