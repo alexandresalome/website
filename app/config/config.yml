@@ -58,3 +58,9 @@ assetic:
         yui_js:     { jar: %yui_compiler_path% }
         yui_css:    { jar: %yui_compiler_path% }
         compass:    ~
+
+avalanche_imagine:
+    filters:
+        book_thumb:
+            type:    thumbnail
+            options: { size: [200, 200], mode: inset }

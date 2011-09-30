@@ -3,3 +3,8 @@ content:
 
 blog:
   resource: "@AlomBlogBundle/Resources/config/routing.xml"
+
+_imagine:
+  resource: .
+  type:     imagine
+

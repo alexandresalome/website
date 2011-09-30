@@ -37,6 +37,10 @@
 [metadata]
     git=http://github.com/schmittjoh/metadata.git
 
+[Imagine]
+    git=http://github.com/avalanche123/Imagine.git
+    target=imagine
+
 [AsseticBundle]
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
@@ -44,3 +48,7 @@
 [DoctrineFixturesBundle]
     git=http://github.com/symfony/DoctrineFixturesBundle.git
     target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
+
+[AvalancheImagineBundle]
+    git=http://github.com/avalanche123/AvalancheImagineBundle.git
+    target=bundles/Avalanche/Bundle/ImagineBundle
