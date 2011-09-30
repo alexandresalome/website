@@ -8,6 +8,22 @@
         <default key="_controller">AlomMainBundle:Main:homepage</default>
     </route>
 
+    <route id="main_book_list" pattern="/books">
+        <default key="_controller">AlomMainBundle:Book:list</default>
+    </route>
+
+    <route id="main_book_create" pattern="/books/create">
+        <default key="_controller">AlomMainBundle:Book:edit</default>
+    </route>
+
+    <route id="main_book_edit" pattern="/books/edit/{id}">
+        <default key="_controller">AlomMainBundle:Book:edit</default>
+    </route>
+
+    <route id="main_book_delete" pattern="/books/delete/{id}">
+        <default key="_controller">AlomMainBundle:Book:delete</default>
+    </route>
+
     <route id="identity_main_cv" pattern="/cv">
         <default key="_controller">AlomMainBundle:Identity:cv</default>
     </route>

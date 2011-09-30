@@ -1,0 +1,27 @@
+{% extends "AlomMainBundle::layout.html.twig" %}
+
+{% block title            'Edit book: ' ~ book.getTitle() ~ ' | Alexandre Salomé' %}
+{% block meta_description 'Edition of a book, should not be referenced !' %}
+
+{% set active = "cv" %}
+
+{% block content %}
+    <div class="page-content">
+        <h1>Book «&nbsp;{{ book.getTitle() }}&nbsp;» - Editing</h1>
+
+        <div style="padding: 20px 0;">
+            <a class="button" href="{{ path('main_book_list') }}">&lt; Back to the list</a>
+        </div>
+
+        {% if book.getId() %}
+            {% set action = path("main_book_edit", { "id": book.getId() }) %}
+        {% else %}
+            {% set action = path("main_book_create") %}
+        {% endif %}
+
+        <form action="{{ action }}" {{ form_enctype(form) }} method="POST" id="post-edit">
+            {{ form_widget(form) }}
+            <input type="submit" value="Submit" class="button" />
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "AlomMainBundle::layout.html.twig" %}
+
+{% block title            'Books | Alexandre Salomé' %}
+{% block meta_description '@todo' %}
+
+{% set active = "cv" %}
+
+{% block content %}
+    <div class="page-content">
+        {% if is_granted('ROLE_ADMIN') %}
+            <div style="text-align: right">
+                <a href="{{ path('main_book_create') }}" class="button button-add"><span>New book</span></a>
+            </div>
+        {% endif %}
+        <h1>Books</h1>
+
+        {% for book in books %}
+
+        {% else %}
+            <p><em>No book ?</em></p>
+        {% endfor %}
+    </div>
+{% endblock %}
