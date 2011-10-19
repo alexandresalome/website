@@ -26,30 +26,37 @@ class Book
      * @ORM\GeneratedValue()
      */
     protected $id;
+
     /**
      * @ORM\Column(type="string", length="256")
      */
     protected $title;
+
     /**
      * @ORM\Column(type="string", length="64")
      */
     protected $slug;
+
     /**
      * @ORM\Column(type="date")
      */
     protected $readAt;
+
     /**
      * @ORM\Column(type="boolean")
      */
     protected $isActive;
+
     /**
      * @ORM\Column(type="text")
      */
     protected $description;
+
     /**
      * @ORM\Column(type="string", length="128", nullable=true)
      */
     protected $illustration;
+
     /**
      * Upload to process
      *
@@ -147,5 +154,10 @@ class Book
     public function getIllustrationUpload()
     {
         return $this->illustrationUpload;
+    }
+
+    public function getDescriptionAsHtml()
+    {
+        return str_replace("\n", "<br />", htmlentities($this->description, ENT_QUOTES, 'UTF-8'));
     }
 }

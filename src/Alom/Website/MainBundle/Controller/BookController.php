@@ -64,17 +64,41 @@ class BookController extends Controller
         ));
     }
 
+    public function deleteAction($id)
+    {
+        if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('AlomMainBundle:Book');
+        $book = $repository->findOneBy(array('id' => $id));
+
+        $this->removeUpload($book);
+        $em->remove($book);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('main_book_list'));
+
+    }
+
+    protected function removeUpload(Book $book)
+    {
+        if ($book->getIllustration()) {
+            $storage = $this->get('alom.upload.storage');
+            $storage->remove($book->getIllustration(), 'book');
+        }
+    }
+
     protected function processUpload(Book $book)
     {
         if ($book->hasIllustrationUpload()) {
             $upload  = $book->getIllustrationUpload();
+            $this->removeUpload($book);
+
             $storage = $this->get('alom.upload.storage');
-
-            if ($book->getIllustration()) {
-                $storage->remove($book->getIllustration(), 'book');
-            }
-
             $filename = $storage->addUpload($upload, 'book');
+
             $book->setIllustration($filename);
         }
     }

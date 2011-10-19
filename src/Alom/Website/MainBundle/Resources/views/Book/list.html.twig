@@ -7,12 +7,23 @@
 
 {% macro book_entry(book) %}
     <div class="book-entry">
-        <div class="book-illustration">
-            <img{% if not book.getIsActive() %} class="inactive"{% endif %} src="{{ ('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_thumb') }}" alt="{{ book.getTitle() }}" />
+        <div class="book-illustration{% if not book.getIsActive() %} inactive{% endif %}">
+            <img src="{{ ('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_thumb') }}" alt="{{ book.getTitle() }}" />
         </div>
         <div class="book-details">
-            <div class="book-title">{{ book.getTitle() }}</div>
-            <div class="book-description">{{ book.getDescription() }}</div>
+            <h3 class="book-title">{{ book.getTitle() }}</h3>
+            <div class="book-description">{{ book.getDescriptionAsHtml() | raw }}</div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="button-set">
+                    <a href="{{ path("main_book_edit", {'id': book.getId() }) }}" class="button button-blue button-small">Edit</a>
+                    <a href="{{ path("main_book_delete", {'id': book.getId() }) }}" class="button button-red button-small">Remove</a>
+                    {% if book.getIsActive() %}
+                        <a href="{{ path("main_book_enable", {'id': book.getId() }) }}" class="button button-hidden button-small">Enable</a>
+                    {% else %}
+                        <a href="{{ path("main_book_disable", {'id': book.getId() }) }}" class="button button-small">Disable</a>
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endmacro %}

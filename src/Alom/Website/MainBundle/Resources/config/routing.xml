@@ -24,6 +24,14 @@
         <default key="_controller">AlomMainBundle:Book:delete</default>
     </route>
 
+    <route id="main_book_enable" pattern="/books/enable/{id}">
+        <default key="_controller">AlomMainBundle:Book:enable</default>
+    </route>
+
+    <route id="main_book_disable" pattern="/books/disable/{id}">
+        <default key="_controller">AlomMainBundle:Book:disable</default>
+    </route>
+
     <route id="identity_main_cv" pattern="/cv">
         <default key="_controller">AlomMainBundle:Identity:cv</default>
     </route>
