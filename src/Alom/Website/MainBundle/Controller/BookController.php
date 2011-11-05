@@ -12,6 +12,7 @@ namespace Alom\Website\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Alom\Website\MainBundle\Entity\Book;
 use Alom\Website\MainBundle\Form\BookType;
@@ -84,6 +85,10 @@ class BookController extends Controller
 
     public function disableAction($id)
     {
+        if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getEntityManager();
         $book = $em
             ->getRepository('AlomMainBundle:Book')
@@ -103,6 +108,10 @@ class BookController extends Controller
 
     public function enableAction($id)
     {
+        if (! $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getEntityManager();
         $book = $em
             ->getRepository('AlomMainBundle:Book')
