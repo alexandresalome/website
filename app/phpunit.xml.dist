@@ -13,7 +13,7 @@
 >
   <testsuites>
       <testsuite name="Project Test Suite">
-          <directory>../src/Alom/Website/*Bundle/Tests</directory>
+          <directory>../src/Alom/WebsiteBundle/Tests</directory>
       </testsuite>
   </testsuites>
 
@@ -21,8 +21,7 @@
       <whitelist>
           <directory>../src</directory>
           <exclude>
-              <directory>../src/Alom/Website/*Bundle/Resources</directory>
-              <directory>../src/Alom/Website/*Bundle/Tests</directory>
+              <directory>../src/Alom/WebsiteBundle/Resources</directory>
           </exclude>
       </whitelist>
   </filter>

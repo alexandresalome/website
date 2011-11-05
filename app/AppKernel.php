@@ -26,8 +26,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 
-            new Alom\Website\BlogBundle\AlomBlogBundle(),
-            new Alom\Website\MainBundle\AlomMainBundle()
+            new Alom\WebsiteBundle\AlomWebsiteBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

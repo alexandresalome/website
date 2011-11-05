@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block head %}
+    <title>{% block title 'Alexandre Salomé' %}</title>
+    <meta name="description" content="{% block meta_description '' %}" />
+    <link rel="alternate" type="application/rss+xml" title="{{ rssTitle }}" href="{{ rssAddress }}" />
+    {% include "AlomWebsiteBundle::stylesheets.html.twig" %}
+{% endblock %}
+
+{% block body %}
+    {% render "AlomWebsiteBundle:Common:banner" %}
+    <div id="wrapper">
+        {% include "AlomWebsiteBundle::common/header.html.twig" %}
+        <div id="content">
+            {% block content '' %}
+        </div>
+        {% include "AlomWebsiteBundle::common/footer.html.twig" %}
+    </div>
+
+    {% include "AlomWebsiteBundle::javascripts.html.twig" %}
+    {% block javascript '' %}
+    {% include "::analytics.html.twig" %}
+{% endblock %}

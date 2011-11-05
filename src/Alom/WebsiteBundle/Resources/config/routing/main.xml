@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="homepage" pattern="/">
+        <default key="_controller">AlomWebsiteBundle:Main:homepage</default>
+    </route>
+
+    <route id="main_book_list" pattern="/books">
+        <default key="_controller">AlomWebsiteBundle:Book:list</default>
+    </route>
+
+    <route id="main_book_create" pattern="/books/create">
+        <default key="_controller">AlomWebsiteBundle:Book:edit</default>
+    </route>
+
+    <route id="main_book_edit" pattern="/books/edit/{id}">
+        <default key="_controller">AlomWebsiteBundle:Book:edit</default>
+    </route>
+
+    <route id="main_book_delete" pattern="/books/delete/{id}">
+        <default key="_controller">AlomWebsiteBundle:Book:delete</default>
+    </route>
+
+    <route id="main_book_enable" pattern="/books/enable/{id}">
+        <default key="_controller">AlomWebsiteBundle:Book:enable</default>
+    </route>
+
+    <route id="main_book_disable" pattern="/books/disable/{id}">
+        <default key="_controller">AlomWebsiteBundle:Book:disable</default>
+    </route>
+
+    <route id="identity_main_cv" pattern="/cv">
+        <default key="_controller">AlomWebsiteBundle:Identity:cv</default>
+    </route>
+
+    <route id="identity_main_contact" pattern="/contact">
+        <default key="_controller">AlomWebsiteBundle:Identity:contact</default>
+    </route>
+
+    <route id="login" pattern="/login">
+        <default key="_controller">AlomWebsiteBundle:Security:login</default>
+    </route>
+
+    <route id="login_check" pattern="/login_check">
+        <default key="_controller">AlomWebsiteBundle:Security:check</default>
+    </route>
+
+    <route id="logout" pattern="/logout">
+        <default key="_controller">AlomWebsiteBundle:Security:logout</default>
+    </route>
+
+    <route id="sitemap" pattern="/sitemap.xml">
+        <default key="_controller">AlomWebsiteBundle:Main:sitemap</default>
+    </route>
+</routes>

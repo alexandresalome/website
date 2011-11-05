@@ -1,8 +1,8 @@
 content:
-  resource: "@AlomMainBundle/Resources/config/routing.xml"
+  resource: "@AlomWebsiteBundle/Resources/config/routing.xml"
 
 blog:
-  resource: "@AlomBlogBundle/Resources/config/routing.xml"
+  resource: "@AlomWebsiteBundle/Resources/config/routing.xml"
 
 _imagine:
   resource: .
