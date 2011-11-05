@@ -22,13 +22,23 @@
                     <h2>Last books I've read</h2>
                     <div class="block-last-books">
                         <div class="very-last">
-                            <img src="{{ ('/uploads/book/' ~ lastBooks[0].getIllustration()) | apply_filter('book_thumb') }}" alt="{{ lastBooks[0].getTitle() }}" />
+                            {% set book = lastBooks[0] %}
+                            <table><tr><td>
+                                <a href="{{ path('main_book_list') }}#{{ book.getSlug() }}">
+                                    <img src="{{ ('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_thumb') }}" alt="{{ book.getTitle() }}" />
+                                </a>
+                            </td></tr></table>
                         </div>
                         <div class="others">
                             {% for i in 1..4 %}
                                 {% if lastBooks[i] is defined %}
+                                    {% set book = lastBooks[i] %}
                                     <div class="book">
-                                        <img src="{{ ('/uploads/book/' ~ lastBooks[i].getIllustration()) | apply_filter('book_mini') }}" alt="{{ lastBooks[i].getTitle() }}" />
+                                        <table><tr><td>
+                                            <a title="{{ book.getTitle() }}" href="{{ path('main_book_list') }}#{{ book.getSlug() }}">
+                                                <img src="{{ ('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_mini') }}" alt="{{ book.getTitle() }}" />
+                                            </a>
+                                        </td></tr></table>
                                     </div>
                                 {% endif %}
                             {% endfor %}
