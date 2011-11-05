@@ -7,6 +7,18 @@ use Doctrine\ORM\Query\Expr;
 
 class PostRepository extends EntityRepository
 {
+    public function fetchLast($count = 5)
+    {
+        return $this
+            ->createQueryBuilder('p')
+            ->addOrderBy('p.publishedAt', 'DESC')
+            ->where('p.isActive = true')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->execute()
+        ;
+    }
+
     public function findOneBySlugWithRelated($slug, $fetchInactive = false)
     {
         $query = $this

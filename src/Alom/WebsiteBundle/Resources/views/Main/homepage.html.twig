@@ -4,3 +4,41 @@
 {% block meta_description 'Alexandre Salomé\'s personal website, Consultant for Sensio Labs. Links to the blog, social accounts, CV and contact' %}
 
 {% set active = "" %}
+
+{% block content %}
+    <div class="page-content page-main-homepage">
+        <div class="col-parent">
+            <div class="col-1-2">
+                <h2>Last blog posts</h2>
+                <dl>
+                {% for post in lastPosts %}
+                    <dt><a href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a></dt>
+                    <dd>{{ post.getMetaDescription() }}</dd>
+                {% endfor %}
+                </dl>
+            </div>
+            <div class="col-1-2">
+                {% if lastBooks|length > 0 %}
+                    <h2>Last books I've read</h2>
+                    <div class="block-last-books">
+                        <div class="very-last">
+                            <img src="{{ ('/uploads/book/' ~ lastBooks[0].getIllustration()) | apply_filter('book_thumb') }}" alt="{{ lastBooks[0].getTitle() }}" />
+                        </div>
+                        <div class="others">
+                            {% for i in 1..4 %}
+                                {% if lastBooks[i] is defined %}
+                                    <div class="book">
+                                        <img src="{{ ('/uploads/book/' ~ lastBooks[i].getIllustration()) | apply_filter('book_mini') }}" alt="{{ lastBooks[i].getTitle() }}" />
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="more">
+                            <a class="button" href="{{ path("main_book_list") }}">View more books &raquo;</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

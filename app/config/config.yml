@@ -64,3 +64,6 @@ avalanche_imagine:
         book_thumb:
             type:    thumbnail
             options: { size: [200, 200], mode: inset }
+        book_mini:
+            type:    thumbnail
+            options: { size: [100, 100], mode: inset }

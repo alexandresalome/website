@@ -27,4 +27,16 @@ class BookRepository extends EntityRepository
             ->execute()
         ;
     }
+
+    public function fetchLast($count = 5)
+    {
+        return $this
+            ->createQueryBuilder('b')
+            ->where('b.isActive = true')
+            ->orderBy('b.readAt', 'DESC')
+            ->setMaxResults($count)
+            ->getQuery()
+            ->execute()
+        ;
+    }
 }

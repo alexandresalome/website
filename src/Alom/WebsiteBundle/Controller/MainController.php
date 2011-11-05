@@ -26,13 +26,19 @@ class MainController extends Controller
      */
     public function homepageAction()
     {
-        return $this->render('AlomWebsiteBundle:Main:homepage.html.twig');
+        $lastPosts = $this->getDoctrine()->getRepository('AlomWebsiteBundle:Post')->fetchLast(5);
+        $lastBooks = $this->getDoctrine()->getRepository('AlomWebsiteBundle:Book')->fetchLast(5);
+
+        return $this->render('AlomWebsiteBundle:Main:homepage.html.twig', array(
+            'lastPosts' => $lastPosts,
+            'lastBooks'  => $lastBooks
+        ));
     }
 
     public function sitemapAction()
     {
         $response = $this->render('AlomWebsiteBundle:Main:sitemap.xml.twig', array(
-            'posts' => $this->get('doctrine.orm.default_entity_manager')->getRepository('AlomWebsiteBundle:Post')->fetchAllOrderedByDate()
+            'posts' => $this->getDoctrine()->getRepository('AlomWebsiteBundle:Post')->fetchAllOrderedByDate()
         ));
 
         $response->headers->set('Content-Type', 'text/xml');
