@@ -2,6 +2,7 @@
     database_driver=pdo_mysql
     database_host=localhost
     database_name=alom_dev
+    database_name_test=alom_test
     database_user=root
     database_password=
 
