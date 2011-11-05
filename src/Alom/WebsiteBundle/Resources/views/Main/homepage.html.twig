@@ -43,11 +43,16 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        <div class="more">
-                            <a class="button" href="{{ path("main_book_list") }}">View more books &raquo;</a>
-                        </div>
                     </div>
                 {% endif %}
+            </div>
+        </div>
+        <div class="col-parent block-more">
+            <div class="col-1-2">
+                <a class="button" href="{{ path("main_book_list") }}">View more posts &raquo;</a>
+            </div>
+            <div class="col-1-2">
+                <a class="button" href="{{ path("main_book_list") }}">View more books &raquo;</a>
             </div>
         </div>
     </div>
