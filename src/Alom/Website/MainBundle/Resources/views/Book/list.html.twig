@@ -18,9 +18,9 @@
                     <a href="{{ path("main_book_edit", {'id': book.getId() }) }}" class="button button-blue button-small">Edit</a>
                     <a href="{{ path("main_book_delete", {'id': book.getId() }) }}" class="button button-red button-small">Remove</a>
                     {% if book.getIsActive() %}
-                        <a href="{{ path("main_book_enable", {'id': book.getId() }) }}" class="button button-hidden button-small">Enable</a>
-                    {% else %}
                         <a href="{{ path("main_book_disable", {'id': book.getId() }) }}" class="button button-small">Disable</a>
+                    {% else %}
+                        <a href="{{ path("main_book_enable", {'id': book.getId() }) }}" class="button button-hidden button-small">Enable</a>
                     {% endif %}
                 </div>
             {% endif %}

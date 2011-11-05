@@ -82,6 +82,44 @@ class BookController extends Controller
 
     }
 
+    public function disableAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $book = $em
+            ->getRepository('AlomMainBundle:Book')
+            ->find($id)
+        ;
+
+        if (null === $book) {
+            throw new NotFoundHttpException(sprintf('The book #%s was not found', $id));
+        }
+
+        $book->disable();
+        $em->persist($book);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('main_book_list'));
+    }
+
+    public function enableAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $book = $em
+            ->getRepository('AlomMainBundle:Book')
+            ->find($id)
+        ;
+
+        if (null === $book) {
+            throw new NotFoundHttpException(sprintf('The book #%s was not found', $id));
+        }
+
+        $book->enable();
+        $em->persist($book);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('main_book_list'));
+    }
+
     protected function removeUpload(Book $book)
     {
         if ($book->getIllustration()) {

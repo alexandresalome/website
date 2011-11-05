@@ -160,4 +160,16 @@ class Book
     {
         return str_replace("\n", "<br />", htmlentities($this->description, ENT_QUOTES, 'UTF-8'));
     }
+
+    public function disable()
+    {
+        $this->setIsActive(false);
+    }
+
+    public function enable()
+    {
+        $this->setIsActive(true);
+    }
+
+
 }
