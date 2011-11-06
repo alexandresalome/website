@@ -15,6 +15,7 @@ class BookType extends AbstractType
             ->add('readAt')
             ->add('isActive', null, array('required' => false))
             ->add('illustrationUpload', 'file', array('required' => false))
+            ->add('externalLink', 'text', array('required' => false))
         ;
     }
 

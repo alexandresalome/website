@@ -58,6 +58,11 @@ class Book
     protected $illustration;
 
     /**
+     * @ORM\Column(type="string", length="255", nullable=true)
+     */
+    protected $externalLink;
+
+    /**
      * Upload to process
      *
      * @var Symfony\Component\HttpFoundation\File\UploadedFile
@@ -171,5 +176,13 @@ class Book
         $this->setIsActive(true);
     }
 
+    public function getExternalLink()
+    {
+        return $this->externalLink;
+    }
 
+    public function setExternalLink($externalLink)
+    {
+        $this->externalLink = $externalLink;
+    }
 }

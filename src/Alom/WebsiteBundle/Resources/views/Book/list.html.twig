@@ -8,11 +8,22 @@
 {% macro book_entry(book) %}
     <div class="book-entry" id="{{ book.getSlug() }}">
         <div class="book-illustration{% if not book.getIsActive() %} inactive{% endif %}">
+            {% if book.getExternalLink() %}
+                <a href="{{ book.getExternalLink() }}">
+            {% endif %}
             <img src="{{ ('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_thumb') }}" alt="{{ book.getTitle() }}" />
+            {% if book.getExternalLink() %}
+                </a>
+            {% endif %}
         </div>
         <div class="book-details">
             <h3>{{ book.getTitle() }}</h3>
             <div class="book-description">{{ book.getDescriptionAsHtml() | raw }}</div>
+            <div class="book-link">
+                {% if book.getExternalLink() %}
+                    <a href="{{ book.getExternalLink() }}">Buy this book &raquo;</a>
+                {% endif %}
+            </div>
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="button-set">
                     <a href="{{ path("main_book_edit", {'id': book.getId() }) }}" class="button button-blue button-small">Edit</a>
