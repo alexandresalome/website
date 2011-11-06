@@ -32,7 +32,7 @@ rm -Rf app/config/parameters.ini
 rm -Rf web/bundles
 rm -Rf web/config.php
 rm -Rf web/app_dev.php
-rm VERSION LICENCE deps*
+rm LICENCE deps*
 
 # Compress
 cd $tempDir
