@@ -40,4 +40,12 @@ class AppKernel extends Kernel
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+    protected function getKernelParameters()
+    {
+        $parameters = parent::getKernelParameters();
+        $parameters['alom.version'] = file_get_contents(__DIR__.'/../VERSION');
+
+        return $parameters;
+    }
 }
