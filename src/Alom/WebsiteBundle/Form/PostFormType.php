@@ -16,7 +16,7 @@ class PostFormType extends AbstractType
         $builder->add('body');
         $builder->add('metaDescription');
         $builder->add('publishedAt');
-        $builder->add('isActive');
+        $builder->add('isActive', 'checkbox', array('required' => false));
     }
 
     public function getDefaultOptions(array $options)
