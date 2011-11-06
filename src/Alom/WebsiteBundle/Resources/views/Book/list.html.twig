@@ -11,7 +11,7 @@
             <img src="{{ ('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_thumb') }}" alt="{{ book.getTitle() }}" />
         </div>
         <div class="book-details">
-            <h3 class="book-title">{{ book.getTitle() }}</h3>
+            <h3>{{ book.getTitle() }}</h3>
             <div class="book-description">{{ book.getDescriptionAsHtml() | raw }}</div>
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="button-set">
@@ -29,14 +29,14 @@
 {% endmacro %}
 
 {% block content %}
-    <div id="main-book-list">
+    <div class="page-book-list">
         <div class="page-content">
             {% if is_granted('ROLE_ADMIN') %}
                 <div style="text-align: right">
                     <a href="{{ path('main_book_create') }}" class="button button-add"><span>New book</span></a>
                 </div>
             {% endif %}
-            <h1>Books</h1>
+            <h1>Books I've read</h1>
 
             {% set curDate = '' %}
             {% for book in books %}
@@ -46,7 +46,7 @@
                         </div>
                     {% endif %}
                     {% set curDate = date %}
-                    <h2>{{ date }}</h2>
+                    <h2>During the year {{ date }}</h2>
                     <div class="book-set">
                 {% endif %}
                 {{ _self.book_entry(book) }}

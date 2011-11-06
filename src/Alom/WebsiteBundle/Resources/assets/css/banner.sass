@@ -1,28 +1,16 @@
-// LAYOUT
-$layoutWidth: 1000px
+@import "common.sass"
 
-// GLOBAL
-$fontSizeNormal:      14px                            // Font size
-$fontFamilySansSerif: Arial, Helvetica, "sans-serif"  // Font family
-
-// BANNER
-$bannerHeight:      30px // Height of the banner
-$bannerBackground:  #ddd // Background of the banner
-$bannerIcon:        20px // Size of an icon
-$bannerPaddingIcon: 7px  // Padding between an icon and the text
-$bannerPaddingItem: 15px
-
-
-
-$icons: sprite-map("sprites/banner/*.png")
+$bannerPaddingItem: 0.7em
+$bannerHeight:      30px
+$bannerTickHeight:  3px
 
 #banner
-    background-color: $bannerBackground
+    background-color: $colorDark
     height:           $bannerHeight
 
 #banner-social
-    width:    $layoutWidth
     height:   $bannerHeight
+    width:    $layoutWidth
     margin:   0 auto
     position: relative
 
@@ -30,41 +18,28 @@ $icons: sprite-map("sprites/banner/*.png")
         float:       left
         height:      $bannerHeight
         line-height: $bannerHeight
-        font-size:   $fontSizeNormal
-        font-family: $fontFamilySansSerif
-
-        &.auth a
-            float:         none
-            display:       inline
-
-        a
-            float:         left
-            height:        $bannerHeight
-            padding-right: $bannerPaddingItem
-            color:         black
-            display:       block
-
-        & .text
-            float:         left
-            padding-left:  $bannerPaddingIcon
-            line-height:   $bannerHeight
-
-        & .icon
-            margin-top: ($bannerHeight - $bannerIcon) / 2
-            float:      left
-            height:     $bannerIcon
-            width:      $bannerIcon
-            background: sprite-url($icons) no-repeat
+        font-size:   $fontSizeSmall
+        font-family: $fontFamily
 
         &.auth
             position:   absolute
             right:      0
             text-align: right
+            color:      $colorLight
 
             a
+                float:   none
                 display: inline
-                color:   #444
 
-        @each $type in googleplus, lastfm, twitter, delicious, reader, facebook, rss, github
-            &.#{$type} div
-                background-position: sprite-position($icons, $type)
+        a
+            font-weight:   bold
+            float:         left
+            height:        $bannerHeight
+            padding:       0 $bannerPaddingItem
+            color:         $colorLight
+            display:       block
+
+            &:hover
+                text-decoration: none
+                height:          $bannerHeight - $bannerTickHeight
+                border-bottom:   $bannerTickHeight solid $colorBase

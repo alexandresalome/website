@@ -9,14 +9,13 @@
 
 {% block body %}
     {% render "AlomWebsiteBundle:Common:banner" %}
-    <div id="wrapper">
-        {% include "AlomWebsiteBundle::common/header.html.twig" %}
+    {% include "AlomWebsiteBundle::header.html.twig" %}
+    <div id="content-wrapper">
         <div id="content">
             {% block content '' %}
         </div>
-        {% include "AlomWebsiteBundle::common/footer.html.twig" %}
     </div>
-
+    {% include "AlomWebsiteBundle::footer.html.twig" %}
     {% include "AlomWebsiteBundle::javascripts.html.twig" %}
     {% block javascript '' %}
     {% include "::analytics.html.twig" %}

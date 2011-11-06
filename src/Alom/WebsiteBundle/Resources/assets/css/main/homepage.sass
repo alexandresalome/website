@@ -1,17 +1,7 @@
 @import "../common"
 
 .page-main-homepage
-    font-size: 0.8em
-    h2
-        font-size: 1.4em
-
-    dl
-        padding: 10px
-        dt
-            font-weight: bold
-            line-height: 1.4em
-        dd
-            padding-bottom: 10px
+    +standard_dl
 
     .block-last-books
         padding-bottom: 20px
@@ -39,6 +29,9 @@
                     td
                         height: 100px
                         text-align: center
-    .block-more
-        padding-top: 10px
-        text-align: center
+
+    .block-more a
+        color: $colorBase
+        font-size: $fontSizeMedium
+        line-height: 2em
+        font-family: $fontFamilyAlt

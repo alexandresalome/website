@@ -1,41 +1,44 @@
+@import "common.sass"
+
+$headerHeight: 60px
+$headerMenuOffset: $layoutWidth / 2
+
+#header-wrapper
+    background-color: $colorLight
+
 #header
-    height:   50px
+    margin:   0 auto
+    width:    $layoutWidth
+    height:   $headerHeight
     position: relative
 
+    a
+        color: $colorDark
+
+    a.active, a:hover
+        color:           $colorBase
+        text-decoration: none
+
     h1
-        font-family: Georgia
-        line-height: 1em
-        font-size:   2em
-        margin-left: 0.3em
+        font-family: $fontFamilyAlt
+        font-size:   $fontSizeXLarge
         position:    absolute
-        bottom:      0
+        bottom:      -2px
         left:        0
+
         a
-            color: #555555
+            color: $colorDark
+
+        &.active a
+            color: $colorBase
 
     ul
-        line-height: 1.2em
+        font-family: $fontFamilyAlt
         position:    absolute
-        bottom:      -1px
-        right:       20px
+        bottom:      0
+        left:        $headerMenuOffset
 
         li
+            font-size:        $fontSizeMedium
             display:          inline-block
-            border-top:       1px solid #cccccc
-            border-left:      1px solid #cccccc
-            border-right:     1px solid #cccccc
-            padding:          0.4em 0.5em
-            margin-bottom:    1px
-            background-color: white
-            margin-left:      0.4em
-
-            a
-                color: black
-
-            &.active
-                margin-bottom: 0
-                border-color:     #555555
-                background-color: #555555
-
-                a
-                    color: white
+            margin-right:     1em

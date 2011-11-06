@@ -8,7 +8,7 @@
 {% set active = "blog" %}
 
 {% block content %}
-    <div class="page-content">
+    <div class="page-post-view">
         {% if is_granted("ROLE_ADMIN") %}
             <div class="blog-post-actions">
                 {% if post.isActive() %}
@@ -16,14 +16,14 @@
                 {% else %}
                     <a href="{{ path('blog_post_enable', { 'id': post.getId() }) }}" class="button">Enable</a>
                 {% endif %}
-                <a href="{{ path('blog_post_edit', { 'id': post.getId() }) }}" class="button button-edit"><span>Edit</span></a>
+                <a href="{{ path('blog_post_edit', { 'id': post.getId() }) }}" class="button button-edit">Edit</a>
                 <a onclick="return confirm('Are you sure ?')" href="{{ path('blog_post_delete', { 'id': post.getId() }) }}" class="button button-delete"><span>Delete</span></a>
             </div>
         {% endif %}
 
-        <h1>«&nbsp;{{ post.getTitle() }}&nbsp;»</h1>
+        <h1>{{ post.getTitle() }}</h1>
 
-        <div class="blog-post-date">
+        <div class="post-date">
             {{ formattedDate }}
         </div>
 

@@ -3,19 +3,21 @@
 {% block title 'Alexandre Salomé' %}
 {% block meta_description 'Alexandre Salomé\'s personal website, Consultant for Sensio Labs. Links to the blog, social accounts, CV and contact' %}
 
-{% set active = "" %}
+{% set active = "homepage" %}
 
 {% block content %}
-    <div class="page-content page-main-homepage">
+    <div class="page-main-homepage">
         <div class="col-parent">
             <div class="col-1-2">
                 <h2>Last blog posts</h2>
-                <dl>
-                {% for post in lastPosts %}
-                    <dt><a href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a></dt>
-                    <dd>{{ post.getMetaDescription() }}</dd>
-                {% endfor %}
-                </dl>
+                <div class="block-last-posts">
+                    <dl>
+                    {% for post in lastPosts %}
+                        <dt><a href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a></dt>
+                        <dd>{{ post.getMetaDescription() }}</dd>
+                    {% endfor %}
+                    </dl>
+                </div>
             </div>
             <div class="col-1-2">
                 {% if lastBooks|length > 0 %}
@@ -49,10 +51,10 @@
         </div>
         <div class="col-parent block-more">
             <div class="col-1-2">
-                <a class="button" href="{{ path("main_book_list") }}">View more posts &raquo;</a>
+                <a href="{{ path("blog_post_list") }}">&raquo; View all posts</a>
             </div>
             <div class="col-1-2">
-                <a class="button" href="{{ path("main_book_list") }}">View more books &raquo;</a>
+                <a href="{{ path("main_book_list") }}">&raquo; View all books</a>
             </div>
         </div>
     </div>

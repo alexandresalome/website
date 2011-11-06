@@ -6,7 +6,7 @@
 {% set active = "blog" %}
 
 {% block content %}
-    <div id="block-post-list" class="page-content">
+    <div class="page-post-list" class="page-content">
 
         <h1>Blog posts</h1>
 
@@ -20,13 +20,18 @@
             {% set date = post.getPublishedAt().format('F Y') %}
             {% if date != curDate %}
                 {% if curDate != '' %}
-                    </div>
+                    </ul>
                 {% endif %}
                 {% set curDate = date %}
                 <h2>{{ date }}</h2>
-                <div class="button-set">
+                <ul>
             {% endif %}
-            <a class="button {% if not post.isActive() %}button-hidden{% endif %}" href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a>
+            <li>
+                {% if not post.isActive() %}
+                    (inactive)
+                {% endif %}
+                <a href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a>
+            </li>
         {% endfor %}
         </div> {# End of in-for tag #}
     </div>
