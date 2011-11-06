@@ -8,28 +8,26 @@
 {% block javascript %}
     <script type="text/javascript">
         $(window).load(function (){
-            blog.PostEdit.bind();
+            post.edit.bind();
         });
     </script>
 {% endblock %}
 
 {% block content %}
-    <div class="page-content">
-        <h1>«&nbsp;{{ post.getTitle() }}&nbsp;» - Editing</h1>
+    <h1>«&nbsp;{{ post.getTitle() }}&nbsp;» - Editing</h1>
 
-        <div style="padding: 20px 0;">
-            <a class="button" href="{{ path('blog_post_list') }}">&lt; Back to the list</a>
-            <a class="button" href="{{ path('blog_post_view', { 'slug': post.getSlug() }) }}">View</a>
-        </div>
-
-        {% if post.getId() %}
-            {% set action = path("blog_post_edit", { "id": post.getId() }) %}
-        {% else %}
-            {% set action = path("blog_post_create") %}
-        {% endif %}
-        {% include "AlomWebsiteBundle:Post:form.html.twig" with {
-            "action" : action,
-            "form" : form
-        } only %}
+    <div style="padding: 20px 0;">
+        <a class="button" href="{{ path('blog_post_list') }}">&lt; Back to the list</a>
+        <a class="button" href="{{ path('blog_post_view', { 'slug': post.getSlug() }) }}">View</a>
     </div>
+
+    {% if post.getId() %}
+        {% set action = path("blog_post_edit", { "id": post.getId() }) %}
+    {% else %}
+        {% set action = path("blog_post_create") %}
+    {% endif %}
+    {% include "AlomWebsiteBundle:Post:form.html.twig" with {
+        "action" : action,
+        "form" : form
+    } only %}
 {% endblock %}

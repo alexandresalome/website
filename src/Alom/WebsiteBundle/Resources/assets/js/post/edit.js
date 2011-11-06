@@ -1,8 +1,8 @@
-if (typeof blog === "undefined"){
-    blog = {};
+if (typeof post === "undefined"){
+    post = {};
 }
 
-blog.PostEdit = {
+post.edit = {
     bind: function () {
         $("#post-body-html-button").click(function (){
             $.post($(this).attr('href'), {

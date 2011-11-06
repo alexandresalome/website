@@ -7,13 +7,13 @@ if (typeof identity === "undefined"){
  *
  * @author Alexandre Salomé <alexandre.salome@gmail.com>
  */
-identity.CV = {
+identity.cv = {
     /**
      * Bind events to the CV page
      */
     bind: function ()
     {
-        $(".page-main-cv dl.accordion").each(identity.CV.bindList);
+        $(".page-main-cv dl.accordion").each(identity.cv.bindList);
     },
 
     /**

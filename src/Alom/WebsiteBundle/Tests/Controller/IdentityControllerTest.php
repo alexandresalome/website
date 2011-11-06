@@ -17,9 +17,6 @@ class IdentityControllerTest extends WebTestCase
         // Check document structure
         $this->assertEquals($crawler->filter('title')->text(), 'CV | Alexandre Salomé');
 
-        $this->assertEquals($crawler->filter('#content h1')->count(), 1);
-        $this->assertEquals($crawler->filter('#content h1')->text(), 'Alexandre Salomé - Consultant');
-
         $content = $client->getResponse()->getContent();
         $keywords = array('Sensio Labs', 'Wokine', 'Symfony2', 'Automation',
             'Git', 'Linux', 'Vim', 'XHTML', 'Ergonomy', 'Photoshop', 'Flash',

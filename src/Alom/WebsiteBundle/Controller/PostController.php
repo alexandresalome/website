@@ -36,7 +36,7 @@ class PostController extends Controller
      */
     public function viewAction($slug)
     {
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('AlomWebsiteBundle:Post');
 
         $fetchModerated = $this->get('security.context')->isGranted('ROLE_ADMIN');
@@ -150,7 +150,7 @@ class PostController extends Controller
             throw new AccessDeniedException();
         }
 
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('AlomWebsiteBundle:Post');
         $post = $repository->findOneBy(array('id' => $id));
 
@@ -167,7 +167,7 @@ class PostController extends Controller
             throw new AccessDeniedException();
         }
 
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('AlomWebsiteBundle:Post');
         $post = $repository->findOneBy(array('id' => $id));
 
@@ -184,7 +184,7 @@ class PostController extends Controller
             throw new AccessDeniedException();
         }
 
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('AlomWebsiteBundle:Post');
         $post = $repository->findOneBy(array('id' => $id));
 
@@ -215,7 +215,7 @@ class PostController extends Controller
             throw new NotFoundHttpException("Token is not valid");
         }
         $posts = $this
-            ->get('doctrine.orm.default_entity_manager')
+            ->getDoctrine()
             ->getRepository('AlomWebsiteBundle:Post')
             ->fetchAllOrderedByDate()
         ;

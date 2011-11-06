@@ -11,8 +11,8 @@ class PostControllerTest extends WebTestCase
         $client->connect('admin', 'admin');
 
         $crawler = $client->request('GET', '/blog');
-        $this->assertEquals($crawler->filter('a.button-add')->count(), 1, "Add button is present");
-        $this->assertEquals($crawler->filter('a.button-hidden')->count(), 2, "Two inactive posts");
+        $this->assertEquals(1, $crawler->filter('a.button-add')->count(), "Add button is present");
+        $this->assertEquals(2, $crawler->filter('li:contains("(inactive")')->count(), "Two inactive posts");
     }
 
     /**
@@ -24,7 +24,7 @@ class PostControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/blog');
         $this->assertEquals($crawler->filter('a.button-add')->count(), 0, "No add button");
-        $this->assertEquals($crawler->filter('a.button-hidden')->count(), 0, "No inactive post");
+        $this->assertEquals($crawler->filter('li:contains("(inactive")')->count(), 0, "No inactive post");
     }
 
     public function testPostView()
@@ -50,7 +50,7 @@ class PostControllerTest extends WebTestCase
         $this->assertEquals($crawler->filter('.blog-post-history a.next')->count(), 1);
 
         // Date formating
-        $this->assertTextSimilar($crawler->filter('.blog-post-date')->text(), "August 24, 2010");
+        $this->assertTextSimilar($crawler->filter('.post-date')->text(), "August 24, 2010");
     }
 
     public function testCorrectComment()

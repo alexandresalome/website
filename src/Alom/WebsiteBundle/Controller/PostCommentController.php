@@ -26,7 +26,7 @@ class PostCommentController extends Controller
             throw new AccessDeniedException();
         }
 
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $em = $this->getDoctrine()->getEntityManager();
         $comment = $em->getRepository('AlomWebsiteBundle:PostComment')->find($id);
 
         if (!$comment) {
@@ -45,7 +45,7 @@ class PostCommentController extends Controller
             throw new AccessDeniedException();
         }
 
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $em = $this->getDoctrine()->getEntityManager();
         $comment = $em->getRepository('AlomWebsiteBundle:PostComment')->find($id);
 
         if (!$comment) {
@@ -64,7 +64,7 @@ class PostCommentController extends Controller
             throw new AccessDeniedException();
         }
 
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $em = $this->getDoctrine()->getEntityManager();
         $comment = $em->getRepository('AlomWebsiteBundle:PostComment')->find($id);
 
         if (!$comment) {
