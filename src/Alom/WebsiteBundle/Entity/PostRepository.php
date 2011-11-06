@@ -13,7 +13,7 @@ class PostRepository extends EntityRepository
             ->createQueryBuilder('p')
             ->addOrderBy('p.publishedAt', 'DESC')
             ->where('p.isActive = true')
-            ->setMaxResults(5)
+            ->setMaxResults($count)
             ->getQuery()
             ->execute()
         ;
