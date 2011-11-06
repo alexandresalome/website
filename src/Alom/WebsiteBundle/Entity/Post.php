@@ -102,6 +102,7 @@ class Post
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->publishedAt = new \DateTime();
     }
 
     /**
