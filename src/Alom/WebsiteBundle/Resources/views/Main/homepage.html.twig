@@ -38,7 +38,7 @@
                                     <div class="book">
                                         <table><tr><td>
                                             <a title="{{ book.title }}" href="{{ path('main_book_list') }}#{{ book.slug }}">
-                                                <img src="{{ asset(('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_mini')) }}" alt="{{ book.title }}" />
+                                                <img src="{{ asset(('/uploads/book/' ~ book.illustration) | apply_filter('book_mini')) }}" alt="{{ book.title }}" />
                                             </a>
                                         </td></tr></table>
                                     </div>
