@@ -13,8 +13,8 @@
                 <div class="block-last-posts">
                     <dl>
                     {% for post in lastPosts %}
-                        <dt><a href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a></dt>
-                        <dd>{{ post.getMetaDescription() }}</dd>
+                        <dt><a href="{{ path("blog_post_view", { "slug": post.slug }) }}">{{ post.title }}</a></dt>
+                        <dd>{{ post.metaDescription }}</dd>
                     {% endfor %}
                     </dl>
                 </div>
@@ -26,8 +26,8 @@
                         <div class="very-last">
                             {% set book = lastBooks[0] %}
                             <table><tr><td>
-                                <a href="{{ path('main_book_list') }}#{{ book.getSlug() }}">
-                                    <img src="{{ ('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_thumb') }}" alt="{{ book.getTitle() }}" />
+                                <a href="{{ path('main_book_list') }}#{{ book.slug }}">
+                                    <img src="{{ asset(('/uploads/book/' ~ book.illustration) | apply_filter('book_thumb')) }}" alt="{{ book.title }}" />
                                 </a>
                             </td></tr></table>
                         </div>
@@ -37,8 +37,8 @@
                                     {% set book = lastBooks[i] %}
                                     <div class="book">
                                         <table><tr><td>
-                                            <a title="{{ book.getTitle() }}" href="{{ path('main_book_list') }}#{{ book.getSlug() }}">
-                                                <img src="{{ ('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_mini') }}" alt="{{ book.getTitle() }}" />
+                                            <a title="{{ book.title }}" href="{{ path('main_book_list') }}#{{ book.slug }}">
+                                                <img src="{{ asset(('/uploads/book/' ~ book.getIllustration()) | apply_filter('book_mini')) }}" alt="{{ book.title }}" />
                                             </a>
                                         </td></tr></table>
                                     </div>

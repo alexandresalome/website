@@ -366,6 +366,7 @@ class PostControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertEquals('Blog Opening', $crawler->filter('item title')->last()->text());
         $this->assertEquals('Symfony2 - Create your services', $crawler->filter('item title')->first()->text());
+        $this->assertEquals(0, $crawler->filter('li:contains("Symfony2 - A Performance Test")')->count());
     }
 
     protected function getEntityManager($client)

@@ -17,7 +17,7 @@
         {% endif %}
         {% set curDate = '' %}
         {% for post in posts %}
-            {% set date = post.getPublishedAt().format('F Y') %}
+            {% set date = post.publishedAt.format('F Y') %}
             {% if date != curDate %}
                 {% if curDate != '' %}
                     </ul>
@@ -27,10 +27,10 @@
                 <ul>
             {% endif %}
             <li>
-                {% if not post.isActive() %}
+                {% if not post.isActive %}
                     (inactive)
                 {% endif %}
-                <a href="{{ path("blog_post_view", { "slug": post.getSlug() }) }}">{{ post.getTitle() }}</a>
+                <a href="{{ path("blog_post_view", { "slug": post.slug }) }}">{{ post.title }}</a>
             </li>
         {% endfor %}
         </div> {# End of in-for tag #}

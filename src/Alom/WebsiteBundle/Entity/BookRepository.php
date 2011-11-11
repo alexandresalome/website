@@ -32,6 +32,7 @@ class BookRepository extends EntityRepository
     {
         return $this
             ->createQueryBuilder('b')
+            ->select('b.title, b.slug, b.illustration')
             ->where('b.isActive = true')
             ->orderBy('b.readAt', 'DESC')
             ->setMaxResults($count)

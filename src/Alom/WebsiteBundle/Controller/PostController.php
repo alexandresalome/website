@@ -217,7 +217,7 @@ class PostController extends Controller
         $posts = $this
             ->getDoctrine()
             ->getRepository('AlomWebsiteBundle:Post')
-            ->fetchAllOrderedByDate()
+            ->fetchAllOrderedByDate(false, false)
         ;
 
         return $this->render('AlomWebsiteBundle:Post:rss.xml.twig', array(

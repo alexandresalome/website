@@ -4,6 +4,7 @@ namespace Alom\WebsiteBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query\Expr;
+Use Doctrine\ORM\Query;
 
 class PostRepository extends EntityRepository
 {
@@ -11,8 +12,9 @@ class PostRepository extends EntityRepository
     {
         return $this
             ->createQueryBuilder('p')
-            ->addOrderBy('p.publishedAt', 'DESC')
+            ->select('p.title, p.metaDescription, p.slug')
             ->where('p.isActive = true')
+            ->addOrderBy('p.publishedAt', 'DESC')
             ->setMaxResults($count)
             ->getQuery()
             ->execute()
@@ -72,16 +74,28 @@ class PostRepository extends EntityRepository
         $post->setPrevious(count($previous) ? $previous[0] : false);
     }
 
-    public function fetchAllOrderedByDate($fetchInactive = false)
+    public function fetchAllOrderedByDate($fetchInactive = false, $summary = true)
     {
-        $query = $this
-            ->createQueryBuilder('p')
-            ->addOrderBy('p.publishedAt', 'DESC');
+        $qb = $this->createQueryBuilder('p');
 
-        if (false === $fetchInactive) {
-            $query->andWhere('p.isActive = true');
+        if (true === $summary) {
+            $qb->select('p.title, p.publishedAt, p.slug, p.isActive');
         }
 
-        return $query->getQuery()->execute();
+        $qb->addOrderBy('p.publishedAt', 'DESC');
+
+        if (false === $fetchInactive) {
+            $qb->andWhere('p.isActive = true');
+        }
+
+        $data = $qb->getQuery()->execute();
+
+        if (true === $summary) {
+            foreach (array_keys($data) as $i) {
+                $data[$i]['publishedAt'] = new \DateTime($data[$i]['publishedAt']);
+            }
+        }
+
+        return $data;
     }
 }
