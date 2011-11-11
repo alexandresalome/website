@@ -18,7 +18,7 @@
         </div>
         <div class="book-details">
             <h3>{{ book.getTitle() }}</h3>
-            <div class="book-description">{{ book.getDescriptionAsHtml() | raw }}</div>
+            <div class="book-description">{{ book.getDescription() | format_text }}</div>
             <div class="book-link">
                 {% if book.getExternalLink() %}
                     <a href="{{ book.getExternalLink() }}">Buy this book &raquo;</a>

@@ -161,11 +161,6 @@ class Book
         return $this->illustrationUpload;
     }
 
-    public function getDescriptionAsHtml()
-    {
-        return str_replace("\n", "<br />", htmlentities($this->description, ENT_QUOTES, 'UTF-8'));
-    }
-
     public function disable()
     {
         $this->setIsActive(false);

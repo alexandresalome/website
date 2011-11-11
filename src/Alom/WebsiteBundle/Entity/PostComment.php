@@ -154,16 +154,6 @@ class PostComment
     }
 
     /**
-     * Get the body as HTML code
-     *
-     * @return string
-     */
-    public function getBodyAsHtml()
-    {
-        return str_replace("\n", "<br />", htmlentities($this->body, ENT_QUOTES, 'UTF-8'));
-    }
-
-    /**
      * Set the creation date
      *
      * @param mixed $createdAt
