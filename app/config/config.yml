@@ -17,9 +17,12 @@ framework:
     form:            true
     csrf_protection: true
     validation:      { enable_annotations: true }
-    templating:      { engines: ['twig'], assets_version: %alom.version% }
+    templating:
+        engines: ['twig']
+        assets_version: %alom.version%
+        assets_base_urls: { http: [ http://%static_host% ], ssl: [ https://%static_host ] }
     session:
-        default_locale: %locale%
+        default_locale: en
         auto_start:     true
 
 # Twig Configuration

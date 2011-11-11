@@ -14,8 +14,10 @@
     comment_mail=alexandre.salome@gmail.com
     rss_token=rsstoken
 
-    locale=en
+    ; Static images
+    static_host=alom.local
 
+    ; Secret key
     secret=xxxxxxxxxx
 
     yui_compiler_path=/var/java/yuicompressor-2.4.6.jar
