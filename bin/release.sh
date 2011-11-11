@@ -36,5 +36,5 @@ rm LICENCE deps*
 
 # Compress
 cd $tempDir
-tar -czf "$baseDir/build-$version.tgz" *
+tar -czf "$baseDir/$version.tgz" *
 rm -Rf $tempDir
