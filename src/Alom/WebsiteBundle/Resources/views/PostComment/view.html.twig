@@ -10,11 +10,14 @@
         </div>
     {% endif %}
     <p class="author">
+        {% if comment.getWebsite() %}
+            <a href="{{ comment.getWebsite() }}" rel="nofollow">
+        {% endif %}
         {{ comment.getFullname() }}
+        {% if comment.getWebsite() %}
+            </a>
+        {% endif %}
         <em>
-            {% if comment.getWebsite() %}
-                <a href="{{ comment.getWebsite() }}">{{ comment.getWebsite() }}</a>
-            {% endif %}
             {{ comment.getCreatedAt().format("F j, Y") }}
         </em>
     </p>
