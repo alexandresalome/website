@@ -5,4 +5,4 @@ Website  : {{ comment.getWebsite() | raw }}
 
 {{ comment.getBody() | raw }}
 
-URL : {{ url("blog_post_view", { 'slug': comment.getPost().getSlug() }) }}
+URL : {{ url("alom_website_post_view", { 'slug': comment.getPost().getSlug() }) }}

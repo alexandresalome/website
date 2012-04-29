@@ -1,5 +1,6 @@
 <?php
-namespace Alom\WebsiteBundle\Form;
+
+namespace Alom\WebsiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
@@ -21,6 +22,6 @@ class BookType extends AbstractType
 
     public function getName()
     {
-        return 'book';
+        return 'alom_website_book';
     }
 }

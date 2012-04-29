@@ -1,16 +1,15 @@
 <?php
 
-namespace Alom\WebsiteBundle\Form;
+namespace Alom\WebsiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class PostFormType extends AbstractType
+class PostType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $bodyType = new TextareaType();
         $builder->add('title');
         $builder->add('slug');
         $builder->add('body');
@@ -28,6 +27,6 @@ class PostFormType extends AbstractType
 
     public function getName()
     {
-        return 'post';
+        return 'alom_website_post';
     }
 }

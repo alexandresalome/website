@@ -12,7 +12,7 @@
 
         {% if is_granted('ROLE_ADMIN') %}
             <div style="text-align: right">
-                <a href="{{ path('blog_post_create') }}" class="button button-add"><span>New post</span></a>
+                <a href="{{ path('alom_website_post_create') }}" class="button button-add"><span>New post</span></a>
             </div>
         {% endif %}
         {% set curDate = '' %}
@@ -30,7 +30,7 @@
                 {% if not post.isActive %}
                     (inactive)
                 {% endif %}
-                <a href="{{ path("blog_post_view", { "slug": post.slug }) }}">{{ post.title }}</a>
+                <a href="{{ path("alom_website_post_view", { "slug": post.slug }) }}">{{ post.title }}</a>
             </li>
         {% endfor %}
         </div> {# End of in-for tag #}

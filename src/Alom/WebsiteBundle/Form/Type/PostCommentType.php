@@ -1,11 +1,11 @@
 <?php
 
-namespace Alom\WebsiteBundle\Form;
+namespace Alom\WebsiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class PostCommentFormType extends AbstractType
+class PostCommentType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -33,6 +33,6 @@ class PostCommentFormType extends AbstractType
 
     public function getName()
     {
-        return 'postcomment';
+        return 'alom_website_post_comment';
     }
 }

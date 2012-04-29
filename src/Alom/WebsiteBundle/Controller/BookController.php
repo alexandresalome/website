@@ -15,7 +15,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Alom\WebsiteBundle\Entity\Book;
-use Alom\WebsiteBundle\Form\BookType;
 
 class BookController extends Controller
 {
@@ -45,7 +44,7 @@ class BookController extends Controller
             $book = new Book();
         }
 
-        $form    = $this->createForm(new BookType(), $book);
+        $form    = $this->createForm('alom_website_book', $book);
         $request = $this->getRequest();
 
         if ('POST' === $request->getMethod()) {
@@ -55,7 +54,7 @@ class BookController extends Controller
                 $em->persist($book);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('main_book_edit', array('id' => $book->getId())));
+                return $this->redirect($this->generateUrl('alom_website_book_edit', array('id' => $book->getId())));
             }
         }
 
@@ -79,7 +78,7 @@ class BookController extends Controller
         $em->remove($book);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('main_book_list'));
+        return $this->redirect($this->generateUrl('alom_website_book_list'));
 
     }
 
@@ -103,7 +102,7 @@ class BookController extends Controller
         $em->persist($book);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('main_book_list'));
+        return $this->redirect($this->generateUrl('alom_website_book_list'));
     }
 
     public function enableAction($id)
@@ -126,7 +125,7 @@ class BookController extends Controller
         $em->persist($book);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('main_book_list'));
+        return $this->redirect($this->generateUrl('alom_website_book_list'));
     }
 
     protected function removeUpload(Book $book)
@@ -143,7 +142,7 @@ class BookController extends Controller
             $upload  = $book->getIllustrationUpload();
             $this->removeUpload($book);
 
-            $storage = $this->get('alom.upload.storage');
+            $storage = $this->get('alom_website.upload_storage');
             $filename = $storage->addUpload($upload, 'book');
 
             $book->setIllustration($filename);

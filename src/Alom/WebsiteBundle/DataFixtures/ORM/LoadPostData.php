@@ -15,7 +15,7 @@ use Alom\WebsiteBundle\Entity\Post;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class PostData extends AbstractFixture implements OrderedFixtureInterface
+class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load($manager)
     {

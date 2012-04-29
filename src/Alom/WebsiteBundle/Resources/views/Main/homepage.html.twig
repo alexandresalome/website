@@ -13,7 +13,7 @@
                 <div class="block-last-posts">
                     <dl>
                     {% for post in lastPosts %}
-                        <dt><a href="{{ path("blog_post_view", { "slug": post.slug }) }}">{{ post.title }}</a></dt>
+                        <dt><a href="{{ path("alom_website_post_view", { "slug": post.slug }) }}">{{ post.title }}</a></dt>
                         <dd>{{ post.metaDescription }}</dd>
                     {% endfor %}
                     </dl>
@@ -26,7 +26,7 @@
                         <div class="very-last">
                             {% set book = lastBooks[0] %}
                             <table><tr><td>
-                                <a href="{{ path('main_book_list') }}#{{ book.slug }}">
+                                <a href="{{ path("alom_website_book_list") }}#{{ book.slug }}">
                                     <img src="{{ asset(('/uploads/book/' ~ book.illustration) | apply_filter('book_thumb')) }}" alt="{{ book.title }}" />
                                 </a>
                             </td></tr></table>
@@ -37,7 +37,7 @@
                                     {% set book = lastBooks[i] %}
                                     <div class="book">
                                         <table><tr><td>
-                                            <a title="{{ book.title }}" href="{{ path('main_book_list') }}#{{ book.slug }}">
+                                            <a title="{{ book.title }}" href="{{ path('alom_website_book_list') }}#{{ book.slug }}">
                                                 <img src="{{ asset(('/uploads/book/' ~ book.illustration) | apply_filter('book_mini')) }}" alt="{{ book.title }}" />
                                             </a>
                                         </td></tr></table>
@@ -51,10 +51,10 @@
         </div>
         <div class="col-parent block-more">
             <div class="col-1-2">
-                <a href="{{ path("blog_post_list") }}">&raquo; View all posts</a>
+                <a href="{{ path("alom_website_post_list") }}">&raquo; View all posts</a>
             </div>
             <div class="col-1-2">
-                <a href="{{ path("main_book_list") }}">&raquo; View all books</a>
+                <a href="{{ path("alom_website_book_list") }}">&raquo; View all books</a>
             </div>
         </div>
     </div>

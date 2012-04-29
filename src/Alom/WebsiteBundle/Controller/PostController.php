@@ -17,8 +17,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Alom\WebsiteBundle\Entity\Post;
 use Alom\WebsiteBundle\Entity\PostComment;
-use Alom\WebsiteBundle\Form\PostCommentFormType;
-use Alom\WebsiteBundle\Form\PostFormType;
 
 /**
  * Blog post controller
@@ -45,7 +43,7 @@ class PostController extends Controller
             throw new NotFoundHttpException("Blog post with slug \"$slug\" not found");
         }
 
-        $form    = $this->get('form.factory')->create(new PostCommentFormType());
+        $form    = $this->createForm('alom_website_post_comment');
         $request = $this->get('request');
 
         if ($request->getMethod() === 'POST') {
@@ -67,7 +65,7 @@ class PostController extends Controller
                 $this->get('mailer')->send($message);
 
                 $this->get('session')->setFlash('post_comment_confirmation', 'Your comment was successfully posted');
-                return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $slug)). '#post-comment');
+                return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $slug)). '#post-comment');
             }
         }
 
@@ -113,8 +111,7 @@ class PostController extends Controller
         }
 
         $em = $this->get('doctrine.orm.default_entity_manager');
-        $factory = $this->get('form.factory');
-        $form = $factory->create(new PostFormType());
+        $form = $this->createForm("alom_website_post");
 
         if (null !== $id) {
             $post = $em->getRepository('AlomWebsiteBundle:Post')->findOneBy(array('id' => $id));
@@ -130,11 +127,11 @@ class PostController extends Controller
         if ($this->get('request')->getMethod() === 'POST') {
             $form->bindRequest($this->get('request'));
             if ($form->isValid()) {
-                $post->setBodyHtml($this->get('alom.blog.rst2html')->convert($post->getBody()));
+                $post->setBodyHtml($this->get('alom_website.rst2html')->convert($post->getBody()));
                 $em->persist($post);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('blog_post_edit', array('id' => $post->getId())));
+                return $this->redirect($this->generateUrl('alom_website_post_edit', array('id' => $post->getId())));
             }
         }
 
@@ -158,7 +155,7 @@ class PostController extends Controller
         $em->persist($post);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $post->getSlug())));
+        return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $post->getSlug())));
     }
 
     public function disableAction($id)
@@ -175,7 +172,7 @@ class PostController extends Controller
         $em->persist($post);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $post->getSlug())));
+        return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $post->getSlug())));
     }
 
     public function deleteAction($id)
@@ -191,7 +188,7 @@ class PostController extends Controller
         $em->remove($post);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('blog_post_list'));
+        return $this->redirect($this->generateUrl('alom_website_post_list'));
     }
 
     public function markdownPreviewAction()

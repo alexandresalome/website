@@ -6,7 +6,7 @@ use Alom\WebsiteBundle\Entity\PostComment;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class PostCommentData extends AbstractFixture implements OrderedFixtureInterface
+class LoadPostCommentData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load($manager)
     {

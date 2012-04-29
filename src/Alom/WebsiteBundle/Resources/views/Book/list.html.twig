@@ -26,12 +26,12 @@
             </div>
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="button-set">
-                    <a href="{{ path("main_book_edit", {'id': book.getId() }) }}" class="button button-blue button-small">Edit</a>
-                    <a href="{{ path("main_book_delete", {'id': book.getId() }) }}" class="button button-red button-small">Remove</a>
+                    <a href="{{ path("alom_website_book_edit", {'id': book.getId() }) }}" class="button button-blue button-small">Edit</a>
+                    <a href="{{ path("alom_website_book_delete", {'id': book.getId() }) }}" class="button button-red button-small">Remove</a>
                     {% if book.getIsActive() %}
-                        <a href="{{ path("main_book_disable", {'id': book.getId() }) }}" class="button button-small">Disable</a>
+                        <a href="{{ path("alom_website_book_disable", {'id': book.getId() }) }}" class="button button-small">Disable</a>
                     {% else %}
-                        <a href="{{ path("main_book_enable", {'id': book.getId() }) }}" class="button button-hidden button-small">Enable</a>
+                        <a href="{{ path("alom_website_book_enable", {'id': book.getId() }) }}" class="button button-hidden button-small">Enable</a>
                     {% endif %}
                 </div>
             {% endif %}
@@ -43,7 +43,7 @@
     <div class="page-book-list">
         {% if is_granted('ROLE_ADMIN') %}
             <div style="text-align: right">
-                <a href="{{ path('main_book_create') }}" class="button button-add"><span>New book</span></a>
+                <a href="{{ path('alom_website_book_create') }}" class="button button-add"><span>New book</span></a>
             </div>
         {% endif %}
         <h1>Books I've read</h1>

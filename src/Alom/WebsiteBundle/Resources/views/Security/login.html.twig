@@ -16,7 +16,7 @@
 {% block content %}
     <h1>Login</h1>
     <div class="login-form-wrapper">
-        <form action="{{ path('login_check') }}" method="POST">
+        <form action="{{ path('alom_website_security_check') }}" method="POST">
             {% if error %}
                 <div class="errors">{{ error.message }}</div>
             {% endif %}

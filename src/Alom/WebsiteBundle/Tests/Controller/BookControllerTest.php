@@ -89,8 +89,8 @@ class BookControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/books/edit/'.$book->getId());
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $form = $crawler->filter('form#book-edit input[type=submit]')->form(array(
-            'book[slug]'        => 'test-edit',
-            'book[description]' => 'Test Edit'
+            'alom_website_book[slug]'        => 'test-edit',
+            'alom_website_book[description]' => 'Test Edit'
         ));
 
         $crawler = $client->submit($form);

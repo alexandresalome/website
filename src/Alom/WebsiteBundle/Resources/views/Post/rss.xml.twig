@@ -3,13 +3,13 @@
     <channel>
         <title>Alexandre Salomé</title>
         <description>{{ rssTitle }}</description>
-        <link>{{ url("homepage") }}</link>
+        <link>{{ url("alom_website_main_homepage") }}</link>
         {% for post in posts %}
         <item>
             <title>{{ post.getTitle() }}</title>
             <pubDate>{{ post.getPublishedAt() | date("r") }}</pubDate>
-            <link>{{ url("blog_post_view", { 'slug': post.getSlug() }) }}</link>
-            <guid>{{ url("blog_post_view", { 'slug': post.getSlug() }) }}</guid>
+            <link>{{ url("alom_website_post_view", { 'slug': post.getSlug() }) }}</link>
+            <guid>{{ url("alom_website_post_view", { 'slug': post.getSlug() }) }}</guid>
             <description>{{ post.getBodyHtml() }}</description>
         </item>
         {% endfor %}

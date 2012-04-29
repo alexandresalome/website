@@ -60,9 +60,9 @@ class PostControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/blog/Blog-Opening');
         $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
-            'postcomment[fullname]' => 'Bobby Commentor',
-            'postcomment[email]'    => 'bobby@example.org',
-            'postcomment[body]'     => 'Hey this is a cool website'
+            'alom_website_post_comment[fullname]' => 'Bobby Commentor',
+            'alom_website_post_comment[email]'    => 'bobby@example.org',
+            'alom_website_post_comment[body]'     => 'Hey this is a cool website'
         ));
 
         $crawler = $client->submit($form);
@@ -86,9 +86,9 @@ class PostControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/blog/Blog-Opening');
         $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
-            'postcomment[fullname]' => 'Bobby <em>Commentor</em>',
-            'postcomment[email]'    => 'bobby@example.org',
-            'postcomment[body]'     => 'Hey this is a cool <a href="http://example.org">website</a>'
+            'alom_website_post_comment[fullname]' => 'Bobby <em>Commentor</em>',
+            'alom_website_post_comment[email]'    => 'bobby@example.org',
+            'alom_website_post_comment[body]'     => 'Hey this is a cool <a href="http://example.org">website</a>'
         ));
 
         $crawler = $client->submit($form);
@@ -109,13 +109,13 @@ class PostControllerTest extends WebTestCase
         $client = $this->createClient();
         $crawler = $client->request('GET', '/blog/Blog-Opening');
         $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
-            'postcomment[fullname]' => $fullname,
-            'postcomment[email]'    => 'bobby@example.org',
-            'postcomment[body]'     => 'Hey this is a cool website'
+            'alom_website_post_comment[fullname]' => $fullname,
+            'alom_website_post_comment[email]'    => 'bobby@example.org',
+            'alom_website_post_comment[body]'     => 'Hey this is a cool website'
         ));
 
         $crawler = $client->submit($form);
-        $error = $crawler->filter('#postcomment_fullname + ul > li')->text();
+        $error = $crawler->filter('#alom_website_post_comment_fullname + ul > li')->text();
         $this->assertEquals($message, $error);
     }
 
@@ -135,13 +135,13 @@ class PostControllerTest extends WebTestCase
         $client = $this->createClient();
         $crawler = $client->request('GET', '/blog/Blog-Opening');
         $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
-            'postcomment[fullname]' => 'Bobby',
-            'postcomment[email]'    => $email,
-            'postcomment[body]'     => 'Hey this is a cool website'
+            'alom_website_post_comment[fullname]' => 'Bobby',
+            'alom_website_post_comment[email]'    => $email,
+            'alom_website_post_comment[body]'     => 'Hey this is a cool website'
         ));
 
         $crawler = $client->submit($form);
-        $error = $crawler->filter('#postcomment_email + ul > li')->text();
+        $error = $crawler->filter('#alom_website_post_comment_email + ul > li')->text();
         $this->assertEquals($message, $error);
     }
 
@@ -164,14 +164,14 @@ class PostControllerTest extends WebTestCase
         $client = $this->createClient();
         $crawler = $client->request('GET', '/blog/Blog-Opening');
         $form = $crawler->filter('form.post-comment input[type=submit]')->form(array(
-            'postcomment[fullname]' => 'Bobby',
-            'postcomment[email]'    => 'bobby@example.org',
-            'postcomment[website]'  => $website,
-            'postcomment[body]'     => 'Hey this is a cool website'
+            'alom_website_post_comment[fullname]' => 'Bobby',
+            'alom_website_post_comment[email]'    => 'bobby@example.org',
+            'alom_website_post_comment[website]'  => $website,
+            'alom_website_post_comment[body]'     => 'Hey this is a cool website'
         ));
 
         $crawler = $client->submit($form);
-        $error = $crawler->filter('#postcomment_website + ul > li')->text();
+        $error = $crawler->filter('#alom_website_post_comment_website + ul > li')->text();
         $this->assertEquals($message, $error);
     }
 
@@ -337,8 +337,8 @@ class PostControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/blog/' . $post->getId() . '/edit');
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $form = $crawler->filter('form#post-edit input[type=submit]')->form(array(
-            'post[slug]'  => 'Ouverture',
-            'post[body]'  => 'WELCOME !'
+            'alom_website_post[slug]'  => 'Ouverture',
+            'alom_website_post[body]'  => 'WELCOME !'
         ));
 
         $crawler = $client->submit($form);

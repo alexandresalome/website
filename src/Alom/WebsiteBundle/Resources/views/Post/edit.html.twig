@@ -17,14 +17,14 @@
     <h1>«&nbsp;{{ post.getTitle() }}&nbsp;» - Editing</h1>
 
     <div style="padding: 20px 0;">
-        <a class="button" href="{{ path('blog_post_list') }}">&lt; Back to the list</a>
-        <a class="button" href="{{ path('blog_post_view', { 'slug': post.getSlug() }) }}">View</a>
+        <a class="button" href="{{ path('alom_website_post_list') }}">&lt; Back to the list</a>
+        <a class="button" href="{{ path('alom_website_post_view', { 'slug': post.getSlug() }) }}">View</a>
     </div>
 
     {% if post.getId() %}
-        {% set action = path("blog_post_edit", { "id": post.getId() }) %}
+        {% set action = path("alom_website_post_edit", { "id": post.getId() }) %}
     {% else %}
-        {% set action = path("blog_post_create") %}
+        {% set action = path("alom_website_post_create") %}
     {% endif %}
     {% include "AlomWebsiteBundle:Post:form.html.twig" with {
         "action" : action,

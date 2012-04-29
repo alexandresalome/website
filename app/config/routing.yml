@@ -1,10 +1,6 @@
-content:
-  resource: "@AlomWebsiteBundle/Resources/config/routing.xml"
-
-blog:
-  resource: "@AlomWebsiteBundle/Resources/config/routing.xml"
+_alom_website:
+  resource: "@AlomWebsiteBundle/Resources/config/routing.yml"
 
 _imagine:
   resource: .
   type:     imagine
-

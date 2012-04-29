@@ -36,7 +36,7 @@ class PostCommentController extends Controller
         $em->remove($comment);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $comment->getPost()->getSlug())));
+        return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $comment->getPost()->getSlug())));
     }
 
     public function activateAction($id)
@@ -55,7 +55,7 @@ class PostCommentController extends Controller
         $em->persist($comment);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $comment->getPost()->getSlug())));
+        return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $comment->getPost()->getSlug())));
     }
 
     public function inactivateAction($id)
@@ -74,6 +74,6 @@ class PostCommentController extends Controller
         $em->persist($comment);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('blog_post_view', array('slug' => $comment->getPost()->getSlug())));
+        return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $comment->getPost()->getSlug())));
     }
 }
