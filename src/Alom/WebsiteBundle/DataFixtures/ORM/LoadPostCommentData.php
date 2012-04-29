@@ -53,7 +53,7 @@ class LoadPostCommentData extends AbstractFixture implements OrderedFixtureInter
                     'body'        => 'Enlarge your penis'
                 )
             ),
-            'HTTP-Cache' => array(
+            'HTTP-Caching' => array(
                 array(
                     'fullname'    => 'Jacky Leturbo',
                     'email'       => 'jacky@example.org',

@@ -5,6 +5,23 @@ use Alom\WebsiteBundle\Test\WebTestCase;
 
 class PostCommentControllerTest extends WebTestCase
 {
+    public function testList()
+    {
+        $client = self::createClient();
+        $client->request('GET', '/blog/comment/list');
+
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
+
+        $client->connect('admin', 'admin');
+
+        $crawler = $client->request('GET', '/blog/comment/list');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertEquals('Blog comments (5)', $crawler->filter('#content h1')->text());
+        $this->assertCount(1, $crawler->filter(".block-comment.inactive"));
+    }
+
     public function testActivate()
     {
         $client = $this->createClient();
@@ -18,9 +35,10 @@ class PostCommentControllerTest extends WebTestCase
 
         $client->connect('admin', 'admin');
 
+        $client->request('GET', '/blog/Blog-Opening');
         $client->request('GET', '/blog/comment/' . $comment->getId() . '/activate');
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/blog/Blog-Opening'));
      }
 
     public function testInactivate()
@@ -36,9 +54,10 @@ class PostCommentControllerTest extends WebTestCase
 
         $client->connect('admin', 'admin');
 
+        $client->request('GET', '/blog/Blog-Opening');
         $client->request('GET', '/blog/comment/' . $comment->getId() . '/inactivate');
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertTrue($client->getResponse()->isRedirect('/blog/Blog-Opening'));
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/blog/Blog-Opening'));
      }
 
     protected function getEntityManager($client)

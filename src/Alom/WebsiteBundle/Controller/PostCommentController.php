@@ -20,6 +20,22 @@ use Alom\WebsiteBundle\Form\PostComment as PostCommentForm;
 
 class PostCommentController extends Controller
 {
+    public function listAction()
+    {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $comments = $this->getDoctrine()
+            ->getRepository('AlomWebsiteBundle:PostComment')
+            ->fetchAllOrderedByDate()
+        ;
+
+        return $this->render('AlomWebsiteBundle:PostComment:list.html.twig', array(
+            'comments' => $comments
+        ));
+    }
+
     public function deleteAction($id)
     {
         if (!$this->get('security.context')->isGranted('ROLE_ADMIN')) {
@@ -36,7 +52,9 @@ class PostCommentController extends Controller
         $em->remove($comment);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $comment->getPost()->getSlug())));
+        $fallbackUrl = $this->generateUrl('alom_website_post_view', array('slug' => $comment->getPost()->getSlug()));
+
+        return $this->redirect($request->headers->get('Referer', fallbackUrl));
     }
 
     public function activateAction($id)
@@ -55,7 +73,9 @@ class PostCommentController extends Controller
         $em->persist($comment);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $comment->getPost()->getSlug())));
+        $fallbackUrl = $this->generateUrl('alom_website_post_view', array('slug' => $comment->getPost()->getSlug()));
+
+        return $this->redirect($this->getRequest()->headers->get('Referer', $fallbackUrl));
     }
 
     public function inactivateAction($id)
@@ -74,6 +94,8 @@ class PostCommentController extends Controller
         $em->persist($comment);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $comment->getPost()->getSlug())));
+        $fallbackUrl = $this->generateUrl('alom_website_post_view', array('slug' => $comment->getPost()->getSlug()));
+
+        return $this->redirect($this->getRequest()->headers->get('Referer', $fallbackUrl));
     }
 }

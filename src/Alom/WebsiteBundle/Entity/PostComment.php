@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @author Alexandre Salomé <alexandre.salome@gmail.com>
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Alom\WebsiteBundle\Entity\PostCommentRepository")
  */
 class PostComment
 {
@@ -67,7 +67,7 @@ class PostComment
 
     /**
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
-     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id", nullable=false)
      *
      * @var Alom\Website\AlomWebsiteBundle\Post
      */
@@ -179,6 +179,11 @@ class PostComment
     public function getPost()
     {
         return $this->post;
+    }
+
+    public function getPostTitle()
+    {
+        return $this->getPost()->getTitle();
     }
 
     public function setPost($post)

@@ -13,6 +13,7 @@
         {% if is_granted('ROLE_ADMIN') %}
             <div style="text-align: right">
                 <a href="{{ path('alom_website_post_create') }}" class="button button-add"><span>New post</span></a>
+                <a href="{{ path('alom_website_post_comment_list') }}" class="button"><span>Admin comments</span></a>
             </div>
         {% endif %}
         {% set curDate = '' %}

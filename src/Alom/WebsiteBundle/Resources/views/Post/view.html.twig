@@ -40,7 +40,16 @@
             {{ post.getBodyHtml() | raw }}
         </div>
 
-        {% include "AlomWebsiteBundle:PostComment:list.html.twig" with { "comments" : post.getComments() } only %}
+         <div class="blog-post-comments">
+           {% for comment in post.getComments() %}
+                {% include "AlomWebsiteBundle:PostComment:view.html.twig" with { "comment": comment } only %}
+            {% else %}
+                <div class="no-comments">
+                    <p>Be the first to comment !</p>
+                </div>
+            {% endfor %}
+         </div>
+
         {% include "AlomWebsiteBundle:PostComment:form.html.twig" with {
             "action" : path('alom_website_post_view', { 'slug' : post.getSlug() }),
             "form"   : commentForm,

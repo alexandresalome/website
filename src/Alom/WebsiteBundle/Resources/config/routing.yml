@@ -55,6 +55,10 @@ alom_website_post_comment_delete:
     pattern: /blog/comment/{id}/delete
     defaults: {_controller: "AlomWebsiteBundle:PostComment:delete" }
 
+alom_website_post_comment_list:
+    pattern: /blog/comment/list
+    defaults: {_controller: "AlomWebsiteBundle:PostComment:list" }
+
 alom_website_post_comment_activate:
     pattern: /blog/comment/{id}/activate
     defaults: {_controller: "AlomWebsiteBundle:PostComment:activate" }
