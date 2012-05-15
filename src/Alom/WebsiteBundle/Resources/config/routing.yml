@@ -21,13 +21,13 @@ alom_website_post_markdownPreview:
     pattern: /blog/markdown-preview
     defaults: { _controller: "AlomWebsiteBundle:Post:markdownPreview" }
 
-alom_website_post_view:
-    pattern: /blog/{slug}
-    defaults: { _controller: "AlomWebsiteBundle:Post:view" }
-
 alom_website_post_create:
     pattern: /blog/create
     defaults: { _controller: "AlomWebsiteBundle:Post:edit" }
+
+alom_website_post_view:
+    pattern: /blog/{slug}
+    defaults: { _controller: "AlomWebsiteBundle:Post:view" }
 
 alom_website_post_edit:
     pattern: /blog/{id}/edit
@@ -40,10 +40,6 @@ alom_website_post_enable:
 alom_website_post_disable:
     pattern: /blog/{id}/disable
     defaults: { _controller: "AlomWebsiteBundle:Post:disable" }
-
-alom_website_post_delete:
-    pattern: /blog/{id}/delete
-    defaults: { _controller: "AlomWebsiteBundle:Post:delete" }
 
 alom_website_post_delete:
     pattern: /blog/{id}/delete
