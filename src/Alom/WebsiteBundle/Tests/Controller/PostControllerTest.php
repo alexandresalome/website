@@ -323,6 +323,17 @@ class PostControllerTest extends WebTestCase
         $client->request('GET', '/blog/' . $post->getId() . '/enable');
     }
 
+    public function testCreate()
+    {
+        $client = $this->createClient();
+        $client->connect('admin', 'admin');
+
+        $crawler = $client->request('GET', '/blog/create');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        $this->assertCount(1, $crawler->filter('form'));
+    }
+
     public function testEdit()
     {
         $client = $this->createClient();
