@@ -32,6 +32,7 @@ class ProjectExtension extends \Twig_Extension
     {
         $text = str_replace("\n", "<br />", htmlspecialchars($text, ENT_QUOTES, 'UTF-8'));
         $urlPattern = '#https?\://\S+#';
+
         return '<p>'.preg_replace($urlPattern, '<a href="$0">$0</a>', $text).'</p>';
     }
 

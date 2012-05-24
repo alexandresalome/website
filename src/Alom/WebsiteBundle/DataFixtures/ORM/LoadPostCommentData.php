@@ -26,7 +26,6 @@ class LoadPostCommentData extends AbstractFixture implements OrderedFixtureInter
             }
         }
 
-
         $manager->flush();
     }
 

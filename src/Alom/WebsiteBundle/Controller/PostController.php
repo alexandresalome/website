@@ -65,6 +65,7 @@ class PostController extends Controller
                 $this->get('mailer')->send($message);
 
                 $this->get('session')->setFlash('post_comment_confirmation', 'Your comment was successfully posted');
+
                 return $this->redirect($this->generateUrl('alom_website_post_view', array('slug' => $slug)). '#post-comment');
             }
         }

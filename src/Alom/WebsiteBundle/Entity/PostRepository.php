@@ -44,6 +44,7 @@ class PostRepository extends EntityRepository
         try {
             $post = $query->getQuery()->getSingleResult();
             $this->addPreviousAndNext($post, $fetchInactive);
+
             return $post;
         } catch (NoResultException $exception) {
             return null;

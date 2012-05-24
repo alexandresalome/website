@@ -11,12 +11,10 @@
 namespace Alom\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Alom\WebsiteBundle\Entity\PostComment;
-use Alom\WebsiteBundle\Form\PostComment as PostCommentForm;
 
 class PostCommentController extends Controller
 {

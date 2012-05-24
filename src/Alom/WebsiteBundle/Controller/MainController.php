@@ -42,6 +42,7 @@ class MainController extends Controller
         ));
 
         $response->headers->set('Content-Type', 'text/xml');
+
         return $response;
     }
 }

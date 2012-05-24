@@ -268,6 +268,7 @@ class Post
         if (null === $this->nextPost) {
             throw new \Exception("No next post was set !");
         }
+
         return $this->nextPost !== false;
     }
 
@@ -300,6 +301,7 @@ class Post
         if (null === $this->previousPost) {
             throw new \Exception("No previous post was set !");
         }
+
         return $this->previousPost !== false;
     }
 

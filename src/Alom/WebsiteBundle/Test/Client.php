@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Client as BaseClient;
  */
 class Client extends BaseClient
 {
-    static protected $connection;
+    protected static $connection;
 
     protected $requested;
 

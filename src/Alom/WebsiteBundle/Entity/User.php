@@ -5,7 +5,6 @@ namespace Alom\WebsiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-
 /**
  * @ORM\Entity
  */
@@ -22,7 +21,6 @@ class User implements UserInterface
      * @ORM\Column(type="string", length="32")
      */
     protected $username;
-
 
     /**
      * @ORM\Column(type="string", length="128")

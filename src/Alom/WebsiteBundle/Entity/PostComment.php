@@ -89,7 +89,8 @@ class PostComment
      *
      * @return integer $id
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -98,7 +99,8 @@ class PostComment
      *
      * @param string $email
      */
-    public function setEmail($email) {
+    public function setEmail($email)
+    {
         $this->email = $email;
     }
 
@@ -107,7 +109,8 @@ class PostComment
      *
      * @return string $email
      */
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
@@ -116,7 +119,8 @@ class PostComment
      *
      * @param string $fullname
      */
-    public function setFullname($fullname) {
+    public function setFullname($fullname)
+    {
         $this->fullname = $fullname;
     }
 
@@ -130,7 +134,8 @@ class PostComment
      *
      * @return string $website
      */
-    public function getWebsite() {
+    public function getWebsite()
+    {
         return $this->website;
     }
 
@@ -139,7 +144,8 @@ class PostComment
      *
      * @param string $body Body to set
      */
-    public function setBody($body) {
+    public function setBody($body)
+    {
         $this->body = $body;
     }
 
@@ -158,7 +164,8 @@ class PostComment
      *
      * @param mixed $createdAt
      */
-    public function setCreatedAt($createdAt) {
+    public function setCreatedAt($createdAt)
+    {
         if (!$createdAt instanceof \DateTime) {
             $createdAt = new \DateTime($createdAt);
         }
