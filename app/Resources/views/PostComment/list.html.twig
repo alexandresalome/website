@@ -1,0 +1,37 @@
+{% extends "::layout.html.twig" %}
+
+{% block title            'Blog comments list | Alexandre Salomé' %}
+{% block meta_description 'Administration of blog comments' %}
+
+{% set active = "blog" %}
+
+{% block content %}
+    <div class="page-post-comment-list">
+
+        <h1>Blog comments ({{ comments|length }})</h1>
+
+        {% for comment in comments %}
+
+            <div class="block-comment {{ comment.isModerated ? '' : 'inactive' }}">
+                <h2>{{ comment.fullname }} - {{ comment.createdAt.format('d/m/Y H:i:s') }}</h2>
+                <div class="message">
+                    {{ comment.body | format_text }}
+                </div>
+                <p class="extra">
+                    <a href="{{ path("post_view", {slug: comment.post.slug }) }}"><strong>{{ comment.postTitle }}</strong></a>
+                    |
+                    {{ comment.email }}
+                    {{ comment.website ? " | " ~ comment.website : '' }}
+                </p>
+                <p>
+                    <a href="{{ path('post_comment_delete', {id: comment.id }) }}" class="button button-small"><span>Delete</span></a>
+                    {% if comment.isModerated %}
+                        <a href="{{ path('post_comment_inactivate', {id: comment.id }) }}" class="button button-small button-red"><span>Inactivate</span></a>
+                    {% else %}
+                        <a href="{{ path('post_comment_activate', {id: comment.id }) }}" class="button button-small button-green"><span>Activate</span></a>
+                    {% endif %}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

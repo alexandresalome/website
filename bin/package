@@ -1,0 +1,31 @@
+#!/bin/bash
+set -e
+cd "`dirname "$0"`"/..
+
+if [ -f package.tgz ]; then
+    rm package.tgz
+fi
+
+npm install
+SYMFONY_ENV=prod composer install -o --no-dev
+
+rm -rf var/logs/*
+rm -rf var/cache/*
+rm -rf var/sessions/*
+rm -rf web/uploads/*
+rm -rf web/media/*
+
+gulp min
+
+tar -czf package.tgz \
+    app/ \
+    bin/console \
+    src/ \
+    var/ \
+    vendor/ \
+    web/archives/ \
+    web/assets/ \
+    web/media/ \
+    web/uploads/ \
+    web/app.php \
+    VERSION

@@ -1,0 +1,25 @@
+{% extends "::layout.html.twig" %}
+
+{% block title            'Edit book: ' ~ book.getTitle() ~ ' | Alexandre Salomé' %}
+{% block meta_description 'Edition of a book, should not be referenced !' %}
+
+{% set active = "books" %}
+
+{% block content %}
+    <h1>Book «&nbsp;{{ book.getTitle() }}&nbsp;» - Editing</h1>
+
+    <div style="padding: 20px 0;">
+        <a class="button" href="{{ path('book_list') }}">&lt; Back to the list</a>
+    </div>
+
+    {% if book.getId() %}
+        {% set action = path("book_edit", { "id": book.getId() }) %}
+    {% else %}
+        {% set action = path("book_create") %}
+    {% endif %}
+
+    {{ form_start(form, {action: action, attr: {id: 'book-edit'}}) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Submit" class="button" />
+    </form>
+{% endblock %}

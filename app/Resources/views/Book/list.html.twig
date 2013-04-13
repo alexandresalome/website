@@ -1,0 +1,66 @@
+{% extends "::layout.html.twig" %}
+
+{% block title            'Books | Alexandre Salomé' %}
+{% block meta_description 'List of the books I\'ve read since some years and when possible a small comment on it' %}
+
+{% set active = "books" %}
+
+{% macro book_entry(book) %}
+    <div class="book-entry" id="{{ book.getSlug() }}">
+        <div class="book-illustration{% if not book.getIsActive() %} inactive{% endif %}">
+            {% if book.getExternalLink() %}
+                <a href="{{ book.getExternalLink() }}">
+            {% endif %}
+            <img src="{{ ('/uploads/book/' ~ book.getIllustration()) | imagine_filter('book_thumb') }}" alt="{{ book.getTitle() }}" />
+            {% if book.getExternalLink() %}
+                </a>
+            {% endif %}
+        </div>
+        <div class="book-details">
+            <h3>{{ book.getTitle() }}</h3>
+            <div class="book-description">{{ book.getDescription() | format_text }}</div>
+            <div class="book-link">
+                {% if book.getExternalLink() %}
+                    <a href="{{ book.getExternalLink() }}">Buy this book &raquo;</a>
+                {% endif %}
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="button-set">
+                    <a href="{{ path("book_edit", {'id': book.getId() }) }}" class="button button-blue button-small">Edit</a>
+                    <a href="{{ path("book_delete", {'id': book.getId() }) }}" class="button button-red button-small">Remove</a>
+                    {% if book.getIsActive() %}
+                        <a href="{{ path("book_disable", {'id': book.getId() }) }}" class="button button-small">Disable</a>
+                    {% else %}
+                        <a href="{{ path("book_enable", {'id': book.getId() }) }}" class="button button-hidden button-small">Enable</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% block content %}
+    <div class="page-book-list">
+        {% if is_granted('ROLE_ADMIN') %}
+            <div style="text-align: right">
+                <a href="{{ path('book_create') }}" class="button button-add"><span>New book</span></a>
+            </div>
+        {% endif %}
+        <h1>Books I've read</h1>
+
+        {% set curDate = '' %}
+        {% for book in books %}
+            {% set date = book.getReadAt().format('Y') %}
+            {% if date != curDate %}
+                {% if curDate != '' %}
+                    </div>
+                {% endif %}
+                {% set curDate = date %}
+                <h2>During the year {{ date }}</h2>
+                <div class="book-set">
+            {% endif %}
+            {{ _self.book_entry(book) }}
+        {% endfor %}
+        </div> {# end of in-tag #}
+    </div>
+{% endblock %}

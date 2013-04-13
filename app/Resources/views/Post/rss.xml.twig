@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Alexandre Salomé</title>
+        <description>{{ rssTitle }}</description>
+        <link>{{ url("homepage") }}</link>
+        {% for post in posts %}
+        <item>
+            <title>{{ post.getTitle() }}</title>
+            <pubDate>{{ post.getPublishedAt() | date("r") }}</pubDate>
+            <link>{{ url("post_view", { 'slug': post.getSlug() }) }}</link>
+            <guid>{{ url("post_view", { 'slug': post.getSlug() }) }}</guid>
+            <description>{{ post.getBodyHtml() }}</description>
+        </item>
+        {% endfor %}
+    </channel>
+</rss>

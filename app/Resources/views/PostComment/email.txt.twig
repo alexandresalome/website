@@ -1,0 +1,8 @@
+{{ comment.getPost().getTitle() | raw }}
+
+Fullname : {{ comment.getFullname() | raw }}
+Website  : {{ comment.getWebsite() | raw }}
+
+{{ comment.getBody() | raw }}
+
+URL : {{ url("post_view", { 'slug': comment.getPost().getSlug() }) }}

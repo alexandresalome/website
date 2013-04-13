@@ -1,0 +1,114 @@
+# Homepage
+homepage:
+    path: /
+    defaults: { _controller: "AppBundle:Main:homepage" }
+
+sitemap:
+    path: /sitemap.xml
+    defaults: { _controller: "AppBundle:Main:sitemap" }
+
+# Post
+
+post_list:
+    path: /blog
+    defaults: { _controller: "AppBundle:Post:list" }
+
+post_rss:
+    path: /rss/{token}
+    defaults: { _controller: "AppBundle:Post:rss" }
+
+post_markdownPreview:
+    path: /blog/markdown-preview
+    defaults: { _controller: "AppBundle:Post:markdownPreview" }
+
+post_create:
+    path: /blog/create
+    defaults: { _controller: "AppBundle:Post:edit" }
+
+post_view:
+    path: /blog/{slug}
+    defaults: { _controller: "AppBundle:Post:view" }
+
+post_edit:
+    path: /blog/{id}/edit
+    defaults: { _controller: "AppBundle:Post:edit" }
+
+post_enable:
+    path: /blog/{id}/enable
+    defaults: { _controller: "AppBundle:Post:enable" }
+
+post_disable:
+    path: /blog/{id}/disable
+    defaults: { _controller: "AppBundle:Post:disable" }
+
+post_delete:
+    path: /blog/{id}/delete
+    defaults: { _controller: "AppBundle:Post:delete" }
+
+# Post Comment
+
+post_comment_delete:
+    path: /blog/comment/{id}/delete
+    defaults: {_controller: "AppBundle:PostComment:delete" }
+
+post_comment_list:
+    path: /blog/comment/list
+    defaults: {_controller: "AppBundle:PostComment:list" }
+
+post_comment_activate:
+    path: /blog/comment/{id}/activate
+    defaults: {_controller: "AppBundle:PostComment:activate" }
+
+post_comment_inactivate:
+    path: /blog/comment/{id}/inactivate
+    defaults: {_controller: "AppBundle:PostComment:inactivate" }
+
+# Book
+
+book_list:
+    path: /books
+    defaults: {_controller: "AppBundle:Book:list" }
+
+book_create:
+    path: /books/create
+    defaults: {_controller: "AppBundle:Book:edit" }
+
+book_edit:
+    path: /books/edit/{id}
+    defaults: { _controller: "AppBundle:Book:edit" }
+
+book_delete:
+    path: /books/delete/{id}
+    defaults: { _controller: "AppBundle:Book:delete" }
+
+book_enable:
+    path: /books/enable/{id}
+    defaults: { _controller: "AppBundle:Book:enable" }
+
+book_disable:
+    path: /books/disable/{id}
+    defaults: { _controller: "AppBundle:Book:disable" }
+
+# Identity
+
+identity_cv:
+    path: /cv
+    defaults: { _controller: "AppBundle:Identity:cv" }
+
+identity_contact:
+    path: /contact
+    defaults: { _controller: "AppBundle:Identity:contact" }
+
+# Security
+
+security_login:
+    path: /login
+    defaults: { _controller: "AppBundle:Security:login" }
+
+security_check:
+    path: /login_check
+    defaults: { _controller: "AppBundle:Security:check" }
+
+security_logout:
+    path: /logout
+    defaults: { _controller: "AppBundle:Security:logout" }

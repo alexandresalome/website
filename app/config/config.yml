@@ -1,72 +1,57 @@
 imports:
-    - { resource: parameters.ini }
+    - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: services.yml }
 
 parameters:
     test.client.class: Alom\WebsiteBundle\Test\Client
     rss_address:       http://feeds.feedburner.com/AlexandreSalome
     rss_title:         "Blog posts from the alexandre-salome.fr"
-    # Assetic
-    assetic.filter.compass.images_dir: %kernel.root_dir%/../web/images
-    assetic.filter.compass.http_path:  /
 
 framework:
-    secret:          %secret%
-    charset:         UTF-8
+    secret:          "%secret%"
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
     csrf_protection: true
     validation:      { enable_annotations: true }
+    default_locale: en
     templating:
         engines: ['twig']
-        assets_version: %alom.version%
-        assets_base_urls: { http: [ http://%static_host% ], ssl: [ https://%static_host ] }
-    session:
-        default_locale: en
-        auto_start:     true
+    session: ~
 
 # Twig Configuration
 twig:
-    form:
-      resources: [ "::forms.html.twig" ]
-    debug:            %kernel.debug%
-    strict_variables: %kernel.debug%
+    form_themes:
+      - "::forms.html.twig"
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
 
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
         charset:  UTF8
 
     orm:
-        auto_generate_proxy_classes: %kernel.debug%
+        auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
 # Swiftmailer Configuration
 swiftmailer:
     transport: gmail
-    username:  %mailer_user%
-    password:  %mailer_password%
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
 
-# Assetic Configuration
-assetic:
-    debug:          %kernel.debug%
-    use_controller: false
-    filters:
-        cssrewrite: ~
-        yui_js:     { jar: %yui_compiler_path% }
-        yui_css:    { jar: %yui_compiler_path% }
-        compass:    ~
-
-avalanche_imagine:
-    filters:
+liip_imagine:
+    driver: imagick
+    filter_sets:
         book_thumb:
-            type:    thumbnail
-            options: { size: [200, 200], mode: inset }
+            filters:
+                thumbnail: { size: [200, 200], mode: inset }
         book_mini:
-            type:    thumbnail
-            options: { size: [100, 100], mode: inset }
+            filters:
+                thumbnail: { size: [100, 100], mode: inset }

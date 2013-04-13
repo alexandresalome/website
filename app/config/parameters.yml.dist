@@ -1,0 +1,21 @@
+parameters:
+    database_host: 127.0.0.1
+    database_name: alom_dev
+    database_user: root
+    database_password: ~
+
+    # Gmail configuration
+    mailer_user: contact@alexandre-salome.fr
+    mailer_password: xxxxxxxxxxx
+
+    # Blog configuration
+    comment_mail: alexandre.salome@gmail.com
+    rss_token: rsstoken
+
+    # Static images
+    static_host: alom.local
+
+    # Secret key
+    secret: xxxxxxxxxx
+
+    yui_compiler_path: /var/java/yuicompressor-2.4.6.jar

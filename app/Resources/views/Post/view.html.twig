@@ -1,0 +1,59 @@
+{% extends "::layout.html.twig" %}
+
+{% set formattedDate = post.getPublishedAt().format("F j, Y") %}
+
+{% block title            post.getTitle() ~ ' | Alexandre Salomé' %}
+{% block meta_description post.getMetaDescription() %}
+
+{% set active = "blog" %}
+
+{% block content %}
+    <div class="page-post-view">
+        {% if is_granted("ROLE_ADMIN") %}
+            <div class="blog-post-actions">
+                {% if post.isActive() %}
+                    <a href="{{ path('post_disable', { 'id': post.getId() }) }}" class="button button-hidden">Disable</a>
+                {% else %}
+                    <a href="{{ path('post_enable', { 'id': post.getId() }) }}" class="button">Enable</a>
+                {% endif %}
+                <a href="{{ path('post_edit', { 'id': post.getId() }) }}" class="button button-edit">Edit</a>
+                <a onclick="return confirm('Are you sure ?')" href="{{ path('post_delete', { 'id': post.getId() }) }}" class="button button-delete"><span>Delete</span></a>
+            </div>
+        {% endif %}
+
+        <h1>{{ post.getTitle() }}</h1>
+
+        <div class="post-date">
+            {{ formattedDate }}
+        </div>
+
+        <div class="blog-post-history">
+            {% if post.hasPrevious() %}
+                <a title="{{ post.getPrevious().getTitle() }}" class="button previous" href="{{ path('post_view', { 'slug': post.getPrevious().getSlug() }) }}">&lt; Previous</a>
+            {% endif %}
+            {% if post.hasNext() %}
+                <a title="{{ post.getNext().getTitle() }}" class="button next" href="{{ path('post_view', { 'slug': post.getNext().getSlug() }) }}">Next &gt;</a>
+            {% endif %}
+        </div>
+
+        <div class="rich-content">
+            {{ post.getBodyHtml() | raw }}
+        </div>
+
+         <div class="blog-post-comments">
+           {% for comment in post.getComments() %}
+                {% include "::PostComment/view.html.twig" with { "comment": comment } only %}
+            {% else %}
+                <div class="no-comments">
+                    <p>Be the first to comment !</p>
+                </div>
+            {% endfor %}
+         </div>
+
+        {% include "::PostComment/form.html.twig" with {
+            "action" : path('post_view', { 'slug' : post.getSlug() }),
+            "form"   : commentForm,
+            "postCommentConfirmation": postCommentConfirmation
+        } only %}
+    </div>
+{% endblock %}

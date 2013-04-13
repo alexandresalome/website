@@ -1,0 +1,16 @@
+{% extends "::layout.html.twig" %}
+
+{% block title            'CV | Alexandre Salomé' %}
+{% block meta_description 'Curriculum Vitae of Alexandre Salomé, Consultant for Sensio Labs : experience, skills, studies and personal' %}
+
+{% set active = "cv" %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(window).load(identity.cv.bind);
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% include "::Identity/_cv_card.html.twig" %}
+{% endblock %}

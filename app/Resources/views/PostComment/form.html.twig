@@ -1,0 +1,13 @@
+<form class="post-comment" action="{{ action }}#post-comment" method="POST" id="post-comment">
+    <h2>Post a comment</h2>
+    {% for message in postCommentConfirmation %}
+        <p class="confirmation"> {{ message }} </p>
+    {% endfor %}
+    {{ form_row(form.fullname) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.website) }}
+    {{ form_row(form.body) }}
+
+    {{ form_rest(form) }}
+    <input type="submit" value="Submit" class="button" />
+</form>

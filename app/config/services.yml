@@ -1,0 +1,14 @@
+services:
+    twig.project_extension:
+        class: AppBundle\Twig\Extension\ProjectExtension
+        arguments: [ "@service_container"]
+        tags:
+            - { name: twig.extension }
+
+    upload_storage:
+        class: AppBundle\Upload\Storage
+        arguments: [ "%kernel.root_dir%/../web/uploads", "%kernel.debug%" ]
+
+    rst2html:
+        class: AppBundle\Process\Rst2HtmlProcess
+        arguments: [ "%kernel.root_dir%/../bin/rst2html-pygments --no-doc-title --initial-header-level=2" ]

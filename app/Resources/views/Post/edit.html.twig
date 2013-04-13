@@ -1,0 +1,39 @@
+{% extends "::layout.html.twig" %}
+
+{% block title            'Edit article: ' ~ post.getTitle() ~ ' | Alexandre Salomé' %}
+{% block meta_description 'Edition of an article, should not be referenced !' %}
+
+{% set active = "blog" %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(window).load(function (){
+            post.edit.bind();
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% if post.id %}
+        <h1>«&nbsp;{{ post.getTitle() }}&nbsp;» - Editing</h1>
+    {% else %}
+        <h1>New post</h1>
+    {% endif %}
+
+    <div style="padding: 20px 0;">
+        <a class="button" href="{{ path('post_list') }}">&lt; Back to the list</a>
+        {% if post.id %}
+            <a class="button" href="{{ path('post_view', { 'slug': post.getSlug() }) }}">View</a>
+        {% endif %}
+    </div>
+
+    {% if post.getId() %}
+        {% set action = path("post_edit", { "id": post.getId() }) %}
+    {% else %}
+        {% set action = path("post_create") %}
+    {% endif %}
+    {% include "::Post/form.html.twig" with {
+        "action" : action,
+        "form" : form
+    } only %}
+{% endblock %}

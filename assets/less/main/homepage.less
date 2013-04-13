@@ -1,0 +1,48 @@
+@import "common.less";
+
+.page-main-homepage {
+    .standard_dl;
+
+    .block-last-books {
+        padding: 20px 0;
+
+        img {
+            border: 1px solid #bbbbbb;
+        }
+
+        .very-last {
+            padding-bottom: 20px;
+            table {
+                width: 100%;
+                td {
+                    height: 200px;
+                    text-align: center;
+                }
+            }
+        }
+
+        .others {
+            overflow: hidden;
+            .book {
+                width: 112px;
+                float: left;
+                text-align: center;
+                height: 100px;
+                table {
+                    width: 100%;
+                    td {
+                        height: 100px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .block-more a {
+        color: @colorBase;
+        font-size: @fontSizeMedium;
+        line-height: 2em;
+        font-family: @fontFamilyAlt;
+    }
+}

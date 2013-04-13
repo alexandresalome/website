@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+
+{% block head %}
+    <title>{% block title 'Alexandre Salomé' %}</title>
+    <meta name="description" content="{% block meta_description '' %}" />
+    <link rel="alternate" type="application/rss+xml" title="{{ rssTitle }}" href="{{ rssAddress }}" />
+    {% if app.environment == 'dev' %}
+        <link rel="stylesheet" href="{{ asset('assets/css/all.css') }}" />
+    {% else %}
+        <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}" />
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ render(controller("AppBundle:Common:banner")) }}
+    {% include "::header.html.twig" %}
+    <div id="content-wrapper">
+        <div id="content">
+            {% block content '' %}
+        </div>
+    </div>
+    {% include "::footer.html.twig" %}
+    {% if app.environment == 'dev' %}
+        <script src="{{ asset('assets/js/all.js') }}"></script>
+        <script src="//localhost:35729/livereload.js"></script>
+    {% else %}
+        <script src="{{ asset('assets/js/all.min.js') }}"></script>
+    {% endif %}
+    {% block javascript '' %}
+    {% include "::analytics.html.twig" %}
+{% endblock %}
