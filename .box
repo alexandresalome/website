@@ -1,0 +1,7 @@
+shared_writable_dirs:
+    - /app/cache
+    - /app/logs
+url_rewrites:
+    - ^(.*)$ /app.php
+document_root: /web
+
